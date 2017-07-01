@@ -1,0 +1,28 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+    text-decoration: none;
+    font-family: 微软雅黑, "Microsoft Yahei", Arial, Helvetica, sans-serif, 宋体;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+}
+a:hover{
+	transition: color .2s linear;
+	color:#00cdf7;
+}
+header a{
+	color: #666;
+    font-size: 12px;
+    margin-right: 40px;
+    display: inline-block;
+    text-decoration: none;
+     transition: color .2s linear;
+    line-height: 40px;
+}

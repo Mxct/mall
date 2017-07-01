@@ -138,6 +138,10 @@ return [
         'taglib_begin' => '{',
         // 标签库标签结束标记
         'taglib_end'   => '}',
+        //开启模板布局
+        'layout_on'    => false,
+        //指定布局模板文件名称，默认为:layout
+        //'layout_name'  => 'test/layout',
     ],
 
     // 视图输出字符串内容替换

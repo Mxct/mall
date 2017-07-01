@@ -1,0 +1,80 @@
+*{margin: 0;padding: 0;font-family: "微软雅黑";list-style: none;text-decoration: none;}
+a{color:#515151;}
+body{background: #f2f2f2;}
+.header{width: 100%;background: #fff;height: 82px;}
+.header-box{width: 1060px;height: 82px;margin: 0 auto;}
+.content{width: 1060px;margin: 0 auto;}
+.nav{width: 100%;height: 70px;line-height: 70px;}
+.nav ul{float: left;font-size: 12px;margin-left: -30px;}
+.nav ul li{display: inline-block;margin-left: 30px;}
+.nav ul li a:hover{color: #00c3f5;}
+.nav .cc-paly-search{float:right;width:218px;height:32px;border:1px solid #dedfe0;position: relative;background:url(../img/play/main_icon.png) no-repeat;margin-top:17px;}
+.nav .cc-paly-search input{float:left;width:170px;height:32px;line-height: 32px;background: none transparent;border: none;padding:0 0 0 10px;outline:none;}
+.nav .cc-paly-search button{float:right;width:32px;height:32px;background: none transparent;border:none;outline: none;cursor: pointer;}
+
+
+.left{width: 716px;float: left;}
+.bo{width: 714px;height: 308px;border: 1px solid #ccc;overflow: hidden;}
+.bo li{float: left;}
+.dian{width: 684px;height: 481px;border: 1px solid #ccc;margin-top: 20px;
+background: #fff;padding: 15px;}
+.shang{width: 685px;height: 60px;border-bottom: 1px solid #ccc;}
+.shang p{float: left;font-size: 16px;font-weight: bold;}
+.shang ul{float: right;font-size: 12px;}
+.shang ul li{display: inline-block;height: 12px;line-height: 12px;margin-left: 4px;}
+.tr{float: left;}
+.qw{float: left;margin-left: 10px;line-height: 20px;}
+.qw img{margin-left: 15px;position: relative;right: 2px;}
+.wi{font-size: 12px;}
+.wi li{margin-top: 24px;margin-left: 10px;display: inline-block;width: 280px;padding-left: 30px;cursor: pointer;}
+.one{width: 686px;height: 217px;background: #fff;border: 1px solid #ccc;
+margin-top: 20px;padding: 14px;}
+.one span:nth-of-type(1){color:#9b9b9b;}
+.one span a{color: #00c3f5;}
+.one a img:hover{opacity: .4;}
+.kao{float: left;}
+.nali{float: left;width: 355px;margin-left: 15px;line-height: 28px;}
+.lanw{width: 82px;height: 34px;background: #1FA7EA;color: #fff;font-size: 16px;text-align: center;line-height: 34px;}
+.nali p{font-size: 16px;font-weight: bold;}
+.nali span{font-size: 12px;}
+.nali span img{position: relative;top: 2px;margin-left: 20px;}
+.nali span a{margin-left: 50px;}
+.right{width: 273px;height: 1441px;float: right;border: 1px solid #ccc;
+background: #fff;padding: 16px;}
+.right_dao{margin-left: -10px;margin-top: 10px;}
+.right_dao li{display: inline-block;margin-left: 10px;}
+.riqi{width: 107px;height: 43px;text-align: center;line-height: 43px;font-size: 16px;float: left;}
+.qiandao{font-size: 18px;color: #fff;float: right;height: 43px;width: 100px;line-height: 43px;text-align: center;}
+.right_qian{width: 235px;height: 54px;background: url(../img/shequ/dao.jpg);padding: 10px 15px 0 20px;}
+.right_jie{width: 268px;height: 310px;border: 1px solid #ccc;border-top: 2px solid #40d2f7;margin-top: 10px;}
+.right_jie ul li:hover{color: #00c3f5;cursor: pointer;}
+.foot{width: 1060px;border-top: 1px solid #ccc;margin: 0 auto;padding-top: 40px;
+text-align: center;font-size: 12px;clear: both;padding-bottom: 25px;line-height: 25px;color:#515151;    background-color: #F2F2F2;}
+.foot ul li{display: inline-block;padding:0 8px;height: 12px;border-right: 1px solid #666;text-align: center;line-height: 12px;color:#515151;}
+.foot ul li img{width:17px;border-radius:48%;margin: -4px 7px 0 0;}
+.foot p:last-child img{margin-left:8px;}
+.foot p:last-child i{display: inline-block;width:17px;height:18px;vertical-align:middle;cursor:pointer;}
+.foot p:last-child .pic_a{background: url(../img/shequ/head20121226.gif) no-repeat -62px -90px;margin-left:20px;margin-right:8px;}
+.foot p:last-child .pic_b{background: url(../img/shequ/head20121226.gif) no-repeat -96px -90px;}
+.re{width: 100%;height: 50px;border-bottom: 1px solid #ccc;text-align: center;line-height: 50px;font-size: 12px;}
+.right_jie ul{font-size: 12px;}
+.right_jie ul li{display: block;float: left;width: 134px;height: 52px;border: 1px solid #f7f7f7;box-sizing: border-box;text-align: center;line-height: 52px;}
+.zi{width: 268px;height: 40px;border-bottom: 1px solid #ccc;text-align: left;font-size: 16px;line-height: 40px;font-weight: bold;margin-top: 15px;}
+.xi{width: 268px;height: 94px;font-size: 12px;padding-top: 14px;}
+.xi img{float: left;}
+.hou{float: right;line-height: 23px;}
+.hou span{font-weight: bold;}
+.can{width: 64px;height: 25px;background: #4ebaf2;text-align: center;line-height: 25px;color: #fff;}
+.kai{width: 268px;font-size: 12px;}
+.kai li{display: inline-block;width: 74px;height: 12px;text-align: center;border-right: 1px dashed #000;line-height: 12px;margin-top: 8px;margin-left: 8px;}
+.xu{margin-top: 30px;}
+.xu li{float:left;width: 133px;height: 39px;text-align: center;line-height: 39px;font-size: 16px;box-sizing: border-box;}
+.bian{border: 1px solid #ccc;border-bottom: none;color: #007AFF;}
+.bian1{border-bottom: 1px solid #ccc;}
+.yan{display: none;}
+.ti{font-size: 12px;line-height: 40px;display: block;}
+.ti span{font-weight: bold;}
+.xiaz{font-size: 16px;text-align: center;line-height: 46px;width: 268px;height: 46px;color: #fff;line-height: 46px;background: #007AFF;}
+.ti a{margin-left: 10px;color: #007AFF;}
+
+.foot .to_top{visibility: hidden;position: fixed;bottom: 80px;right:80px;display: none;margin: 0;width: 48px;height: 48px;background-color: #ffffff;background: url(../img/shequ/scrolltop2.gif) no-repeat 0 -48px;line-height: 999px;overflow: hidden;cursor: pointer;border: 1px solid #e6e6e6;visibility: visible;box-shadow: 0px 0px 5px #e6e6e6;}
