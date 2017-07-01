@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-weight: 400;
+  font-family: 微软雅黑, "Microsoft Yahei", Arial, Helvetica, sans-serif, 宋体;
+}
+/*body{*/
+  /*min-height: 100%;*/
+  /*position: relative;*/
+/*}*/
+header {
+  height: 567px;
+  width: 100%;
+}
+header .ucSimpleHeader {
+  height: 30px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 45px;
+  width: 1000px;
+}
+header .ucSimpleHeader .meizuLogo {
+  float: left;
+  height: 20px;
+  width: 110px;
+  overflow: hidden;
+  display: block;
+}
+header .ucSimpleHeader .meizuLogo .i_icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: url(../img/z1.png) no-repeat -3px -4px;
+}
+header .ucSimpleHeader .trigger {
+  float: right;
+  height: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  width: 100px;
+  text-align: center;
+}
+header .ucSimpleHeader .trigger .linkAGray {
+  color: #7f7f7f;
+}
+header .ucSimpleHeader .trigger .linkAGray:hover {
+  color: #474747;
+}
+header .ucSimpleHeader .trigger #toRegister {
+  color: #474747;
+  cursor: pointer;
+}
+header .ucSimpleHeader .middle {
+  overflow: hidden;
+  display: block;
+  width: 343px;
+  margin: 0 auto;
+}
+header .ucSimpleHeader .middle .mainForm {
+  margin-top: 100px;
+  width: 100%;
+  margin: 100px auto 0px;
+  overflow: hidden;
+}
+header .ucSimpleHeader .middle .mainForm .number {
+  font-size: 20px;
+  margin-left: -5px;
+  margin-bottom: 30px;
+  width: 350px;
+  text-align: center;
+}
+header .ucSimpleHeader .middle .mainForm .number .linkABlue {
+  color: #00a7ea;
+}
+header .ucSimpleHeader .middle .mainForm .normalInput {
+  position: relative;
+  display: inline-block;
+  padding: 0px 10px;
+  width: 320px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #dadada;
+  outline: none;
+  color: #474747;
+}
+header .ucSimpleHeader .middle .mainForm .normalInput .username {
+  width: 220px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+header .ucSimpleHeader .middle .mainForm .normalInput .inputTip {
+  position: absolute;
+  top: 15px;
+  left: 7px;
+  color: #909090;
+  font-size: 16px;
+  height: 22px;
+  line-height: 22px;
+}
+header .ucSimpleHeader .middle .mainForm .normalInput .grayTip {
+  height: 50px;
+  line-height: 50px;
+  color: #7f7f7f;
+  vertical-align: top;
+  display: inline-block;
+}
+header .ucSimpleHeader .middle .mainForm .normalInput .form-line {
+  color: #d9d9d9;
+  height: 40px;
+  display: inline-block;
+  border-left: 1px solid #dadada;
+  position: absolute;
+  right: 100px;
+  top: 5px;
+}
+header .ucSimpleHeader .middle .mainForm .normalInput .getKey {
+  width: 84px;
+  text-align: center;
+  border: none;
+  outline: none;
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+  position: absolute;
+  right: 10px;
+  top: 0px;
+}
+header .ucSimpleHeader .middle .mainForm .fullBtnBlue {
+  display: inline-block;
+  height: 50px;
+  width: 342px;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+  margin-bottom: 20px;
+  outline: none;
+  cursor: pointer;
+  background-color: #32a5e7;
+  color: #fff;
+}
+footer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+footer .footerWrap {
+  bottom: 0;
+  width: 100%;
+  height: 130px;
+  border-top: solid 1px #E5E6E7;
+  background-color: #fff;
+  color: black;
+}
+footer .footerWrap .footerInner {
+  width: 1000px;
+  margin: 24px auto 30px;
+}
+footer .footerWrap .footerInner .footer-layer1 {
+  height: 50px;
+  line-height: 50px;
+  overflow: hidden;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-innerLink {
+  float: left;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-innerLink a {
+  color: black;
+  font-size: 14px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-innerLink img {
+  background-color: #888;
+  margin: 0px 5px;
+  width: 1px;
+  height: 10px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-service {
+  float: left;
+  margin-left: 36px;
+  font-size: 14px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-service .service-label {
+  margin-right: 10px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-service .service-num {
+  margin-right: 20px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-service .service-online {
+  display: inline-block;
+  height: 20px;
+  line-height: 18px;
+  width: 64px;
+  color: white;
+  background-color: #32a5e7;
+  text-align: center;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-outerLink {
+  position: relative;
+  float: right;
+  padding-top: 9px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-outerLink .footer-sinaMblog {
+  margin-left: 10px;
+  display: inline-block;
+  overflow: hidden;
+  width: 34px;
+  height: 34px;
+  color: black;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-outerLink .footer-sinaMblog .i_icon {
+  height: 34px;
+  display: block;
+  background: url(../img/z1.png) no-repeat -218px -91px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-outerLink .footer-sinaMblog .i_icon:hover {
+  background: url(../img/z1.png) no-repeat -218px -137px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-outerLink .footer-sinaMblog .i_icov {
+  height: 34px;
+  display: block;
+  background: url(../img/z1.png) no-repeat -302px -91px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-outerLink .footer-sinaMblog .i_icov:hover {
+  background: url(../img/z1.png) no-repeat -302px -137px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-outerLink .footer-sinaMblog .i_icoz {
+  height: 34px;
+  display: block;
+  background: url(../img/z1.png) no-repeat -344px -91px;
+}
+footer .footerWrap .footerInner .footer-layer1 .footer-outerLink .footer-sinaMblog .i_icoz:hover {
+  background: url(../img/z1.png) no-repeat -344px -137px;
+}
+footer .footerWrap .footerInner .copyrightWrap {
+  width: 100%;
+}
+footer .footerWrap .footerInner .copyrightWrap .copyrightInner {
+  width: 1000px;
+  margin: 0px auto;
+}
+footer .footerWrap .footerInner .copyrightWrap .copyrightInner span {
+  color: #7f7f7f;
+  float: left;
+  font-size: 12px;
+}
+footer .footerWrap .footerInner .copyrightWrap .copyrightInner .linkAGray {
+  white-space: nowrap;
+  float: left;
+  font-size: 12px;
+  color: #7f7f7f;
+  margin-left: 6px;
+}
+/*# sourceMappingURL=login.css.map */
