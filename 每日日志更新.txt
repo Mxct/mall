@@ -1,2 +1,4 @@
 7-1:（ct）
 	项目开始，添加bootstrap,jquery,composer(验证码/上传图片)
+7-2:（ct）
+	登陆功能完成，
