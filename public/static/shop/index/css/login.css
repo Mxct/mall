@@ -21,8 +21,8 @@
 /*´ó±³¾°*/
 .banner {
     width: 1519px;
-    height: 750px;
-    background: url("../images-denglu/banner.png");
+    height: 700px;
+    background: url("/static/shop/index/image/banner.png");
     position: relative;
 }
 /*µÇÂ¼*/
