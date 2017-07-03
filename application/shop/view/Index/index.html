@@ -138,34 +138,22 @@
 				<li class="category-nav-item">
 					<a class="category-nav-link" href="">全部商品分类</a>
 				</li>
-				
+				{foreach $Lresult as $vL}
 				<li class="category-nav-item">
-					<a class="category-nav-link" href=""></a>
+					<a class="category-nav-link" href="">{$vL['tname']}</a>
 					<div class="category-nav-children">
 						<div class="nav-children-wrap">
 							<ul class="nav-children-left">
-								
-                
+								{foreach $Sresult as $vS}
+								{if $vL['id'] == $vS['pid']}
 								<li class="nav-children-item">
 									<a href="">
 										<img height="50" width="50" src="" alt="">
-										<span></span>
+										<span>{$vS['tname']}</span>
 									</a>
 								</li>
-
-							</ul>
-							<ul class="nav-children-left">
-								
-                
-										<li class="nav-children-item">
-											<a href="">
-												<img height="50" width="50" src="" alt="">
-												<span></span>
-											</a>
-										</li>
-									
-     
-							
+								{/if}
+								{/foreach}
 							</ul>
 						</div>
 						<div class="category-item-ad">
@@ -173,7 +161,7 @@
 						</div>
 					</div>
 				</li>
-				
+				{/foreach}
 			</ul>
 		</div>
 	</div>
