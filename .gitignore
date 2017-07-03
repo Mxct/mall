@@ -1,2 +1,4 @@
 ﻿think/
-static/
+vendor/
+runtime/
+!.gitignore

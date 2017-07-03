@@ -1,0 +1,75 @@
+{extend name="admin" /}
+{block name="content"}
+    <style>
+        th{
+            text-align: center;
+        }
+    </style>
+    <ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+        <li>
+            <a href=""><i class="fa fa-cogs"></i> 分类管理</a>
+        </li>
+        <li class="active">
+            <a href="{:url('store')}">添加分类</a>
+        </li>
+    </ol>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#tab1">分类管理</a></li>
+        <li><a href="{:url('store')}">添加分类</a></li>
+    </ul>
+    <form action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr style="text-align: center">
+                        <th width="80">编号</th>
+                        <th>分类名称</th>
+                        <th width="100">所属分类</th>
+                        <th>分类排序</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="text-align: center">
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="{{u('addSon')}}">添加子集分类</a></li>
+                                        <li><a href="{{u('edit'])}}">编辑</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="javascript:;" onclick="del()">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <input type="hidden" value="{{q('get.cid')}}" name="cid">
+    </form>
+    <div class="pagination pagination-sm pull-right"></div>
+<script>
+function del(cid) {
+    var obj = util.modal({
+        title:'确认删除吗',//标题
+        content:'',//内容
+        footer:'<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button><button type="button" class="btn btn-danger confirm" data-dismiss="modal">确定</button>',//底部
+        width:600,//宽度
+        events:{
+            confirm:function(){
+                //哪个元素上有.confirm类，被点击就执行这个回调
+                location.href="{{u('del')}}" + '&cid=' + cid;
+            }
+        }
+    });
+    //显示模态框
+    obj.modal('show');
+}
+</script>
+{/block}

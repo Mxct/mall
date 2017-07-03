@@ -1,0 +1,63 @@
+{extend name='admin'/}
+{block name="content"}
+<ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+    <li>
+        <a href=""><i class="fa fa-cogs"></i> 用户管理</a>
+    </li>
+    <li class="active">
+        <a href="">用户列表</a>
+    </li>
+</ol>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#tab1">用户管理</a></li>
+    <!-- <li><a href="{:url('store')}">用户添加</a></li> -->
+</ul>
+  <div class="panel-body">
+       <div class="table-responsive">			
+				<form action="" method="get">
+				管理员：<input type="text" name="userName" value="">
+						<input type="submit" value="查询">
+				</form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>用户名</th>
+                        <th>用户电话</th>
+                        <th>状态</th>
+                        <th>注册时间</th>
+                        <!-- <th>注册IP</th> -->
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 遍历用户列表 -->
+                    <foreach name='data' item='vo'>
+                        <tr class="success">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a href="">修改</a>
+                                <span>|</span>
+                                <span class='notice'></span>
+                                <a href="" class="del_user">删除</a>
+                                <span>|</span>
+                                <a href="">状态</a>
+                            </td>
+                        </tr>
+                    </foreach>
+                    <tr><td>分页</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="__PUBLIC__/Admin/jquery-1.11.3.min.js"></script>
+        <script language="JavaScript" type="text/JavaScript">
+           $('.del_user').click(function(){
+                alert('删除此用户，将会删除用户的所有信息');
+           })
+        </script>
+{/block}

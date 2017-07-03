@@ -3,16 +3,19 @@ namespace app\admin\controller;
 
 use think\Controller;	//引入Controller类
 use think\Db;
-class Index extends Controller
+use app\admin\model\User as UserModel;
+
+class Users extends Controller
 {
-	// 首页
+	// 用户
     public function index()
     {
         return $this->fetch();
     }
-    // 修改密码
-    public function changePass()
+    // 用户添加
+    public function store()
     {
         return $this->fetch();
     }
+    
 }

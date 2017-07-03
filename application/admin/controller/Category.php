@@ -3,15 +3,15 @@ namespace app\admin\controller;
 
 use think\Controller;	//引入Controller类
 use think\Db;
-class Index extends Controller
+class Category extends Controller
 {
-	// 首页
+	// 分类
     public function index()
     {
         return $this->fetch();
     }
-    // 修改密码
-    public function changePass()
+    // 添加分类
+    public function store()
     {
         return $this->fetch();
     }

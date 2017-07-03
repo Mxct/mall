@@ -11,26 +11,7 @@ class Index extends Controller
    // 官网首页
     public function index()
     {
-        return $this->fetch();
-    }
-    // 服务
-    public function fuwu()
-    {
-        return $this->fetch();
-    }
-    // 专卖店
-    public function zhuanmaidian()
-    {
-        return $this->fetch();
-    }
-    // 社区
-    public function shequ()
-    {
-        return $this->fetch();
-    }
-    // 底部
-    public function footer()
-    {
-        return $this->fetch();
+        //重定向到商城首页
+        $this->redirect('shop/index/index');
     }
 }
