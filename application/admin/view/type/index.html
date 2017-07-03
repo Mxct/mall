@@ -35,7 +35,7 @@
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <li><a href="{:url('edit',['id'=>$vL['id']])}">编辑</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="javascript:;" onclick="del($vL['id'])">删除</a></li>
+                                    <li><a href="{:url('del',['id'=>$vL['id']])}">删除</a></li>
                                 </ul>
                             </div>
                         </td>
@@ -50,7 +50,7 @@
                                     <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="{:url('edit',['id'=>$vS['id']])}">编辑</a></li>
-                                        <li><a href="javascript:;" onclick="del($vS['id'])">删除</a></li>
+                                        <li><a href="{:url('del',['id'=>$vS['id']])}">删除</a></li>
                                     </ul>
                                 </div>
                             </td>
@@ -66,23 +66,5 @@
     <div class="pagination pagination-sm pull-right">
         分页
     </div>
-<script>
-    function del(tid) {
-        var obj = util.modal({
-            title:'确认删除吗',//标题
-            content:'',//内容
-            footer:'<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button><button type="button" class="btn btn-danger confirm" data-dismiss="modal">确定</button>',//底部
-            width:600,//宽度
-            events:{
-                confirm:function(){
-                    //哪个元素上有.confirm类，被点击就执行这个回调
-                    location.href="{:url('del')}" + '&id=' + id;
-                }
-            }
-        });
-        //显示模态框
-        obj.modal('show');
-    }
-</script>
 
 {/block}

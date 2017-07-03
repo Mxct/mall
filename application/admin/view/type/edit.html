@@ -14,14 +14,14 @@
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">类型名称</label>
                     <div class="col-sm-9">
-                        <input type="text" name="tname" value="{$tname}" required class="form-control" placeholder="请填写类型名称">
+                        <input type="text" name="tname" value="{$tname['tname']}" required class="form-control" placeholder="请填写类型名称">
                     </div>
                 </div>
 
             </div>
         </div>
-        <input type="hidden" value="{}" name="id">
+        <input type="hidden" value="{$tname['id']}" name="id">
         <button class="btn btn-primary" type="submit">确定</button>
     </form>
-
+        
 {/block}

@@ -11,6 +11,10 @@ class Index extends Controller
 	// 官网首页
     public function index()
     {
+        $Lresult = Db::name('type')->where('pid','0')->select();
+        $Sresult = Db::name('type')->where('pid','<>','0')->select();
+        $this->assign('Lresult',$Lresult);
+        $this->assign('Sresult',$Sresult);
         // 分配变量cookie-username
         $this->assign('username',cookie('username'));
         return $this->fetch();
