@@ -18,5 +18,14 @@ class Type extends Controller
     {
         return $this->fetch();
     }
-    
+    public function edit()
+    {
+    	//获取所有get变量
+    	$id = input('');
+    	$tname = Db::name('type')->where('id',$id['id'])->value('tname');
+    	// echo "$result";
+    	// dump($result);die;
+    	$this->assign('tname',$tname);
+        return $this->fetch();
+    }
 }
