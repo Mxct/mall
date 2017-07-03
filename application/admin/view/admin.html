@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>    
+    <title>商城后台管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <link href="/static/shop/resource/css/site.css" rel="stylesheet">
+    <link href="/static/shop/resource/hdjs/css/font-awesome.min.css" rel="stylesheet">
+    <script src="/static/shop/resource/hdjs/js/jquery.min.js"></script>
+    <script src="/static/shop/resource/hdjs/app/util.js"></script>
+    <script src="/static/shop/resource/hdjs/require.js"></script>
+    <script src="/static/shop/resource/hdjs/app/config.js"></script>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        i {
+            color: #337ab7;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid admin-top">
+    <!--导航-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <h4 style="display: inline;line-height: 50px;float: left;margin: 0px"><a href="{:url('admin/index/index')}" style="color: white;margin-left: -14px">后台管理</a></h4>
+                <div class="navbar-header">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="http://fontawesome.dashgame.com/" target="_blank"><i class="fa fa-w fa-hand-o-right"></i>   图标库</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="fa fa-w fa-user"></i>
+                            admin
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{:url('admin/index/changepass')}">修改密码</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{:url('admin/index/logout')}">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--导航end-->
+</div>
+<!--主体-->
+<div class="container-fluid admin_menu">
+    <div class="row">
+        <div class="col-xs-12 col-sm-3 col-lg-2 left-menu">
+            <div class="panel panel-default" id="menus" >
+<!--类型-->
+                <div class="panel-heading" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="border-top: 1px solid #ddd;border-radius: 0%">
+                    <h4 class="panel-title">类型管理</h4>
+                    <a class="panel-collapse" data-toggle="collapse" href="#collapseExample1" aria-expanded="true">
+                        <i class="fa fa-chevron-circle-down"></i>
+                    </a>
+                </div>
+                <ul class="list-group menus collapse in" id="collapseExample1">
+                    <a href="{:url('admin/type/index')}" class="list-group-item" >
+                        <i class="fa fa-align-center" aria-hidden="true"></i>
+                        <span class="pull-right" href=""></span>
+                        类型列表
+                    </a>
+                    <a href="{:url('admin/type/store')}" class="list-group-item" >
+                        <i class="fa fa-arrows" aria-hidden="true"></i>
+                        <span class="pull-right" href=""></span>
+                        类型添加
+                    </a>
+                </ul>
+<!--类型管理结束-->
+                <div class="panel-heading" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="border-top: 1px solid #ddd;border-radius: 0%">
+                    <h4 class="panel-title">分类管理</h4>
+                    <a class="panel-collapse" data-toggle="collapse" href="#collapseExample2" aria-expanded="true">
+                        <i class="fa fa-chevron-circle-down"></i>
+                    </a>
+                </div>
+                <ul class="list-group menus collapse in" id="collapseExample2">
+                    <a href="{:url('admin/category/index')}" class="list-group-item" >
+                        <i class="fa fa-align-center" aria-hidden="true"></i>
+                        <span class="pull-right" href=""></span>
+                        分类列表
+                    </a>
+                    <a href="{:url('admin/category/store')}" class="list-group-item" >
+                        <i class="fa fa-arrows" aria-hidden="true"></i>
+                        <span class="pull-right" href=""></span>
+                        分类添加
+                    </a>
+                </ul>
+<!--用户管理-->
+                <div class="panel-heading" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="border-top: 1px solid #ddd;border-radius: 0%">
+                    <h4 class="panel-title">用户管理</h4>
+                    <a class="panel-collapse" data-toggle="collapse" href="#collapseExample3" aria-expanded="true">
+                        <i class="fa fa-chevron-circle-down"></i>
+                    </a>
+                </div>
+                <ul class="list-group menus collapse in" id="collapseExample3">
+                    <a href="{:url('admin/users/index')}" class="list-group-item" >
+                        <i class="fa fa-align-center" aria-hidden="true"></i>
+                        <span class="pull-right" href=""></span>
+                        用户列表
+                    </a>
+                    <!-- <a href="{:url('admin/users/store')}" class="list-group-item" >
+                        <i class="fa fa-arrows" aria-hidden="true"></i>
+                        <span class="pull-right" href=""></span>
+                        用户添加
+                    </a> -->
+                </ul>
+<!--商品管理-->
+                <div class="panel-heading" role="button" data-toggle="collapse" href="#collapseExample4" aria-expanded="false" aria-controls="collapseExample" style="border-top: 1px solid #ddd;border-radius: 0%">
+                    <h4 class="panel-title">商品管理</h4>
+                    <a class="panel-collapse" data-toggle="collapse" href="#collapseExample4" aria-expanded="true">
+                        <i class="fa fa-chevron-circle-down"></i>
+                    </a>
+                </div>
+                <ul class="list-group menus collapse in" id="collapseExample4">
+                    <a href="{:url('admin/goods/index')}" class="list-group-item" >
+                        <i class="fa fa-align-center" aria-hidden="true"></i>
+                        <span class="pull-right" href=""></span>
+                        商品列表
+                    </a>
+                    <a href="{:url('admin/goods/store')}" class="list-group-item" >
+                        <i class="fa fa-arrows" aria-hidden="true"></i>
+                        <span class="pull-right" href=""></span>
+                        商品添加
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-lg-10">
+           {block name="content"}功能块{/block}
+        </div>
+    </div>
+</div>
+<div class="master-footer" style="margin-top: 150px">
+    Powered by thinkphp5.0.9 © 2017
+</div>
+</body>
+</html>
+<script>
+    require(['bootstrap'],function($){})
+</script>

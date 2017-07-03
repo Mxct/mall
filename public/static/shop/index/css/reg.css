@@ -1,0 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.regimg {
+    width: 1519px;
+    height: 700px;
+    background: url("/static/shop/index/image/banner.png");
+    position: relative;
+}
+/*µÇÂ¼*/
+.sao,.login,.reg{
+    position: absolute;
+    width: 368px;
+    top: 120px;
+    right: 380px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.reg {
+    
+}
+
+#tel {
+    cursor: pointer;
+}
+#admin {
+    cursor: pointer;
+}
+#log-t {
+    cursor: pointer;
+}
+#reg-t {
+    cursor: pointer;
+}
+#jiaobiao-pc {
+    padding-top: 10px;
+    padding-right: 10px;
+    float: right;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+.changes .erweima {
+    margin-top: 45px;
+    margin-bottom: 44px;
+    text-align: center;
+}
+.changes .erweima p {
+    font-size: 15px;
+    line-height: 57px;
+    color: #333333;
+    font-weight: bold;
+}
+.changes .erweima .cra {
+    color: #999999;
+    font-weight: normal;
+}
+
+.login .tab {
+    margin-left: 50px;
+}
+.login .tab span {
+    font-size: 15px;
+    line-height: 57px;
+    color: #7F7F7F;
+    font-weight: bold;
+    padding-top: 40px;
+    padding-left: 30px;
+}
+.regimg .shuru {
+    width: 297px;
+    height: 46px;
+    line-height: 46px;
+    border: 1px solid #DADADA;
+    margin: 13px 36px 13px 36px;
+    padding-left: 10px;
+    border-radius: 1px;
+}
+
+#magic {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-left: 36px;
+    float: left;
+    margin-top: 10px;
+    background: url("../images-denglu/elements_1.png") 0 -128px no-repeat;
+}
+#check {
+    border: none;
+    background-color: #fff;
+    margin-top: 10px;
+    outline: none;
+}
+.tel-t {
+    float: left;
+}
+#haoma-d {
+    display: inline-block;
+    height: 40px;
+    outline: none;
+    border: none;
+    padding-left: 5px;
+    line-height: 46px;
+    border-left: 1px solid #E4E4E4;
+    font-size: 15px;
+}
+.reg .log-s {
+    display: block;
+    width: 297px;
+    height: 46px;
+    background-color: #32A5E7;
+    margin: 20px auto;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 20px;
+    text-align: center;
+    line-height: 46px;
+    text-decoration: none;
+    float: left;
+    margin-left: 36px;
+}
+.reg #reg-t {
+    margin: 0 0 15px 36px;
+    display: block;
+    color: #32A5E7;
+    font-weight: bold;
+    float: left;
+}
+.reg #f-p-t {
+    display: block;
+    color: #32A5E7;
+    float: right;
+    font-weight: bold;
+    margin: 0 36px 15px 0;
+}
+.reg h2 {
+    margin: 40px auto;
+    text-align: center;
+    font-size: 25px;
+    color: #32A5E7;
+}
+
+
+
+#submit {
+    display: block;
+    width: 297px;
+    height: 46px;
+    background-color: #32A5E7;
+    margin: 20px auto;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 20px;
+    text-align: center;
+    line-height: 46px;
+    text-decoration: none;
+}
+
+
+
+
+    /*µ×²¿*/
+.footer {
+    width: 1519px;
+    height: 131px;
+    position: relative;
+}
+.footer .links li,.footer .beian li{
+    float: left;
+    list-style: none;
+    height: 25px;
+    line-height: 25px;
+}
+.footer .links {
+    padding-top: 38px;
+    padding-left: 260px;
+}
+.footer .links a {
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 4px;
+    color: #000000;
+}
+.footer .links .kefu {
+    padding-left: 30px;
+}
+.footer .links .zaixian {
+    display: block;
+    float: left;
+    margin-top: -4px;
+    margin-left: 20px;
+    border-radius: 4px;
+    width: 70px;
+    height: 25px;
+    line-height: 25px;
+    color: #FFF2F6;
+    background-color: #32A5E7;
+}
+.footer .links span {
+    font-weight: bold;
+    padding: 0 2px;
+    color: #888888;
+    font-size: 12px;
+}
+.footer .links #control  span{
+    display: block;
+    position: absolute;
+    top: 37px;
+    padding: 0;
+    width: 73px;
+    float: left;
+    height: 25px;
+    background: url("../images-denglu/base.png") -73px -143px no-repeat;
+}
+.footer .beian {
+    margin-left: 260px;
+    margin-top: 30px;
+}
+.footer .beian li {
+    font-size: 13px;
+    color:  #7F7F7F;
+    font-weight: bold;
+    padding-right: 8px;
+}
+.footer .beian a {
+    text-decoration: none;
+    color: #7F7F7F;
+}
+.footer a:hover {
+    color: #000000;
+}
+.footer #qiehuan {
+    width: 84px;
+    height: 85px;
+    border: 1px solid #E4E7E9;
+    border-radius: 2px;
+    position: absolute;
+    left: 671px;
+    top: -45px;
+    background-color: #FFFFFF;
+    display: none;
+}
+.footer #qiehuan li {
+    list-style: none;
+    padding-top: 5px;
+}
+#qiehuan .cc {
+    width: 84px;
+    border-bottom: 2px solid #E4E7E9;
+}
+.footer #qiehuan a {
+    line-height: 30px;
+    font-size: 15px;
+    text-align: center;
+    padding-left: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+.footer #qiehuan #now {
+    color: #1DBFF3;
+}
+.footer .shares {
+    top: 30px;
+    right: 245px;
+    width: 138px;
+    height: 60px;
+    position: absolute;
+}
+.footer .shares li {
+    list-style: none;
+    float: left;
+}
+
+.footer #WeChat {
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    top: -243px;
+    right: 172px;
+    display: none;
+}
+
