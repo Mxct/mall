@@ -1,0 +1,578 @@
+header .top {
+  height: 41px;
+  background: #fafafc;
+  position: relative;
+}
+header .top .head {
+  width: 1240px;
+  height: 41px;
+  margin: 0 auto;
+}
+header .top .head .top-left {
+  height: 40px;
+  float: left;
+}
+header .top .head .top-right {
+  height: 40px;
+  float: right;
+}
+header .top .head .top-right .top-info {
+  float: right;
+}
+header .top .head .top-right .top-info li {
+  float: left;
+}
+header .top .head .top-right .top-info li a .top-new {
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  background-color: #ed4462;
+  font-size: 12px;
+  margin-left: 5px;
+  height: 13px;
+  line-height: 10px;
+  padding: 0 2px;
+  top: -1px;
+  border-radius: 2px;
+}
+header nav {
+  height: 80px;
+  border-bottom: 1px solid #efefef;
+  position: relative;
+  z-index: 150;
+  background: #fff;
+}
+header nav .nav-mid {
+  width: 1240px;
+  margin: 0 auto;
+}
+header nav .nav-mid .logo {
+  float: left;
+  padding: 30px 0 0 0;
+}
+header nav .nav-mid .head-nav {
+  float: left;
+  margin-left: 100px;
+  height: 80px;
+}
+header nav .nav-mid .head-nav ul {
+  height: 100%;
+}
+header nav .nav-mid .head-nav ul li {
+  float: left;
+  cursor: pointer;
+  position: relative;
+}
+header nav .nav-mid .head-nav ul li a {
+  padding: 20px 0 0;
+  color: #333;
+  font-size: 16px;
+  display: block;
+  transition: color .2s linear;
+}
+header nav .nav-mid .head-nav ul li a:hover {
+  color: #00cdf7;
+}
+header nav .nav-mid .head-nav .top-hide {
+  z-index: 30;
+  height: 204px;
+  width: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #f3f3f3;
+  position: absolute;
+  top: 80px;
+  display: none;
+}
+header nav .nav-mid .head-nav .top-hide .container {
+  width: 1240px;
+  margin: 0 auto;
+  position: relative;
+}
+header nav .nav-mid .head-nav .top-hide .container .menu-list {
+  padding: 0 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+header nav .nav-mid .head-nav .top-hide .container .menu-list li {
+  float: left;
+  padding: 10px 14px 26px 14px;
+  width: 162px;
+  position: relative;
+  text-align: center;
+}
+header nav .nav-mid .head-nav .top-hide .container .menu-list li a {
+  outline: 0;
+  text-align: center;
+}
+header nav .nav-mid .head-nav .top-hide .container .menu-list li a .pro-name {
+  width: 162px;
+  color: #333;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: -100px;
+  position: absolute;
+  left: 0;
+  top: 140px;
+}
+header nav .nav-mid .head-nav .top-hide .container .menu-list li a .price {
+  font-size: 14px;
+  color: #e23b4f;
+  text-align: center;
+  margin-bottom: -100px;
+  position: absolute;
+  left: 50px;
+  top: 160px;
+}
+section {
+  margin-top: 1px;
+}
+section .container {
+  width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+}
+section .container .crumbs {
+  height: 40px;
+  line-height: 40px;
+  color: #999;
+  display: block;
+}
+section .container .crumbs a {
+  display: block;
+  color: #333;
+  float: left;
+}
+section .container .selector {
+  border: 1px solid #e5e5e5;
+  background: #FFF;
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+section .container .selector .slprop .sl-line {
+  position: relative;
+  line-height: 46px;
+  overflow: hidden;
+  height: auto;
+}
+section .container .selector .slprop .sl-line .mod-key {
+  float: left;
+  width: 75px;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #999;
+}
+section .container .selector .slprop .sl-line .mod-value {
+  margin: 0 83px 0 95px;
+  overflow: hidden;
+  zoom: 1;
+  background: #fff;
+  line-height: 46px;
+}
+section .container .selector .slprop .sl-line .mod-value .mod-list {
+  overflow: hidden;
+  zoom: 1;
+  padding-top: 6px;
+}
+section .container .selector .slprop .sl-line .mod-value .mod-list ul {
+  overflow: hidden;
+  zoom: 1;
+  position: relative;
+  height: 36px;
+  margin-right: -10px;
+  line-height: 46px;
+}
+section .container .selector .slprop .sl-line .mod-value .mod-list ul li {
+  margin-right: 62px;
+  float: left;
+  display: inline;
+  margin-bottom: 6px;
+  height: 34px;
+  line-height: 34px;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+section .container .selector .slprop .sl-line .mod-value .mod-list ul li a {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+  color: #333;
+  transition: all .2s;
+}
+section .container .selector .slprop .sl-line .mod-value .mod-list ul li a:hover {
+  color: #00cdf7;
+}
+section .container .selector .slprop .sl-line .mod-est {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  width: 60px;
+  height: auto;
+  font-size: 12px;
+  line-height: 22px;
+  overflow: hidden;
+  zoom: 1;
+}
+section .container .selector .slprop .sl-line .mod-est a {
+  float: left;
+  margin-right: 10px;
+  position: relative;
+  width: 39px;
+  height: 23px;
+  line-height: 23px;
+  padding: 0 7px 0 4px;
+  background: #fff;
+  font-size: 12px;
+  color: #999;
+}
+section .container .filter {
+  overflow: hidden;
+  position: relative;
+  margin: 30px 0 20px;
+  background-color: #fff;
+}
+section .container .filter .filter-order {
+  float: left;
+}
+section .container .filter .filter-order a {
+  position: relative;
+  float: left;
+  width: 50px;
+  height: 20px;
+  margin-right: 20px;
+  line-height: 20px;
+  background: transparent;
+  cursor: auto;
+}
+section .container .filter .filter-order .active {
+  transition: all .2s;
+  color: #00c3f5;
+}
+section .container .good-list {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+  height: auto;
+  border: 1px solid #e5e5e5;
+  background: #FFF;
+}
+section .container .good-list .good-list-warp {
+  height: auto;
+  margin-bottom: -1px;
+}
+section .container .good-list .good-list-warp .item {
+  width: 25%;
+  height: 406px;
+  float: left;
+  position: relative;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: -1px;
+}
+section .container .good-list .good-list-warp .item .item-warp {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background: #fff;
+  padding: 38px 0 10px;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-pic {
+  position: relative;
+  height: 220px;
+  margin-bottom: 15px;
+  text-align: center;
+  display: block;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-pic a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-pic a img {
+  transform: scale(1, 1);
+  transition: .5s transform;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-pic a:hover img {
+  transform: scale(1.1, 1.1);
+  transition: .5s transform;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-name {
+  padding: 0 30px;
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-align: center;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-name a {
+  display: block;
+  height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-price {
+  position: relative;
+  overflow: hidden;
+  padding: 0 30px;
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 20px;
+  color: #e02b41;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-price em {
+  font-size: 16px;
+  font-style: normal;
+  color: #e02b41;
+  text-align: center;
+}
+section .container .good-list .good-list-warp .item .item-warp .mod-price i {
+  font-style: normal;
+  text-align: center;
+  font-size: 20px;
+  color: #e02b41;
+}
+section .container .good-list .addfix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+section .container .recommend {
+  margin-bottom: 60px;
+}
+section .container .recommend .recommend-hd {
+  overflow: hidden;
+  margin-top: 60px;
+  margin-bottom: 14px;
+}
+section .container .recommend .recommend-hd h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: 400;
+  float: left;
+}
+section .container .recommend .recommend-hd .mod-control {
+  float: right;
+  color: #666;
+}
+section .container .recommend .recommend-hd .mod-control .disabled i {
+  color: #ebf4f8;
+}
+section .container .recommend .recommend-hd .mod-control a {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border: 1px solid #bdbdbd;
+  cursor: pointer;
+  margin: 0 2px;
+}
+section .container .recommend .recommend-silder {
+  overflow: hidden;
+  margin-right: -10px;
+  border: 1px solid #e5e5e5;
+}
+section .container .recommend .recommend-silder .flex-viewport {
+  position: relative;
+  max-height: 2000px;
+  transition: all 1s ease;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp {
+  width: 2000%;
+  transition: .8s transform;
+  height: 338px;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp li {
+  width: 245.6px;
+  margin-right: 5px;
+  float: left;
+  display: block;
+  height: 338px;
+  position: relative;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp li a {
+  text-align: center;
+  display: block;
+  padding: 36px 10px 5px;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp li a .mod-pic {
+  cursor: auto;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp li a .mod-desc {
+  margin-top: 36px;
+  text-align: center;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp li a .mod-desc h4 {
+  font-size: 14px;
+  color: #555757;
+  text-align: center;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp li a .mod-desc h6 {
+  font-size: 12px;
+  color: #999;
+  margin-top: 2px;
+  display: block;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp li a .mod-desc p {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #e02b41;
+  text-align: center;
+}
+section .container .recommend .recommend-silder .flex-viewport .silder-warp li a .mod-desc p span {
+  font-size: 16px;
+  color: #e02b41;
+  text-align: center;
+  cursor: auto;
+}
+section .container .recommend .recommend-silder .flex-viewport .move {
+  transform: translateX(-1280px);
+}
+footer {
+  background-color: #fafafc;
+}
+footer .container {
+  width: 1240px;
+  margin: 0 auto;
+}
+footer .container .footer-servive {
+  padding: 38px 8px 26px;
+  border-bottom: 1px solid #e5e5e5;
+}
+footer .container .footer-servive ul {
+  overflow: hidden;
+  display: block;
+}
+footer .container .footer-servive ul li {
+  float: left;
+}
+footer .container .footer-servive ul .item {
+  width: 203px;
+  text-align: center;
+}
+footer .container .footer-servive ul .item .img {
+  display: inline-block;
+  height: 36px;
+  width: 94px;
+  background: no-repeat 50% 50%;
+  margin-bottom: 12px;
+  text-align: center;
+  background-image: url("../images/foot1.png");
+}
+footer .container .footer-servive ul .item p {
+  text-align: center;
+}
+footer .container .footer-servive ul .item p .blod {
+  color: #666;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+}
+footer .container .footer-servive ul .line {
+  padding-top: 10px;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+footer .container .footer-servive ul .line span {
+  display: inline-block;
+  height: 44px;
+  width: 1px;
+  background-color: #e5e5e5;
+}
+footer .container .footer-nav {
+  overflow: hidden;
+  padding: 30px 0;
+  margin-right: -10px;
+}
+footer .container .footer-nav .nav-item {
+  float: left;
+  width: 244px;
+  text-align: center;
+  margin-right: 5px;
+}
+footer .container .footer-nav .nav-item h4 {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+footer .container .footer-nav .nav-item ul {
+  text-align: center;
+}
+footer .container .footer-nav .nav-item ul li {
+  line-height: 22px;
+}
+footer .container .footer-nav .nav-item ul li a {
+  font-size: 12px;
+  color: #666;
+  transition: color .2s linear;
+  line-height: 22px;
+}
+footer .container .footer-nav .nav-item ul li a:hover {
+  color: #00cdf7;
+}
+footer .container .footer-nav .nav-custom {
+  float: left;
+  width: 244px;
+  text-align: center;
+  margin-right: 5px;
+}
+footer .container .footer-nav .nav-custom h4 {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+footer .container .footer-nav .nav-custom a h3 {
+  color: #1fa7ea;
+  font-size: 24px;
+  margin: 20px 0 14px;
+  text-align: center;
+}
+footer .container .footer-nav .nav-custom .nav-btn {
+  display: inline-block;
+  width: 160px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #1fa7ea;
+  border-radius: 2px;
+  font-size: 12px;
+  transition: all .2s linear;
+}
+footer .container .footer-nav .nav-custom .nav-btn img {
+  line-height: 34px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+}
+footer .container .footer-end {
+  border-top: 1px solid #e5e5e5;
+  padding: 38px 0 56px;
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+}
+footer .container .footer-end p {
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+}
