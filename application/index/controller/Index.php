@@ -11,7 +11,7 @@ class Index extends Controller
    // 官网首页
     public function index()
     {
-        // header('http://mzshop.com/shop/index/index');
-        $this->success('hello','shop/index/index');
+        //重定向到商城首页
+        $this->redirect('shop/index/index');
     }
 }
