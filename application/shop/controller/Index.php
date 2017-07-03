@@ -121,16 +121,11 @@ class Index extends Controller
         // $url = url('/shop/index/index');
         $this->success('退出成功','shop/index/index');
     }
-<<<<<<< HEAD
-=======
     // 用户注册
->>>>>>> ad141490415fecbcf466a4e93774dc819d6736ab
     public function reg()
     {
         return $this->fetch();
     }
-<<<<<<< HEAD
-=======
      public function regnameAj()
     {
         // 接收regAjax数据
@@ -195,5 +190,4 @@ class Index extends Controller
             }
         }
     }
->>>>>>> ad141490415fecbcf466a4e93774dc819d6736ab
 }
