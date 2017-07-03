@@ -6,81 +6,49 @@
     <link rel="stylesheet" href="/static/shop/index/css/login.css"/>
     <!-- 当前的文件路径 -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon_19fbf41.ico"/>
-    <script src="/static/bootstrap/jQuery-1.8.3.min.js"></script>
+    <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
     <script>
-
-         window.onload = function(){
-             //获取要操作的对象
-             var qiehuan = document.getElementById("qiehuan")
-             var control = document.getElementById("control")
-             var weixin = document.getElementById("WeChat")
-             var sao = document.getElementById("sao")
-             var log = document.getElementById("log")
-             var aa = document.getElementById("admin-a")
-             var ta = document.getElementById("tel-t")
-             var reg = document.getElementById("reg")
-             var qr = document.getElementById("jiaobiao-qr")
-             var pc = document.getElementById("jiaobiao-pc")
-             var dl = document.getElementById("log-t")
-             var zc = document.getElementById("reg-t")
-             // var ad = document.getElementById("admin")
-             var phone = document.getElementById("phone")
-
-             //给事件源注册事件
-             // 语言切换
-             control.onmouseover = function (){//鼠标移入显示
-                 qiehuan.style.display = "block";
-             }
-             control.onmouseout = function (){//鼠标移除隐藏
-                 qiehuan.style.display = "none";
-             }
-             qiehuan.onmouseover = function (){//鼠标移入隐藏的内容后显示
-                 qiehuan.style.display = "block";
-             }
-             qiehuan.onmouseout = function (){//鼠标离开后再次隐藏
-                 qiehuan.style.display = "none";
-             }
-
-            //  方式切换
-            qr.onclick = function(){
-                log.style.display = "none"
-                sao.style.display = "block"
-            }
-             pc.onclick = function(){
-                 log.style.display = "block"
-                 sao.style.display = "none"
-             }
-             zc.onclick = function(){
-                 log.style.display = "none"
-                 reg.style.display = "block"
-             }
-             dl.onclick = function(){
-                 log.style.display = "block"
-                 reg.style.display = "none"
-             }
-             te.onclick = function(){
-                 aa.style.display = "none"
-                 ta.style.display = "block"
-                 te.style.color = "#32A5E7"
-                 ad.style.color = "#7F7F7F"
-             };
-             // ad.onclick = function(){
-             //     ta.style.display = "none"
-             //     aa.style.display = "block"
-             //     ad.style.color = "#32A5E7"
-             //     te.style.color = "#7F7F7F"
-             // }
-             phone.onmouseover = function() {
-                alert('1234567');
-             }; alert('1234567');
-
-         }
          // 添加的3个input-ajax事件
          $(function () {
+            // 用户名输入框失去焦点时
             $('#phone').blur(function () {
-                // $('#phonemsg').text() = this.value;
-                alert('123456');
+                var a = $(this).val();
+
+                // 发送Ajax请求
+                $.get("{:url('/shop/index/nameAj')}",{username:a},nameshow,'text');
             });
+            // callback函数
+            function nameshow(data)
+            {
+                $('#phonemsg').text(data);
+            }
+            // 密码输入框失去焦点
+            $('#pwd').blur(function () {
+                var b = $(this).val();
+                var c = $('#phone').val();
+                // 发送Ajax请求
+                $.get("{:url('/shop/index/pwdAj')}",{password:b,username:c},pwdshow,'text');
+            });
+            // callback函数
+            function pwdshow(data)
+            {
+                $('#pwdmsg').text(data);
+            }
+            /*// 验证码框失去焦点
+            $('#yzm').blur(function () {
+                var d = $(this).val();
+                // 发送Ajax请求
+                $.get("{:url('/shop/index/yzmAj')}",{yzm:d},yzmshow,'text');
+            });
+            // callback函数
+            function yzmshow(data)
+            {
+                $('#yzmmsg').text(data);
+            }*/
+            /*if($('#yzmmsg').text() == '验证码正确!' && $('#pwdmsg').text() == '密码正确'){
+                alert(123456);
+                $('button').eq(0).attr("disabled",'false');
+            }*/
          });
     </script>
 </head>
@@ -98,16 +66,21 @@
                 <span id="tel">信息填写</span>
             </div>
             <div class="admin-a" id="admin-a">
+            <!-- 用户名输入框 -->
                 <input type="text" id="phone" placeholder="用户名" class="shuru" name="username"/>
-                <span id="phonemsg"></span>
+                <span id="phonemsg"  style="color:red;display: block;font-size: 12px;margin-left:40px;"></span>
+            <!-- 密码输入框 -->
                 <input type="password" id="pwd" placeholder="密码" class="shuru" name="password"/>
+                <span id="pwdmsg"  style="color:red;display: block;font-size: 12px;margin-left:40px;"></span>
+            <!-- 验证码输入框 -->
                 <input type="text" id="yzm" placeholder="验证码" class="shuru" name="yzm"/>
-                <!-- 验证码图片 -->
+                <span id="yzmmsg"  style="color:red;display: block;font-size: 12px;margin-left:40px;"></span>
+            <!-- 验证码图片 -->
                 <!-- <div >{:captcha_img()}</div> -->
                 <div style="margin-left:40px;"><img src="{:captcha_src()}" alt="captcha" onclick="this.src='{:captcha_src()}'"/></div>
                 <sapn id="magic"></sapn><input type="checkbox" id="check" value=""/>记住登录信息
            </div>
-            <a class="log-s" id="log"><button style="font-size: 20px;background: none;outline: none;color:white;border:none;cursor:pointer;">登录</button></a>
+            <button style="font-size: 20px;background: none;outline: none;color:white;border:none;cursor:pointer;"><a class="log-s" id="log">登录</a></button>
             <p>
                 <a href="{:url('/shop/index/index')}"><span id="reg-t" style="display: inline-block;margin-left:30px;">返回商城</span></a>
                 <span id="f-p-t">忘记密码</span>
