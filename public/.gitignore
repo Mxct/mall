@@ -1,0 +1,7 @@
+﻿bootstrap/
+image/
+images/
+*.jpg
+*.png
+*.gif
+!.gitignore
