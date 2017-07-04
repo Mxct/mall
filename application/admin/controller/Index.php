@@ -30,9 +30,15 @@ class Index extends Controller
             // 查询user表是否存在对应id
             $user = new User;
             $idResult = $user->where('username',$username)->value('id');
+            // 查询用户类型type
+            $typeResult = $user->where('username',$username)->value('type');
             // 判断用户名是否正确
             if(!$idResult){
                 $this->error('用户名不正确');
+            }
+            // 判断是否是管理员
+            if($typeResult !== '1') {
+                $this->error('您不是管理员，无法登陆！');
             }
             // 查询用户名对应的密码是否正确
             $pwdResult = $user->where('username',$username)->value('password');
@@ -40,8 +46,6 @@ class Index extends Controller
             if($pwdResult !== $pwd) {
                 $this->error('密码不正确');
             }
-            // 查询用户类型type
-            $typeResult = $user->where('username',$username)->value('type');
             // 验证验证码是否正确
             if(!captcha_check($yzm)){
                 $this->error('登录验证失败');
