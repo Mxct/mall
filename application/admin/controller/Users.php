@@ -3,6 +3,8 @@ namespace app\admin\controller;
 
 use think\Controller;	//引入Controller类
 use think\Db;
+use app\admin\model\User as UserModel;
+
 class Users extends Controller
 {
 	// 用户

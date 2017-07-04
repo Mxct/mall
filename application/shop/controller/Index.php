@@ -122,12 +122,62 @@ class Index extends Controller
         cookie('uid',null);
         cookie('usertype',null);
         // 跳转回到商城首页
-        // $url = url('/shop/index/index');
         $this->success('退出成功','shop/index/index');
     }
     // 用户注册
     public function reg()
     {
+        if(input('post.username')){
+            // 获取注册数据
+            $username = input('post.username');
+            $pwd = input('post.password');
+            $yzm = input('post.yzm');
+            $email = input('post.email');
+            // 用户名长度及验证
+            $user = new User;
+            $idResult = $user->where('username',$username)->value('id');
+            // 判断用户名长度
+                if(strlen($username) >= 6) {
+                    // 判断用户名是否存在
+                    if($idResult){
+                        $this->error('该用户名已存在') ;
+                    }
+                } else {
+                    $this->error('用户名长度至少6个字符');
+                }
+            // 密码类型验证，需包含字母，长度6以上
+                $regpwd='/[a-zA-Z]/';
+                if(strlen($pwd) >= 6) {
+                    if (!preg_match($regpwd,$pwd,$match)){
+                       $this->error('密码不能纯数字，需包含字母') ;
+                    }
+                } else {
+                    $this->error('密码长度至少6个字符') ;
+                }
+            // 邮箱判断类型
+                $reg = '/\w+@(\w+\.)+(com|cn|net)/';
+
+                if (!preg_match($reg,$email,$match)){
+                    $this->error('邮箱格式不对，请重新输入');
+                }
+            // 验证码验证
+            if(!captcha_check($yzm)){
+                $this->error('验证码有误,重新输入!');
+            } else {
+                // 用户数据插入数据库
+                $data = [
+                            'username' =>$username,
+                            'password' =>md5($pwd),
+                            'email'    =>$email,
+                        ];
+                $user->save($data);
+                // 设置cookie
+                cookie('username',$username,84600);
+                cookie('uid',$idResult,84600);
+                cookie('usertype','0',84600);
+                $this->success('注册成功','shop/index/index');
+            }
+        }
         return $this->fetch();
     }
      public function regnameAj()
@@ -181,7 +231,7 @@ class Index extends Controller
      public function regemailAj()
     {
         // 接收Ajax数据
-        // 邮箱类型验证，需包含字母，长度6以上
+        // 邮箱类型验证
         if($_GET['email']){
             $email = $_GET['email'];
             // 判断类型
