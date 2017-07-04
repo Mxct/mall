@@ -5,6 +5,7 @@ use think\Controller;	//引入Controller类
 use think\Db;
 use app\admin\model\Type as TypeModel;
 use app\index\model\Profile;
+use think\Paginator;
 class Type extends Controller
 {
 	// 类型
