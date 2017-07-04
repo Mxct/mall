@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>后台登录</title>
+    <link rel="stylesheet" href="/static/shop/index/css/login.css"/>
+    <!-- 当前的文件路径 -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon_19fbf41.ico"/>
+    <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
+    <script>
+         // 添加的3个input-ajax事件
+         $(function () {
+            // 用户名输入框失去焦点时
+            $('#phone').blur(function () {
+                var a = $(this).val();
+
+                // 发送Ajax请求
+                $.get("{:url('/admin/index/nameAj')}",{username:a},nameshow,'text');
+            });
+            // callback函数
+            function nameshow(data)
+            {
+                $('#phonemsg').text(data);
+            }
+            // 密码输入框失去焦点
+            $('#pwd').blur(function () {
+                var b = $(this).val();
+                var c = $('#phone').val();
+                // 发送Ajax请求
+                $.get("{:url('/admin/index/pwdAj')}",{password:b,username:c},pwdshow,'text');
+            });
+            // callback函数
+            function pwdshow(data)
+            {
+                $('#pwdmsg').text(data);
+            }
+            /*// 验证码框失去焦点
+            $('#yzm').blur(function () {
+                var d = $(this).val();
+                // 发送Ajax请求
+                $.get("{:url('/shop/index/yzmAj')}",{yzm:d},yzmshow,'text');
+            });
+            // callback函数
+            function yzmshow(data)
+            {
+                $('#yzmmsg').text(data);
+            }*/
+            /*if($('#yzmmsg').text() == '验证码正确!' && $('#pwdmsg').text() == '密码正确'){
+                alert(123456);
+                $('button').eq(0).attr("disabled",'false');
+            }*/
+         });
+    </script>
+</head>
+<body>
+
+<!--大背景-->
+<div class="banner">
+    <!-- 背景图 -->
+    <form method="post" action="{:url('/admin/index/login')}" >
+        <div class="login" id="login">
+            <div class="tab">
+                <span id="jiaobiao-qr"><img src="/static/shop/index/image/pc.png" alt=""/></span>
+                <span id="admin" style="display: block;font-size: 20px;text-align: center;margin-left: 20px;">后台管理登陆</span>
+            </div>
+            <div class="admin-a" id="admin-a">
+            <!-- 用户名输入框 -->
+                <input type="text" id="phone" placeholder="用户名" class="shuru" name="username"/>
+                <span id="phonemsg"  style="color:red;display: block;font-size: 12px;margin-left:40px;"></span>
+            <!-- 密码输入框 -->
+                <input type="password" id="pwd" placeholder="密码" class="shuru" name="password"/>
+                <span id="pwdmsg"  style="color:red;display: block;font-size: 12px;margin-left:40px;"></span>
+            <!-- 验证码输入框 -->
+                <input type="text" id="yzm" placeholder="验证码" class="shuru" name="yzm"/>
+                <span id="yzmmsg"  style="color:red;display: block;font-size: 12px;margin-left:40px;"></span>
+            <!-- 验证码图片 -->
+                <!-- <div >{:captcha_img()}</div> -->
+                <div style="margin-left:40px;"><img src="{:captcha_src()}" alt="captcha" onclick="this.src='{:captcha_src()}'"/></div>
+           </div>
+            <button style="font-size: 20px;background: none;outline: none;color:white;border:none;cursor:pointer;"><a class="log-s" id="log">登录</a></button>
+        </div>
+    </form>
+</div>
+<!--底部-->
+<div class="footer">
+    <ul class="links">
+        <li><a href="#">关于魅族</a><span>|</span></li>
+        <li><a href="#">工作机会</a><span>|</span></li>
+        <li><a href="#">联系我们</a><span>|</span></li>
+        <li><a href="#">法律声明</a><span>|</span></li>
+        <li><a href="#">常见问题</a><span>|</span></li>
+        <li id="control"><a href="#">简体中文</a><span id="now1"></span></li>
+        <li class="kefu">客服热线  400-788-3333</li>
+        <a href="#" class="zaixian">在线客服</a>
+    </ul>
+    <div id="qiehuan">
+        <ul>
+            <li><a href="#" id="now">简体中文</a></li>
+            <li class="c-line">
+                <div class="cc"></div>
+            </li>
+            <li><a href="#">English</a></li>
+        </ul>
+    </div>
+    </br>
+    <ul class="beian">
+        <li>©2016<?=SET_ZD ;?> Co., Ltd. All rights reserved.</li>
+        <li><a href="#">备案号: <?=SET_ICP ;?></a></li>
+        <li><a href="#">网站域名: <?=SET_URL ;?></a></li>
+    </ul>
+</div>
+</body>
+</html>
