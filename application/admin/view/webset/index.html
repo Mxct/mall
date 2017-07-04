@@ -1,0 +1,68 @@
+{extend name='admin'/}
+{block name="content"}
+	<ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+    <li>
+        <a href=""><i class="fa fa-cogs"></i> 站点管理</a>
+    </li>
+    <li class="active">
+        <a href="">网站设置</a>
+    </li>
+</ol>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#tab1">网站设置</a></li>
+    <!-- <li><a href="{:url('store')}">用户添加</a></li> -->
+</ul>
+  <div class="panel-body">
+       <div class="table-responsive">
+				<!-- <form action="" method="get">
+				管理员：<input type="text" name="userName" value="">
+						<input type="submit" value="查询">
+				</form> -->
+		<form action = "/admin/webset/index" method="post">
+            <table class="table">
+                <!-- <thead>
+                    <tr>
+                    <h4>站点信息</h4>
+                    </tr>
+                </thead> -->
+                <tbody>
+                    <tr class="success">
+                        <p>站点名称&nbsp：</p>
+						<p><input type="text" value="<?=SET_ZD ;?>" name="SET_ZD"/>
+					站点名称，将显示在浏览器窗口标题等位置</p>
+                    </tr>
+					<tr>
+						<p>网站名称&nbsp：</p>
+						<p><input type="text" value="<?=SET_NAME; ?>" name="SET_NAME"/>
+							网站名称，将显示在页面底部的联系方式处</p>
+					</tr>
+					<tr>
+						<p>网站 URL&nbsp：</p>
+						<p><input type="text" value="<?=SET_URL ;?>" name="SET_URL"/>
+							网站 URL，将作为链接显示在页面底部</p>
+					</tr>
+					<tr>
+						<p>网站备案信息代码&nbsp：</p>
+						<p><input type="text" value="<?=SET_ICP ;?>" name="SET_ICP"/>
+							页面底部可以显示 ICP 备案信息，如果网站已备案，在此输入你的授权码，它将显示在页面底部，如果没有请留空</p>
+					</tr>
+					<tr>
+						<p>关闭站点&nbsp：</p>
+						<p><input id="yes" type="radio" value="true" name="IS_CLOSE"/>是
+							<input id="no" type="radio" value="false" name="IS_CLOSE"/>否
+							&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp暂时将站点关闭，进行维护
+						</p>
+					</tr>
+					<tr><input id="reg" type="submit" value="提交" name=""/></tr>
+                </tbody>
+            </table>
+        </form>
+        </div>
+
+        <script src="__PUBLIC__/Admin/jquery-1.11.3.min.js"></script>
+        <script language="JavaScript" type="text/JavaScript">
+           $('.del_user').click(function(){
+                alert('删除此用户，将会删除用户的所有信息');
+           })
+        </script>
+{/block}

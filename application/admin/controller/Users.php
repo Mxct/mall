@@ -4,6 +4,7 @@ namespace app\admin\controller;
 use think\Controller;	//引入Controller类
 use think\Db;
 use app\admin\model\User as UserModel;
+use think\Paginator;
 
 class Users extends Controller
 {

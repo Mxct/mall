@@ -11,6 +11,10 @@ class Index extends Controller
 	// 官网首页
     public function index()
     {
+        $Lresult = Db::name('type')->where('pid','0')->select();
+        $Sresult = Db::name('type')->where('pid','<>','0')->select();
+        $this->assign('Lresult',$Lresult);
+        $this->assign('Sresult',$Sresult);
         // 分配变量cookie-username
         $this->assign('username',cookie('username'));
         return $this->fetch();
@@ -28,7 +32,7 @@ class Index extends Controller
             $idResult = $user->where('username',$username)->value('id');
             // 判断用户名是否正确
             if($idResult){
-                echo $username.'用户名正确';
+                echo '用户名正确';
             }else {
                 echo '用户名有误，请重新输入!';
             }
@@ -79,26 +83,19 @@ class Index extends Controller
             $user = new User;
             $idResult = $user->where('username',$username)->value('id');
             // 判断用户名是否正确
-            if($idResult){
-                echo '用户名正确';
-            }else {
-                echo '用户名错误';
-                exit;
+            if(!$idResult){
+                $this->error('用户名不正确');
             }
             // 查询用户名对应的密码是否正确
             $pwdResult = $user->where('username',$username)->value('password');
-            echo $pwdResult;
-            if($pwdResult == $pwd) {
-                echo '密码正确';
-            } else {
-                echo '密码错误';
-                exit;
+            if($pwdResult !== $pwd) {
+                $this->error('密码不正确');
             }
             // 查询用户类型type
             $typeResult = $user->where('username',$username)->value('type');
             // 验证验证码是否正确
             if(!captcha_check($yzm)){
-                echo '验证失败'.$yzm;
+
                 $this->error('登录验证失败');
             } else {
                 // 设置cookie

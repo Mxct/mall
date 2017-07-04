@@ -14,6 +14,7 @@
 // 加载站点信息常量
 include "static/webset.php";
 
+
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');
 // 加载框架引导文件

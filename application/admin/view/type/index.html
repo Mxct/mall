@@ -33,32 +33,31 @@
                             <div class="btn-group">
                                 <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{u('edit',['tid'=>$vL['tid']])}}">编辑</a></li>
+
+                                    <li><a href="{:url('edit',['id'=>$vL['id']])}">编辑</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="javascript:;" onclick="del()">删除</a></li>
+                                    <li><a href="{:url('del',['id'=>$vL['id']])}">删除</a></li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
-                    {foreach $Sdata as $vS}
-                    {if $vL['id'] == $vS['pid']}
-                    <tr>
-                        <td><!-- {$vS['id']} --></td>
-                        <td>--------|&nbsp;&nbsp; {$vS['tname']}</td>
-                        <td>
-                            <div class="btn-group">
-                                <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{u('typeattr.index',['tid'=>$vL['tid']])}}">类型属性</a></li>
-                                    <li><a href="{{u('edit',['tid'=>$vL['tid']])}}">编辑</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="javascript:;" onclick="del()">删除</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                    {/if}
-                    {/foreach}
+                        {foreach $Sdata as $vS}
+                        {if $vL['id'] == $vS['pid']}
+                        <tr>
+                            <td><!-- {$vS['id']} --></td>
+                            <td>--------|&nbsp;&nbsp; {$vS['tname']}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="{:url('edit',['id'=>$vS['id']])}">编辑</a></li>
+                                        <li><a href="{:url('del',['id'=>$vS['id']])}">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {/if}
+                        {/foreach}
                     {/foreach}
                     </tbody>
                 </table>
@@ -66,25 +65,7 @@
         </div>
     </form>
     <div class="pagination pagination-sm pull-right">
-        分页
+        fenye
     </div>
-<script>
-    function del(tid) {
-        var obj = util.modal({
-            title:'确认删除吗',//标题
-            content:'',//内容
-            footer:'<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button><button type="button" class="btn btn-danger confirm" data-dismiss="modal">确定</button>',//底部
-            width:600,//宽度
-            events:{
-                confirm:function(){
-                    //哪个元素上有.confirm类，被点击就执行这个回调
-                    location.href="{{u('del')}}" + '&tid=' + tid;
-                }
-            }
-        });
-        //显示模态框
-        obj.modal('show');
-    }
-</script>
 
 {/block}
