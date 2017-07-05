@@ -1,0 +1,72 @@
+{extend name='admin'/}
+{block name="content"}
+    <!-- 用户模块 -->
+    <ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+        <li>
+            <a href=""><i class="fa fa-cogs"></i> 用户管理</a>
+        </li>
+        <li class="active">
+            <a href="">用户编辑</a>
+        </li>
+    </ol>
+    <!-- 抬头标签 -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li><a href="{:url('admin/users/index')}">用户列表</a></li>
+        <li class="active"><a href="#tab1">用户编辑</a></li>
+         <li><a href="{:url('admin/users/address','','php')}">用户收货地址</a></li>
+    </ul>
+    <!-- 编辑区域 -->
+    <form class="form-horizontal" id="form" action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">资料编辑</h3>
+            </div>
+
+        {if !empty($list)}
+            <div class="panel-body">
+             <!-- 一行 -->
+                <div class="form-group">
+                    <label for="" class="col-sm-1 control-label">用户名称</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="username" value="{$list.username}" required class="form-control" placeholder="请填写用户名" readonly>
+                    </div>
+                    <label for="" class="col-sm-1 control-label">修改密码</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="password" value=""  class="form-control" placeholder="请填写新密码">
+                    </div>
+                    <label for="" class="col-sm-1 control-label">邮箱地址</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="email" value="{$list.email}" required class="form-control" placeholder="请填写邮箱地址">
+                    </div>
+                    <label for="" class="col-sm-1 control-label">电话号码</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="phone" value="{$list.phone}" required class="form-control" placeholder="请填写电话号码">
+                    </div>
+                </div>
+             <!-- 一行 -->
+                <div class="form-group">
+                    <label for="" class="col-sm-1 control-label">用户类型</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="type" value="{$list.type}" required class="form-control" placeholder="请填写用户类型" readonly>
+                    </div>
+                    <label for="" class="col-sm-1 control-label">当前状态</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="status" value="{$list.status}" required class="form-control" placeholder="请填写状态">
+                    </div>
+                    <label for="" class="col-sm-1 control-label">用户积分</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="score" value="{$list.score}" required class="form-control" placeholder="填写用户积分">
+                    </div>
+                    <label for="" class="col-sm-1 control-label">用户等级</label>
+                    <div class="col-sm-2">
+                    <input type="text" name="grade" value="{php}grade($list['grade']);{/php}" required class="form-control" placeholder="请填写用户等级" readonly></input>
+                    </div>
+                </div>
+
+            </div>
+        {/if}
+        </div>
+        <input type="hidden" value="" name="id">
+        <button class="btn btn-primary" type="submit">确定</button>
+    </form>
+{/block}

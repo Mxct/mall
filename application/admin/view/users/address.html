@@ -1,0 +1,74 @@
+{extend name='admin'/}
+{block name="content"}
+    <!-- 用户模块 -->
+    <ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+        <li>
+            <a href=""><i class="fa fa-cogs"></i> 用户管理</a>
+        </li>
+        <li class="active">
+            <a href="">用户收货地址</a>
+        </li>
+    </ol>
+    <!-- 抬头标签 -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li><a href="{:url('admin/users/index')}">用户列表</a></li>
+        <li><a href="{:url('admin/users/useredit','','php')}">用户编辑</a></li>
+        <li class="active"><a href="#tab1">用户收货地址</a></li>
+    </ul>
+    <!-- 编辑区域 -->
+    <form class="form-horizontal" id="form" action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">收货地址管理</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped table-hover">
+                <thead>
+                    <tr align="center">
+                        <th>编号</th>
+                        <th>用户名</th>
+                        <th>电话</th>
+                        <th>地址</th>
+                        <th>默认状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 遍历收货地址列表 -->
+                    {volist name="list" id="val"}
+                        <tr class="default">
+                           <td>{$val.id}</td>
+                           <td>{$val.person}</td>
+                           <td>{$val.phone}</td>
+                           <td>{$val.location}</td>
+                           <td>{$val.first}</td>
+                            <td>
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    操作 <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="{:url('','','php')}">编辑</a></li>
+                                    <li><a href="#" class="del_user">删除</a></li>
+                                  </ul>
+                                </div>
+                            </td>
+                        </tr>
+                   {/volist}
+                    <!-- 分页 -->
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{$list->render()}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <input type="hidden" value="" name="id">
+        <!-- <button class="btn btn-primary" type="submit">确定</button> -->
+    </form>
+{/block}
