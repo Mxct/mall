@@ -140,23 +140,26 @@
 				{foreach $Lresult as $vL}
 				<li class="category-nav-item">
 					<a class="category-nav-link" href="">{$vL['tname']}</a>
+				<!-- 大板块 -->
 					<div class="category-nav-children">
-						<div class="nav-children-wrap">
-							<ul class="nav-children-left">
-								{foreach $Sresult as $vS}
-								{if $vL['id'] == $vS['pid']}
-								<li class="nav-children-item">
-									<a href="">
-										<img height="50" width="50" src="" alt="">
-										<span>{$vS['tname']}</span>
-									</a>
-								</li>
-								{/if}
-								{/foreach}
-							</ul>
-						</div>
+							<!-- 遍历的小图 -->
+							<div class="nav-children-wrap" style="width: 320px;">
+							{foreach $Sresult as $vS}
+								<ul class="nav-children-left">
+									{if $vL['id'] == $vS['pid']}
+									<li class="nav-children-item">
+										<a href="">
+											<img height="50" width="50" src="" alt="">
+											<span>{$vS['tname']}</span>
+										</a>
+									</li>
+									{/if}
+								</ul>
+							{/foreach}
+							</div>
+						<!-- 大图 -->
 						<div class="category-item-ad">
-							<a href=""><img width="296" height="480" src="/static/shop/resource/images/entry/3.jpg" alt=""></a>
+							<a href=""><img width="296" height="480" style="position: absolute;top: 0;right: 0; " src="/static/shop/resource/images/entry/3.jpg"></a>
 						</div>
 					</div>
 				</li>
@@ -164,32 +167,37 @@
 			</ul>
 		</div>
 	</div>
-	<div class="homeSlider">
+<!-- banner轮播图开始 -->
+	 <div class="homeSlider">
 		<div class="home-slider-items">
 			<ul>
-				<li><a href=""><img width="100%" height="480" src="/static/shop/resource/images/entry/l1.jpg" alt=""></a></li>
+				{foreach $banner as $banV}
+				<li>
+					<a href=""><img width="100%" height="480" src="{$banV['src']}" alt=""></a>
+				</li>
+				{/foreach}
+				<!-- <li><a href=""><img width="100%" height="480" src="/static/shop/resource/images/entry/l1.jpg" alt=""></a></li>
 				<li><a href=""><img width="100%" height="480" src="/static/shop/resource/images/entry/l2.jpg" alt=""></a></li>
 				<li><a href=""><img width="100%" height="480" src="/static/shop/resource/images/entry/l3.png" alt=""></a></li>
 				<li><a href=""><img width="100%" height="480" src="/static/shop/resource/images/entry/l4.jpg" alt=""></a></li>
-				<li><a href=""><img width="100%" height="480" src="/static/shop/resource/images/entry/l100.jpg" alt=""></a></li>
+				<li><a href=""><img width="100%" height="480" src="/static/shop/resource/images/entry/l100.jpg" alt=""></a></li> -->
 			</ul>
 		</div>
 		<div class="circel">
-			<ul>
-				<li class="first"></li>
+			<ul id="circel">
+				{foreach $banner as $banV}
 				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
+				{/foreach}
 			</ul>
 		</div>
-		<div class="middle">
+		<!-- <div class="middle">
 			<div class="move">
 				<div class="moveleft"><</div>
 				<div class="moveright">></div>
 			</div>
-		</div>
+		</div> -->
 	</div>
+<!-- banner轮播图结束 -->
 	<div class="home-container">
 		<div class="scontainer">
 			<div class="home-ad">

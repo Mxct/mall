@@ -1,0 +1,74 @@
+{extend name="admin" /}
+{block name="content"}
+    <ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+        <li>
+            <a href=""><i class="fa fa-cogs"></i> 轮播管理</a>
+        </li>
+        <li class="active">
+            <a href="{:url('store')}">添加轮播</a>
+        </li>
+    </ol>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#tab1">轮播列表</a></li>
+        <li><a href="{:url('store')}">添加分类</a></li>
+    </ul>
+  <div class="panel-body">
+       <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>图片</th>
+                        <th>图片名称</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+					{foreach $banner as $val}
+                    <tr class="success" >
+                        <td>{$val['id']}</td>
+                        <td><img src="{$val['src']}" width="100px"/></td>
+                        <td>{$val['image']}</td>
+                        <td>{php}echo status($val['status']);{/php}</td>
+                        {if $val['status'] == '0'} 
+                        <td>
+                        	<a href="{:url('update'),'?id=' . $val['id']}">修改</a>
+                            <span>|</span>
+                            <a href="{:url('stop'),'?id=' . $val['id']}">停用</a>
+                        	<span>|</span>
+                        	<a href="{:url('delete'),'?id=' . $val['id']}">删除</a>
+                        </td>
+                        {elseif $val['status'] == '1'}
+                        <td>
+                            <a href="{:url('update'),'?id=' . $val['id']}">修改</a>
+                            <span>|</span>
+                            <a href="{:url('start'),'?id=' . $val['id']}">启用</a>
+                            <span>|</span>
+                            <a href="{:url('delete'),'?id=' . $val['id']}">删除</a>
+                        </td>
+                        {elseif $val['status'] == '2'}
+                        <td>
+                            <a href="{:url('cdelete'),'?id=' . $val['id']}">彻底删除</a>
+                            <span>|</span>
+                            <a href="{:url('start'),'?id=' . $val['id']}">启用</a>
+                        </td>
+                        {/if}
+                    </tr>
+					{/foreach}
+                    {php}
+                    function status($a)
+                    {
+                        $arr = [
+                                    0   =>  '正常',
+                                    1   =>  '停用',
+                                    2   =>  '已删除'
+                                ];
+                        return $arr[$a];
+                    }
+                    {/php}
+                </tbody>
+            </table>
+        </div>                     
+
+{/block}
