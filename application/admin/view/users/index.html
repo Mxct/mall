@@ -9,47 +9,78 @@
     </li>
 </ol>
 <ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#tab1">用户管理</a></li>
-    <!-- <li><a href="{:url('store')}">用户添加</a></li> -->
+    <li class="active"><a href="#tab1">用户列表</a></li>
+    <li><a href="{:url('admin/users/useredit')}">用户编辑</a></li>
+    <li><a href="{:url('admin/users/address','','php')}">用户收货地址</a></li>
 </ul>
   <div class="panel-body">
-       <div class="table-responsive">			
-				<form action="" method="get">
+       <div class="table-responsive">
+				<!-- <form action="" method="get">
 				管理员：<input type="text" name="userName" value="">
 						<input type="submit" value="查询">
-				</form>
-            <table class="table">
+				</form> -->
+            <table class="table  table-condensed table-hover">
                 <thead>
-                    <tr>
+                    <tr align="center table-striped">
                         <th>编号</th>
                         <th>用户名</th>
-                        <th>用户电话</th>
+                        <th>性别</th>
+                        <th>邮箱</th>
+                        <th>电话</th>
+                        <th>类型</th>
                         <th>状态</th>
+                        <th>积分</th>
+                        <th>等级</th>
                         <th>注册时间</th>
-                        <!-- <th>注册IP</th> -->
                         <th>操作</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <!-- 遍历用户列表 -->
-                    <foreach name='data' item='vo'>
-                        <tr class="success">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                    {volist name="list" id="val"}
+                        <tr class="default">
+                            <td>{$val.id}</td>
+                            <td>{$val.username}</td>
+                            <td>{$val.sex}</td>
+                            <td>{$val.email}</td>
+                            <td>{$val.phone}</td>
+                            <td>普通用户</td>
+                            <td>{$val.status}</td>
+                            <td>{$val.score}</td>
+                            <td>{$val.grade}</td>
                             <td>
-                                <a href="">修改</a>
-                                <span>|</span>
-                                <span class='notice'></span>
-                                <a href="" class="del_user">删除</a>
-                                <span>|</span>
-                                <a href="">状态</a>
+                                {$val.create_time}
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    操作 <span class="caret"></span>
+                                  </button>
+                                  <ul class="dropdown-menu">
+                                    <li><a href="{:url('admin/users/useredit','id='.$val.id,'php')}">编辑</a></li>
+                                    <li><a href="#" class="del_user">删除</a></li>
+                                    <li><a href="#" >修改状态</a></li>
+                                  </ul>
+                                </div>
                             </td>
                         </tr>
-                    </foreach>
-                    <tr><td>分页</td></tr>
+                    {/volist}
+                    <!-- 分页 -->
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{$list->render()}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -57,7 +88,8 @@
         <script src="__PUBLIC__/Admin/jquery-1.11.3.min.js"></script>
         <script language="JavaScript" type="text/JavaScript">
            $('.del_user').click(function(){
-                alert('删除此用户，将会删除用户的所有信息');
+                var a =  confirm('删除此用户，将会删除用户的所有信息');
+                console.log(text(a));
            })
         </script>
 {/block}

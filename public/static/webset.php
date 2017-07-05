@@ -1,6 +1,6 @@
 <?php
-define('SET_ZD','KKK');
-define('SET_NAME','nnn');
+define('SET_ZD','AAA81');
+define('SET_NAME','BPPP');
 define('SET_URL','www.MEIZU.com');
-define('SET_ICP','闽ICP备888号');
+define('SET_ICP','闽ICP备999号');
 define('IS_CLOSE','false');

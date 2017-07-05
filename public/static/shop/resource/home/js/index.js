@@ -45,7 +45,7 @@ $(function () {
             $('.home-slider-items ul li').eq(i).fadeIn(300).siblings().fadeOut();
             focus(index);
         },250)
-    })
+    });
     //绑定左右按钮控制移动
     $('section .homeSlider .middle .move .moveright').click(function(){
         clearTimeout(timerOut);

@@ -64,7 +64,6 @@ class Index extends Controller
     {
         // 接收Ajax数据
         // 用户名验证
-
         if($_GET['username']){
             // 查询数据库
             $username = $_GET['username'];
