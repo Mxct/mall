@@ -1,6 +1,6 @@
 {extend name='admin'/}
 {block name="content"}
-
+<script type="text/javascript" src="/static/admin/js/goods.js"></script>
     <ul class="nav nav-tabs" role="tablist">
         <li><a href="{:url('index')}">商品管理</a></li>
         <li class="active"><a href="">商品添加</a></li>
@@ -14,19 +14,21 @@
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">商品名称</label>
                     <div class="col-sm-9">
-                        <input type="text" name="gname"  class="form-control" placeholder="请填写商品名称">
+                        <input type="text" id="gname" name="gname"  class="form-control" placeholder="请填写商品名称">
                     </div>
+                    <span id="gnamets"></span>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">所属分类</label>
                     <div class="col-sm-9">
-                        <select class="js-example-basic-single form-control" name="pid">
+                        <select class="js-example-basic-single form-control" name="pid" id="pid">
                             <option value="0">请选择分类</option>
                             {foreach $Ldata as $val}
                             <option value="{$val['id']}" tid="{$val['pid']}" >{$val['tname']}</option>
                             {/foreach}
                         </select>
                     </div>
+                    <span id="pidts"></span>
                 </div>
 <!--                //添加按钮-->
                 <script>
@@ -82,23 +84,26 @@
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">基础价格</label>
                     <div class="col-sm-9">
-                        <input type="text" name="price"  class="form-control" placeholder="">
+                        <input type="text" name="price" id="price" class="form-control" placeholder="">
                     </div>
+                    <span id="pricets"></span>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">库存</label>
                     <div class="col-sm-9">
-                        <input type="text" name="num"  class="form-control" placeholder="">
+                        <input type="text" name="num" id="num" class="form-control" placeholder="">
                     </div>
+                    <span id="numts"></span>
                 </div>
                 <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">所属分类</label>
+                    <label for="" class="col-sm-2 control-label">状态</label>
                     <div class="col-sm-9">
-                        <select class="js-example-basic-single form-control" name="status">
+                        <select class="js-example-basic-single form-control" name="status" id="status">
                             <option value="1">上架</option>
                             <option value="0">下架</option>
                         </select>
                     </div>
+                    <span id="statusts"></span>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">列表图</label>
@@ -153,7 +158,7 @@
                 </div> -->
             </div>
         </div>
-        <button class="btn btn-primary" type="submit">确定</button>
+        <button class="btn btn-primary" id="addgoods" type="submit">确定</button><span id="submitts"></span>
     </form>
 
 </block>

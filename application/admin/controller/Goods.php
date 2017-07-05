@@ -52,6 +52,17 @@ class Goods extends Controller
     // 编辑商品
     public function edit()
     {
+        $goods = new GoodsModel;
+        if(input('post.')){
+            dump(input('post.'));
+            $data = input('post.');
+            $updgoods = $goods->where('id',input('post.id'))->update($data);
+            if($updgoods){
+                $this->success('更新成功');
+            }else{
+                $this->error('更新失败');
+            }
+        }
         $id = input('get.id');
         $Lresult = Db::name('type')->where('pid','0')->select();
         $this->assign('Ldata',$Lresult);
