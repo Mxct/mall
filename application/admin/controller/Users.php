@@ -31,6 +31,12 @@ class Users extends Controller
         }
         return $this->fetch();
     }
+    // 用户信息修改确认
+    public function check()
+    {
+        dump(input('post.'));
+        return $this->fetch();
+    }
     // 用户收货地址管理
     public function address()
     {
