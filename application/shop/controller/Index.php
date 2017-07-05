@@ -4,6 +4,7 @@ namespace app\shop\controller;
 use think\Controller;	//引入Controller类
 use think\Db;
 use app\shop\model\User;//引入user模型
+use app\shop\model\Banner;//引入banner模型
 use think\Request;      //请求类
 use think\Cookie;      //Cookie类
 class Index extends Controller
@@ -11,10 +12,13 @@ class Index extends Controller
 	// 官网首页
     public function index()
     {
-        $Lresult = Db::name('type')->where('pid','0')->select();
-        $Sresult = Db::name('type')->where('pid','<>','0')->select();
+        $Lresult = Db::name('type')->where('pid','0')->limit('7')->select();
+        $Sresult = Db::name('type')->where('pid','<>','0')->limit('10')->select();
         $this->assign('Lresult',$Lresult);
         $this->assign('Sresult',$Sresult);
+        // 轮播图片
+        $Lbanner = Db::name('banner')->where('status','0')->select();
+        $this->assign('banner',$Lbanner);
         // 分配变量cookie-username
         $this->assign('username',cookie('username'));
         return $this->fetch();
