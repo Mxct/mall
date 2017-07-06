@@ -84,13 +84,13 @@
                                                 <tr>
                                                     <td>收货地址</td>
                                                     <td>
-                                                        <input type="text" name="location" value="{$val.location}" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+                                                        <input type="text" name="location" value="{$val.location}"  class="form-control"  />
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>默认状态</td>
                                                     <td>
-                                                        <input type="text" name="location" value="{$val.first}" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="请填写状态类型：1:默认;0:常用">
+                                                        <input type="text" name="first" value="{$val.first}" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="请填写状态类型：1:默认;0:常用">
                                                     </td>
                                                     <td>
                                                         <input type="hidden" name="id" value="{$val.id}">
@@ -100,7 +100,7 @@
                                        <!-- /编辑表单内容 -->
                                       </div>
                                       <div class="modal-footer">
-                                        <span style="color:red;"><a href="{:url('admin/users/addressDel','id='.$val.id,'php')}">删除</a></span>
+                                        <span style="color:red;" class="btn btn-primary"><a href="{:url('admin/users/addressDel','id='.$val.id,'php')}">删除</a></span>
                                         <button type="submit" class="btn btn-primary">提交</button>
                                       </div>
                                     </div>

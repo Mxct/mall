@@ -41,13 +41,16 @@ class Users extends Controller
      //用户地址修改
     public function addressMdy()
     {
-        dump(input('param.'));
+        dump(input(''));
+        dump($_POST);
         return $this->fetch();
     }
       //用户地址删除
     public function addressDel()
     {
-        dump(input('param.'));
+        $id = input('param.id');
+        Address::destroy($id);
+        $this->redirect('admin/users/address');
         return $this->fetch();
     }
      // 用户信息修改确认
@@ -122,5 +125,48 @@ class Users extends Controller
         Db::name('user')->where('id',$id)->update(['delete_time'=>null,]);
         $this->redirect('admin/users/bin');
         return $this->fetch();
+    }
+    // 测试多对多操作
+    public function toMany()
+    {
+        $user = UserModel::get(8);
+        $add = Address::get(1);
+        $data = [
+                    'person'=>'李新',
+                    'phone'=>'1358877788',
+                    'location'=>'福建泉州',
+                    'first'=>'0',
+                ];
+        // $user->address()->save($data);
+        // $user->address()->attach(1);
+        // $user->address()->detach(1);
+        // $add = Address::get(8);
+        // $a = $add->user()->username;这是无法实现的，因为本身对多，没有具体指向的用户名
+                // dump($user->address);
+                $arr = $user->address;//获取所有对应地址信息
+              /*  foreach ($arr as $value) {
+                    dump($value->toArray());
+                }*/
+                /*
+                 array (size=9)
+              'id' => int 9
+              'person' => string '李新' (length=6)
+              'phone' => string '1358877788' (length=10)
+              'location' => string '福建泉州' (length=12)
+              'first' => int 0
+              'create_time' => string '2017-07-07 01:32:09' (length=19)
+              'update_time' => string '2017-07-07 01:32:09' (length=19)
+              'delete_time' => null
+              'pivot' =>
+                array (size=3)
+                  'id' => int 2
+                  'user_id' => int 8
+                  'address_id' => int 9
+                 */
+        $att = $add->user;
+
+        foreach ($att as $value) {
+            dump($value->toArray());
+        }
     }
 }
