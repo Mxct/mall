@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>魅族商城</title>
+	<link rel="stylesheet" type="text/css" href="/static/shop/resource/home/css/common.css"/>
+	<link rel="stylesheet" href="/static/shop/resource/home/css/index.css" />
+	<link rel="stylesheet" href="/static/shop/resource/home/org/Font-Awesome-3.2.1/css/font-awesome.min.css">
+	<script src="/static/shop/resource/home/js/jquery.min.js"></script>
+	<script src="/static/shop/resource/home/js/index.js"></script>
+    <link rel="stylesheet" href="/static/shop/resource/home/css/product.css" />
+    <script src="/static/shop/resource/home/js/product.js"></script>
+</head>
+<body>
+<header>
+	<div class="top">
+		<div class="head">
+			<div class="top-left">
+				<!-- <a href="{:url('/index/index/index')}">魅族官网</a> -->
+				<a href="{:url('/shop/index/index')}">魅族商城</a>
+				<a href="">Flyme</a>
+				<a href="">专卖店</a>
+				<a href="">服务</a>
+				<a href="">社区</a>
+			</div>
+			<div class="top-right">
+				<ul class="top-info">
+					<li>
+						<a ><!-- 我的收藏 -->
+
+							<div class="top-new">
+								Order
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="{:url('/shop/user/orders')}">我的订单</a>
+					</li>
+
+					<li>
+					<!-- 判断cookie用户是否登陆 -->
+						{if !empty(cookie('username'))}
+							<a href="{:url('/shop/user/index')}">{php}echo cookie('username');{/php}</a>
+							<a href="{:url('/shop/index/logout')}">退出</a>
+						{else}
+							<a href="{:url('/shop/index/login')}">登录</a>
+						{/if}
+					</li>
+					<li>
+						<a href="{:url('/shop/index/reg')}">注册</a>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<nav>
+		<div class="nav-mid">
+			<div class="logo">
+				<a href="">
+					<img src="/static/shop/resource/images/entry/logo-header.png" alt="">
+				</a>
+			</div>
+			<div class="head-nav">
+				<ul>
+					<li><a class="top-item" href="">PRO手机</a></li>
+					<li><a class="top-item" href="">魅蓝手机</a></li>
+					<li><a class="top-item" href="">MX手机</a></li>
+					<li><a class="top-item" href="">精选配件</a></li>
+					<li><a class="top-item" href="">智能硬件</a></li>
+				</ul>
+				<div class="top-hide">
+					<div class="container">
+						<ul class="menu-list">
+							<li class="">
+								<a href="">
+									<div class="figure">
+										<img src="/static/shop/resource/images/entry/1.png" alt="">
+									</div>
+									<div class="pro-name">魅族PRO6</div>
+									<div class="price">￥2499</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="menu-list">
+							<li class="">
+								<a href="">
+									<div class="figure">
+										<img src="/static/shop/resource/images/entry/1.png" alt="">
+									</div>
+									<div class="pro-name">魅族PRO6</div>
+									<div class="price">￥2488</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="menu-list">
+							<li class="">
+								<a href="">
+									<div class="figure">
+										<img src="/static/shop/resource/images/entry/1.png" alt="">
+									</div>
+									<p class="pro-name">魅族PRO645</p>
+									<div class="price">￥2477</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="menu-list">
+							<li class="">
+								<a href="">
+									<div class="figure">
+										<img src="/static/shop/resource/images/entry/1.png" alt="">
+									</div>
+									<div class="pro-name">魅族PRO6</div>
+									<div class="price">￥2466</div>
+								</a>
+							</li>
+						</ul>
+						<ul class="menu-list">
+							<li class="">
+								<a href="">
+									<div class="figure">
+										<img src="/static/shop/resource/images/entry/1.png" alt="">
+									</div>
+									<div class="pro-name">魅族PRO6</div>
+									<div class="price">￥2455</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>

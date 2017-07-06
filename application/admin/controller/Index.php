@@ -37,7 +37,7 @@ class Index extends Controller
                 $this->error('用户名不正确');
             }
             // 判断是否是管理员
-            if($typeResult == '1') {
+             if($typeResult == '1') {
 
             } else {
                  $this->error('您不是管理员，无法登陆！');

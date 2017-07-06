@@ -1,135 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>魅族商城</title>
-	<link rel="stylesheet" type="text/css" href="/static/shop/resource/home/css/common.css"/>
-	<link rel="stylesheet" href="/static/shop/resource/home/css/index.css" />
-	<link rel="stylesheet" href="/static/shop/resource/home/org/Font-Awesome-3.2.1/css/font-awesome.min.css">
-	<script src="/static/shop/resource/home/js/jquery.min.js"></script>
-	<script src="/static/shop/resource/home/js/index.js"></script>
-</head>
-<body>
-<header>
-	<div class="top">
-		<div class="head">
-			<div class="top-left">
-				<!-- <a href="{:url('/index/index/index')}">魅族官网</a> -->
-				<!-- <a href="">魅族商城</a> -->
-				<a href="">Flyme</a>
-				<a href="">专卖店</a>
-				<a href="">服务</a>
-				<a href="">社区</a>
-			</div>
-			<div class="top-right">
-				<ul class="top-info">
-					<li>
-						<a ><!-- 我的收藏 -->
-
-							<div class="top-new">
-								Order
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="{:url('/shop/user/orders')}">我的订单</a>
-					</li>
-
-					<li>
-					<!-- 判断cookie用户是否登陆 -->
-						{if !empty(cookie('username'))}
-							<a href="{:url('/shop/user/index')}">{$username}</a>
-							<a href="{:url('/shop/index/logout')}">退出</a>
-						{else}
-							<a href="{:url('/shop/index/login')}">登录</a>
-						{/if}
-					</li>
-					<li>
-						<a href="{:url('/shop/index/reg')}">注册</a>
-					</li>
-
-				</ul>
-			</div>
-		</div>
-	</div>
-	<nav>
-		<div class="nav-mid">
-			<div class="logo">
-				<a href="">
-					<img src="/static/shop/resource/images/entry/logo-header.png" alt="">
-				</a>
-			</div>
-			<div class="head-nav">
-				<ul>
-					<li><a class="top-item" href="">PRO手机</a></li>
-					<li><a class="top-item" href="">魅蓝手机</a></li>
-					<li><a class="top-item" href="">MX手机</a></li>
-					<li><a class="top-item" href="">精选配件</a></li>
-					<li><a class="top-item" href="">智能硬件</a></li>
-				</ul>
-				<div class="top-hide">
-					<div class="container">
-						<ul class="menu-list">
-							<li class="">
-								<a href="">
-									<div class="figure">
-										<img src="/static/shop/resource/images/entry/1.png" alt="">
-									</div>
-									<div class="pro-name">魅族PRO6</div>
-									<div class="price">￥2499</div>
-								</a>
-							</li>
-						</ul>
-						<ul class="menu-list">
-							<li class="">
-								<a href="">
-									<div class="figure">
-										<img src="/static/shop/resource/images/entry/1.png" alt="">
-									</div>
-									<div class="pro-name">魅族PRO6</div>
-									<div class="price">￥2488</div>
-								</a>
-							</li>
-						</ul>
-						<ul class="menu-list">
-							<li class="">
-								<a href="">
-									<div class="figure">
-										<img src="/static/shop/resource/images/entry/1.png" alt="">
-									</div>
-									<p class="pro-name">魅族PRO645</p>
-									<div class="price">￥2477</div>
-								</a>
-							</li>
-						</ul>
-						<ul class="menu-list">
-							<li class="">
-								<a href="">
-									<div class="figure">
-										<img src="/static/shop/resource/images/entry/1.png" alt="">
-									</div>
-									<div class="pro-name">魅族PRO6</div>
-									<div class="price">￥2466</div>
-								</a>
-							</li>
-						</ul>
-						<ul class="menu-list">
-							<li class="">
-								<a href="">
-									<div class="figure">
-										<img src="/static/shop/resource/images/entry/1.png" alt="">
-									</div>
-									<div class="pro-name">魅族PRO6</div>
-									<div class="price">￥2455</div>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
-</header>
+{include file="herder/index"}
 <section>
 	<div class="sort">
 		<div class="category-list">
@@ -143,14 +12,14 @@
 				<!-- 大板块 -->
 					<div class="category-nav-children">
 							<!-- 遍历的小图 -->
-							<div class="nav-children-wrap" style="width: 320px;">
+							<div class="nav-children-wrap" style="width: 320px; height: 480px;">
 							{foreach $Sresult as $vS}
 								<ul class="nav-children-left">
 									{if $vL['id'] == $vS['pid']}
 									<li class="nav-children-item">
-										<a href="">
-											<img height="50" width="50" src="" alt="">
-											<span>{$vS['tname']}</span>
+										<a href="{:url('shop/detail/index'),'?id='.$vS['id']}">
+											<img height="50" width="50" src="{$vS['pic']}" alt="">
+											<span>{$vS['gname']}</span>
 										</a>
 									</li>
 									{/if}
@@ -256,6 +125,7 @@
 					</a>
 				</div>
 			</div>
+<!-- 热卖推荐开始 -->
 			<div class="home-hot">
 				<div class="home-topbar">
 					<h2 class="home-title">热品推荐</h2>
@@ -264,28 +134,29 @@
 					<div class="rmd-content">
 						<div class="rm-box">
 							<div class="rm-list">
-								
+								{volist name="hotlist" id="val"}
 								<div class="rm-product">
 									<a href="">
 										<div class="rm-product-d">
-											<img width="180" height="180" src="" alt="">
+											<img width="180" height="180" src="{$val.pic}" alt="">
 											<div class="rm-desc">
-												<h4></h4>
+												<h4>{$val.gname}</h4>
 												<h6>真金属 指纹全网通</h6>
 												<p>
 													￥
-													<span></span>
+													<span>{$val.price}</span>
 												</p>
 											</div>
 										</div>
 									</a>
 								</div>
-							
+								{/volist}
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+<!-- 热卖推荐结束 -->
 		</div>
 		<div class="home-floor-ad">
 			<a href="">

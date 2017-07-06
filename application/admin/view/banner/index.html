@@ -10,7 +10,7 @@
     </ol>
     <ul class="nav nav-tabs" role="tablist">
         <li class="active"><a href="#tab1">轮播列表</a></li>
-        <li><a href="{:url('store')}">添加分类</a></li>
+        <li><a href="{:url('store')}">添加轮播</a></li>
     </ul>
   <div class="panel-body">
        <div class="table-responsive">
@@ -25,15 +25,15 @@
                     </tr>
                 </thead>
                 <tbody>
-					{foreach $banner as $val}
+					{foreach $list as $val}
                     <tr class="success" >
                         <td>{$val['id']}</td>
-                        <td><img src="{$val['src']}" width="100px"/></td>
+                        <td><img src="{$val['src']}" width="100px" height="40px" /></td>
                         <td>{$val['image']}</td>
                         <td>{php}echo status($val['status']);{/php}</td>
                         {if $val['status'] == '0'} 
                         <td>
-                        	<a href="{:url('update'),'?id=' . $val['id']}">修改</a>
+                        	<a href="{:url('edit'),'?id=' . $val['id']}">修改</a>
                             <span>|</span>
                             <a href="{:url('stop'),'?id=' . $val['id']}">停用</a>
                         	<span>|</span>
@@ -69,6 +69,9 @@
                     {/php}
                 </tbody>
             </table>
-        </div>                     
+        </div>
+    <div class="pagination pagination-sm pull-right">
+        {$list->render()}
+    </div>                     
 
 {/block}

@@ -12,7 +12,7 @@
         </li>
     </ol>
     <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#tab1">商品管理</a></li>
+        <li class="active"><a href="{:url('index')}">商品管理</a></li>
         <li><a href="{:url('store')}">添加商品</a></li>
     </ul>
     <form action="" method="post">
@@ -26,53 +26,47 @@
                         <th>基础价格</th>
                         <th>库存</th>
                         <th>图片</th>
-                        <th>状态</th>
+                        <th>状态 | 热卖</th>
                         <th>添加时间</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {php}
-                    function status($a)
-                    {
-                        $arr = [
-                                    0   =>  '下架',
-                                    1   =>  '上架',
-                                ];
-                        return $arr[$a];
-                    }
-                    {/php}
-                    {foreach $Glist as $val}
+                    {volist name="list" id="val"}
                     <tr style="text-align: center">
-                        <td>{$val['id']}</td>
-                        <td>{$val['gname']}</td>
-                        <td>{$val['price']}</td>
-                        <td>{$val['num']}</td>
-                        <td><img width="60" src="{$val['pic']}"></td>
+                        <td>{$val.id}</td>
+                        <td>{$val.gname}</td>
+                        <td>{$val.price}</td>
+                        <td>{$val.num}</td>
+                        <td><img width="60" src="{$val.pic}"></td>
                         <td>
-                            {php}echo status($val['status']);{/php}
+                            {if $val.hot == '1'}
+                            {$val.status} | 是
+                            {else}
+                            {$val.status} | 否
+                            {/if}
                         </td>
-                        <th>{$val['update_time']}</th>
+                        <th>{$val.update_time}</th>
                         <td>
                             <div class="btn-group">
                                 <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                 	<li><a href="{{u('goodslist.index',['gid'=>$v['gid']])}}">货品管理</a></li>
-                                    <li><a href="{:url('edit'),'?id=' . $val['id']}">编辑</a></li>
+                                    <li><a href="{:url('edit'),'?id=' . $val.id}">编辑</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="{:url('del'),'?id=' . $val['id']}">删除</a></li>
+                                    <li><a href="{:url('del'),'?id=' . $val.id}">删除</a></li>
                                 </ul>
                             </div>
                         </td>
                     </tr>
-                    {/foreach}
+                    {/volist}
                     </tbody>
                 </table>
             </div>
         </div>
     </form>
     <div class="pagination pagination-sm pull-right">
-        分页
+        {$list->render()}
     </div>
 
 

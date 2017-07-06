@@ -5,6 +5,7 @@ use think\Controller;	//引入Controller类
 use think\Db;
 use app\shop\model\User;//引入user模型
 use app\shop\model\Banner;//引入banner模型
+use app\shop\model\Goods;//引入banner模型
 use think\Request;      //请求类
 use think\Cookie;      //Cookie类
 class Index extends Controller
@@ -12,10 +13,14 @@ class Index extends Controller
 	// 官网首页
     public function index()
     {
+        // 商品分类
         $Lresult = Db::name('type')->where('pid','0')->limit('7')->select();
-        $Sresult = Db::name('type')->where('pid','<>','0')->limit('10')->select();
+        $Sresult = Db::name('Goods')->where('pid','<>','0')->select();
         $this->assign('Lresult',$Lresult);
         $this->assign('Sresult',$Sresult);
+        // 热卖推荐
+        $hotlist = Goods::where('hot','<>','0')->limit(5)->select();
+        $this->assign('hotlist',$hotlist);
         // 轮播图片
         $Lbanner = Db::name('banner')->where('status','0')->select();
         $this->assign('banner',$Lbanner);

@@ -5,7 +5,7 @@
         <li><a href="{:url('index')}">轮播管理</a></li>
         <li class="active"><a href="">添加轮播</a></li>
     </ul>
-    <form class="form-horizontal" id="form" action="" method="post" enctype="multipart/form-data" >
+    <form class="form-horizontal" id="form" action="{:url('addg')}" method="post" enctype="multipart/form-data" >
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">添加轮播</h3>
@@ -14,20 +14,20 @@
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">轮播名称</label>
                     <div class="col-sm-9">
-                        <input type="text" name="cname" required class="form-control" placeholder="请填写图片名称">
+                        <input type="text" name="image" required class="form-control" placeholder="请填写图片名称">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-2 control-label">图片资源</label>
                     <div class="col-sm-9">
-                        <input type="file" name="image" required class="form-control">
+                        <input type="file" name="src" required class="form-control">
                     </div>
                 </div>
             </div>
         </div>
         <!-- 提交重置按钮 -->
         <button class="btn btn-primary" type="submit">确定</button>
-        <input  name="" type="reset" value="重置" class="btn btn-primary text-but">
+        <input  type="reset" value="重置" class="btn btn-primary text-but">
     </form>
                     
 {/block}

@@ -12,33 +12,47 @@ class Goods extends Controller
     {
         // $as = GoodsModel::get(1);
         // $result = $as->status;
-        $result = Db::name('goods')->select();
-        $this->assign('Glist',$result);
+        // $result = Db::name('goods')->select();
+        // $this->assign('Glist',$result);
+        $list = GoodsModel::where('')->paginate(3);
+        $this->assign('list',$list);
         return $this->fetch();
     }
     //添加商品
     public function store()
     {
-        if(input('post.')){
-            if(!input('post.gname')){
-                $this->error('商品名称不能为空');
-            }
-            if(input('post.pid') == '0'){
-                $this->error('未选择分类');
-            }
-            $goods = new GoodsModel();
-            $data = input('post.');
-            $adresult = $goods->save($data);
-            if($adresult){
-                $this->success('添加成功');
-            }else{
-                $this->error('添加失败');
-            }
-        }
         $Lresult = Db::name('type')->where('pid','0')->select();
         $this->assign('Ldata',$Lresult);
         return $this->fetch();
     }
+    // 添加商品判断
+    public function addg()
+    {
+        $file = request()->file('pic');
+        $data = input('post.');  
+        if(isset($file)){
+            $info = $file->move(ROOT_PATH . 'public/uploads/goods');  
+            if($info){  
+                $a = $info->getSaveName();  
+                $imgp= str_replace("\\","/",$a);  
+                $imgpath='/uploads/goods/'.$imgp;  
+                $data['pic']= $imgpath; 
+            }else{  
+                echo $file->getError();  
+            }
+        }else{
+            unset($data['pic']);
+        }
+        $num = new GoodsModel;
+        $num1 = $num ->save($data);  
+        if($num1){  
+            $this->success('添加成功');  
+        }else{
+            $this->error('添加失败');
+        }
+    }
+
+
     // 删除商品
     public function del()
     {
@@ -53,17 +67,6 @@ class Goods extends Controller
     // 编辑商品
     public function edit()
     {
-        $goods = new GoodsModel;
-        if(input('post.')){
-            dump(input('post.'));
-            $data = input('post.');
-            $updgoods = $goods->where('id',input('post.id'))->update($data);
-            if($updgoods){
-                $this->success('更新成功');
-            }else{
-                $this->error('更新失败');
-            }
-        }
         $id = input('get.id');
         $Lresult = Db::name('type')->where('pid','0')->select();
         $this->assign('Ldata',$Lresult);
@@ -77,23 +80,34 @@ class Goods extends Controller
         $this->assign('attr',$dres);
         return $this->fetch();
     }
-
-
-    // 文件上传提交
-    public function up(Request $request)
+    // 编辑商品
+    public function update()
     {
-        // 获取表单上传文件
-        $file = $request->file('file');
-        if (empty($file)) {
-            $this->error('请选择上传文件');
+        $file = request()->file('pic');  
+        $data = input('post.');  
+        if(isset($file)){  
+            // 获取表单上传文件 例如上传了001.jpg  
+            // 移动到框架应用根目录/public/uploads/ 目录下  
+            $info = $file->move(ROOT_PATH . 'public/uploads/goods');  
+            // var_dump($info) ;die;  
+            if($info){  
+                // 成功上传后 获取上传信息  
+                $a = $info->getSaveName();  
+                $imgp= str_replace("\\","/",$a);  
+                $imgpath='/uploads/goods/'.$imgp;  
+                $data['pic']= $imgpath; 
+            }else{  
+                // 上传失败获取错误信息  
+                echo $file->getError();  
+            }
+        }else{
+            unset($data['pic']);
         }
-        // 移动到框架应用根目录/public/uploads/ 目录下
-        $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
-        if ($info) {
-            $this->success('文件上传成功：' . $info->getRealPath());
-        } else {
-            // 上传失败获取错误信息
-            $this->error($file->getError());
+        $num = GoodsModel::update($data);  
+        if($num){  
+            $this->success('更新成功');  
+        }else{
+            $this->error('更新失败');
         }
     }
 }
