@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>找回密码</title>
+	<!-- bootstrap -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
+        <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+         <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- /bootstrap -->
+</head>
+<body>
+	<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="#">官网</a></li>
+            <li role="presentation"><a href="#">关于</a></li>
+            <li role="presentation"><a href="#">手机验证</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">尊敬的{$name}:</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h2>忘记密码验验证告知单!</h2>
+        <p class="lead">您好，感谢您一直对我们公司的支持和厚爱;为您提供优质的客户服务是我们始终不断努力的方向！公司将及时的帮你找回用户密码；并通过邮箱验证的方式进行登录，请及时查阅您的邮箱并进行验证登录！</p>
+        <p class="alert alert-success">您的匹配邮箱和电话号码验证已通过！系统将提供您暂时的登录密码:{$mima};请及时登录后并在个人中心重置密码！</p>
+        <p><a class="btn btn-md btn-success" href="#" role="button">感谢！Dear Client!</a>
+			<a class="btn btn-md btn-success" href="{:url('shop/index/login')}" role="button">马上登录!</a>
+        </p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-md-6">
+          <h4>邮箱认证找回密码</h4>
+          <p>您将收到系统给您注册时使用的邮箱地址发送邮箱认证邮件，请在12小时内登录邮箱，查阅相关邮件内容；根据提醒进项操作！及时找回密码，祝您生活愉快！谢谢！</p>
+
+        </div>
+
+        <div class="col-md-6">
+          <h4>手机验证</h4>
+          <p>请点击手机验证按钮，输入您正在使用的个人号码；通过短信认证的方式进行确认;确认成功后及时在个人中心修改新的密码！</p>
+
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>MEIZU&copy; 2016 Company, Inc.</p>
+      </footer>
+
+    </div> <!-- /container -->
+</body>
+</html>

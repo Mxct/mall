@@ -58,9 +58,10 @@
 #reg-t {
     cursor: pointer;
 }
-#jiaobiao-pc,#jiaobiao-qr {
+#jiaobiao-pc{
     padding-top: 10px;
     padding-right: 10px;
+    margin-right: 10px;
     float: right;
     width: 35px;
     height: 35px;

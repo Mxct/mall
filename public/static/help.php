@@ -98,3 +98,12 @@ function addzeor($a)
 		return $a;
 	}
 }
+// 生成随机密码
+function randMix()
+{
+	$str1 = join(range('a','z'));
+	$str2 = join(range('0','9'));
+	$str = str_shuffle($str1.$str2);
+
+	return substr($str,0,6);
+}

@@ -42,7 +42,7 @@
 					<!-- 判断cookie用户是否登陆 -->
 						{if !empty(cookie('username'))}
 							<a href="{:url('/shop/user/index')}">{php}echo cookie('username');{/php}</a>
-							<a >{php}echo grade(cookie('score'));{/php}</a>
+							Level:<a >{php}echo grade(cookie('score'));{/php}</a>
 							<a href="{:url('/shop/index/logout')}">退出</a>
 						{else}
 							<a href="{:url('/shop/index/login')}">登录</a>
