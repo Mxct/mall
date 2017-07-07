@@ -84,3 +84,17 @@ function userType($a)
 			];
 	return $arr[$a];
 }
+
+// 订单补0函数
+function addzeor($a)
+{
+	if($a >0 && $a <10){
+		return '000'.$a;
+	} else if($a >=10 && $a <100) {
+		return '00'.$a;
+	} else if($a >=100 && $a <1000) {
+		return '0'.$a;
+	} else {
+		return $a;
+	}
+}

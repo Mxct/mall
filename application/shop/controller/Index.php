@@ -100,8 +100,15 @@ class Index extends Controller
             if($pwdResult !== $pwd) {
                 $this->error('密码不正确');
             }
+            // 判断用户状态是否正常
+             $statusResult = $user->where('username',$username)->value('status');
+            if($statusResult == '1') {
+                $this->error('您已被禁止登陆，请联系管理员');
+            }
             // 查询用户类型type
             $typeResult = $user->where('username',$username)->value('type');
+            // 查询用户积分score
+            $scoreResult = $user->where('username',$username)->value('score');
             // 验证验证码是否正确
             if(!captcha_check($yzm)){
 
@@ -111,6 +118,7 @@ class Index extends Controller
                 cookie('username',$username,84600);
                 cookie('uid',$idResult,84600);
                 cookie('usertype', $typeResult,84600);
+                cookie('score', $scoreResult,84600);
                 $this->success('登录成功','shop/index/index');
             }
         }

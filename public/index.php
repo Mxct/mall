@@ -13,7 +13,7 @@
 
 // 加载站点信息常量
 include "static/webset.php";
-// 加载自定义函数
+// 引入自定义公共函数
 include "static/help.php";
 
 // 定义应用目录

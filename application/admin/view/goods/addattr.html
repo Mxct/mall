@@ -1,0 +1,113 @@
+{extend name='admin'/}
+{block name="content"}
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li><a href="{:url('index')}">商品管理</a></li>
+        <li class="active"><a href="">{$single.gname}</a></li>
+    </ul>
+<!-- 添加单商品属性 -->
+    <form class="form-horizontal" id="form" action="" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">添加<b>【{$single.gname}】</b>属性</h3>
+            </div>
+            <div class="panel-body">
+<!-- 网络类型 -->
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">网络</label>
+                    <div class="col-sm-5" id="spec">
+                        <div class="col-sm-12">
+                            <select class="js-example-basic-single form-control" name="net">
+                            {volist name="Anet" id="vNet"}
+                                <option value="{$vNet.id}">{$vNet.attrs}</option>
+                            {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-4 control-label">附加价格</div>
+                        <div class="col-sm-8">
+                            <input type="text" name="money1" value="0" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <!-- <button type="button" class="btn btn-primary btn-xs delspec">添加</button> -->
+                        <!-- <input type="hidden" name="mid1" value="1"> -->
+                    </div>
+                </div>
+<!-- 颜色 -->
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">颜色</label>
+                    <div class="col-sm-5" id="spec">
+                        <div class="col-sm-12">
+                            <select class="js-example-basic-single form-control" name="color">
+                                {volist name="Acolor" id="vColor"}
+                                <option value="{$vColor.id}">{$vColor.attrs}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-4 control-label">附加价格</div>
+                        <div class="col-sm-8">
+                            <input type="text" name="money2" value="0" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <!-- <button type="button" class="btn btn-primary btn-xs delspec">添加</button> -->
+                        <!-- <input type="hidden" name="mid2" value="2"> -->
+                    </div>
+                </div>
+<!-- 内存 -->
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">内存</label>
+                    <div class="col-sm-5" id="spec">
+                        <div class="col-sm-12">
+                            <select class="js-example-basic-single form-control" name="memory">
+                                {volist name="Amemory" id="vMemory"}
+                                <option value="{$vMemory.id}">{$vMemory.attrs}</option>
+                                {/volist}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="col-sm-4 control-label">附加价格</div>
+                        <div class="col-sm-8">
+                            <input type="text" name="money3" value="0" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <!-- <button type="button" class="btn btn-primary btn-xs delspec">添加</button> -->
+                        <!-- <input type="hidden" name="mid3" value="3"> -->
+                    </div>
+                </div>
+<!--                 <table class="table table-striped">
+                    <foreach from="$poData" key="$k" value="$v">
+                        <tr>
+                            <td></td>
+                            <td>
+                                <select name="">
+                                    <option value="0">请选择</option>
+                                    <foreach from="" key="$key" value="$value">
+                                        <option <if value=$v['gtvalue'] == $value">selected="selected"</if></option>
+                                    </foreach>
+                                </select>
+                            </td>
+                            <td>附加价格</td>
+                            <td><input type="text" name="" value=""></td>
+                            <td><button type="button" class="btn btn-danger btn-xs delspec">删除</button></td>
+                        </tr>
+                        <script>
+                            $(function(){
+                                $("#spec").find("tr:contains('')").eq(0).find("td:last").html('<button type="button" class="btn btn-primary btn-xs addspec">添加</button>');
+                            })
+                        </script>
+                    </foreach>
+                </table> -->
+            </div>
+        </div>
+        <input type="hidden" name="id" value="{$single.id}">
+        <button class="btn btn-primary" type="submit">确定</button>
+    </form>
+
+{/block}

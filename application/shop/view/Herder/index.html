@@ -4,12 +4,13 @@
 	<meta charset="UTF-8">
 	<title>魅族商城</title>
 	<link rel="stylesheet" type="text/css" href="/static/shop/resource/home/css/common.css"/>
+	<link rel="stylesheet" href="/static/shop/resource/home/css/product.css" />
 	<link rel="stylesheet" href="/static/shop/resource/home/css/index.css" />
 	<link rel="stylesheet" href="/static/shop/resource/home/org/Font-Awesome-3.2.1/css/font-awesome.min.css">
 	<script src="/static/shop/resource/home/js/jquery.min.js"></script>
 	<script src="/static/shop/resource/home/js/index.js"></script>
-    <link rel="stylesheet" href="/static/shop/resource/home/css/product.css" />
     <script src="/static/shop/resource/home/js/product.js"></script>
+    <script src="/static/bootstrap/jQuery1.11.3.min.css"></script>
 </head>
 <body>
 <header>
@@ -41,6 +42,7 @@
 					<!-- 判断cookie用户是否登陆 -->
 						{if !empty(cookie('username'))}
 							<a href="{:url('/shop/user/index')}">{php}echo cookie('username');{/php}</a>
+							<a >{php}echo grade(cookie('score'));{/php}</a>
 							<a href="{:url('/shop/index/logout')}">退出</a>
 						{else}
 							<a href="{:url('/shop/index/login')}">登录</a>

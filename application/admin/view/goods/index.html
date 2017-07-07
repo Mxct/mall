@@ -51,9 +51,10 @@
                             <div class="btn-group">
                                 <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                	<li><a href="{{u('goodslist.index',['gid'=>$v['gid']])}}">货品管理</a></li>
-                                    <li><a href="{:url('edit'),'?id=' . $val.id}">编辑</a></li>
+                                	<li><a href="{:url('list'),'?id=' . $val.id}">货品管理</a></li>
+                                    <li><a href="{:url('addattr'),'?id=' . $val.id}">添加属性</a></li>
                                     <li class="divider"></li>
+                                    <li><a href="{:url('edit'),'?id=' . $val.id}">编辑</a></li>
                                     <li><a href="{:url('del'),'?id=' . $val.id}">删除</a></li>
                                 </ul>
                             </div>

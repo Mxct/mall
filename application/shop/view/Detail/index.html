@@ -4,7 +4,7 @@
 <section>
     <div class="container">
         <div class="crumbs clearfix">
-            <a href="" class="">首页</a>&nbsp;>&nbsp;
+            <a href="{:url('shop/index/index')}" class="">首页</a>&nbsp;>&nbsp;
             <a class="ellipsis crumbs-title">{$Ginfo.gname}</a>
         </div>
         <div class="row">
@@ -12,7 +12,7 @@
                 <div class="preview-booth">
                     <!-- foreach -->
                     <a href="javascript:;" id="J_imgBooth" class="hide">
-                        <img src="" height="375" width="375"/>
+                        <img src="{$Ginfo.pic}" height="375" width="375"/>
                     </a>
                     <!-- /foreach -->
                 </div>
@@ -20,7 +20,13 @@
                     <!-- foreach -->
                     <li>
                         <a href="javascript:;">
-                            <img src="" height="75" width="75"/>
+                            <img src="{$Ginfo.pic}" height="75" width="75"/>
+                        </a>
+                        <a href="javascript:;">
+                            <img src="{$Ginfo.pic}" height="75" width="75"/>
+                        </a>
+                        <a href="javascript:;">
+                            <img src="/static/shop/resource/images/entry/l4.jpg" height="75" width="75"/>
                         </a>
                     </li>
                     <!-- /foreach -->
@@ -29,7 +35,7 @@
             <div class="property" id="property">
                 <div class="property-hd">
                     <h1>{$Ginfo.gname}</h1>
-                    <p class="mod-info">网络类型</p>
+                    <p class="mod-info">{$Ginfo.describe}</p>
                 </div>
                 <div class="property-sell">
                     <dl class="property-sell-price clearfix">
@@ -40,8 +46,8 @@
                             <div class="mod-price">
                                 <small>¥</small>
                                 <span id="J_price" class="vm-money">
-											{$Ginfo.price}
-										</span>
+									{$Ginfo.price}
+								</span>
                             </div>
                         </dd>
                     </dl>
@@ -60,6 +66,38 @@
                             </a>
                             <a href="javascript:;" gtid="" class="">
                                 <span>联通4G</span>
+                            </a>
+                            <!-- /foreach -->
+                        </dd>
+                    </dl>
+                    <dl class="property-set-sale">
+                        <dt class="vm-metatit">颜色</dt>
+                        <dd class="clearfix net">
+                            <!-- foreach -->
+                            <a href="javascript:;" gtid="" class="">
+                                <span>香槟金</span>
+                            </a>
+                            <a href="javascript:;" gtid="" class="">
+                                <span>深空灰</span>
+                            </a>
+                            <a href="javascript:;" gtid="" class="">
+                                <span>月光银</span>
+                            </a>
+                            <!-- /foreach -->
+                        </dd>
+                    </dl>
+                    <dl class="property-set-sale">
+                        <dt class="vm-metatit">内存</dt>
+                        <dd class="clearfix net">
+                            <!-- foreach -->
+                            <a href="javascript:;" gtid="" class="">
+                                <span>16G</span>
+                            </a>
+                            <a href="javascript:;" gtid="" class="">
+                                <span>32G</span>
+                            </a>
+                            <a href="javascript:;" gtid="" class="">
+                                <span>64G</span>
                             </a>
                             <!-- /foreach -->
                         </dd>
@@ -118,15 +156,24 @@
                 </div>
                 <!-- 支持 / 服务 -->
                 <div class="property-service">
-                	<!-- 支持 -->
-                    <dl class="property-service-suda clearfix">
+                    <!-- 支持 -->
+                    <dl class="property-service-provider clearfix">
                         <dt class="vm-metatit">
                             支<span class="s-space"></span>持 :
+                        </dt>
+                        <dd class="clearfix">
+                            花呗分期    顺丰包邮    7天无理由退货
+                        </dd>
+                    </dl>
+                	<!-- 配送 -->
+                    <dl class="property-service-suda clearfix">
+                        <dt class="vm-metatit">
+                            配<span class="s-space"></span>送 :
                         </dt>
                         <dd class="mod-site clearfix" >
                             <div class="site-selector">
                                 <div class="text">
-                                    河南 郑州 【请选择】
+                                    福建 泉州 【请选择】
                                 </div>
 
                             </div>

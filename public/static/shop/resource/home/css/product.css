@@ -367,12 +367,14 @@ section .container .row .property .property-service {
   border-top: 1px solid #e5e5e5;
 }
 section .container .row .property .property-service .property-service-suda {
-  margin: 20px 0;
-  line-height: 50px;
+/*  margin: 20px 0;*/
+  /*line-height: 50px;*/
+  line-height: 35px;
   overflow: hidden;
 }
 section .container .row .property .property-service .property-service-suda .vm-metatit {
-  line-height: 50px;
+  /*line-height: 50px;*/
+  line-height: 35px;
   float: left;
   padding-left: 10px;
   width: 65px;
@@ -396,7 +398,8 @@ section .container .row .property .property-service .property-service-suda .mod-
   border: 1px solid #e5e5e5;
 }
 section .container .row .property .property-service .property-service-provider {
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
+  margin: 10px auto;
   overflow: hidden;
   line-height: 36px;
 }

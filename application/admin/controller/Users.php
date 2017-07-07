@@ -34,15 +34,37 @@ class Users extends Controller
     // 用户收货地址管理
     public function address()
     {
-        $list= Address::where('')->paginate(3);
-        $this->assign('list',$list);
+        // 当传递用户id时进查询单用户地址
+        // 否则查询所有地址
+        if(input('param.id')){
+            $id = input('param.id');
+            // 获取所有地址
+            $list = UserModel::get($id)->address;
+            // 统计条数
+            $count =count($list);
+            $this->assign('count',$count);
+            $this->assign('list',$list);
+        } else {
+            $count = Address::count('id');
+            $list= Address::where('')->paginate(3);
+            $this->assign('list',$list);
+            $this->assign('count',$count);
+        }
         return $this->fetch();
     }
      //用户地址修改
     public function addressMdy()
     {
-        dump(input(''));
-        dump($_POST);
+
+        if (input('param.id')) {
+            $id = input('param.id');
+            $add = Address::get($id);
+            $arr = input('param.');
+            unset($arr['id']);
+            $add->save($arr);
+            // 返回数据
+            $this->success('修改成功');
+        }
         return $this->fetch();
     }
       //用户地址删除
@@ -130,7 +152,8 @@ class Users extends Controller
     public function toMany()
     {
         $user = UserModel::get(8);
-        $add = Address::get(1);
+        // dump($user);
+        // $add = Address::get(1);
         $data = [
                     'person'=>'李新',
                     'phone'=>'1358877788',
@@ -138,32 +161,17 @@ class Users extends Controller
                     'first'=>'0',
                 ];
         // $user->address()->save($data);
-        // $user->address()->attach(1);
-        // $user->address()->detach(1);
-        // $add = Address::get(8);
+        // $user->address()->attach(6);
+        // $user->address()->detach(6);
+        $add = Address::get(6);
         // $a = $add->user()->username;这是无法实现的，因为本身对多，没有具体指向的用户名
-                // dump($user->address);
-                $arr = $user->address;//获取所有对应地址信息
-              /*  foreach ($arr as $value) {
-                    dump($value->toArray());
-                }*/
-                /*
-                 array (size=9)
-              'id' => int 9
-              'person' => string '李新' (length=6)
-              'phone' => string '1358877788' (length=10)
-              'location' => string '福建泉州' (length=12)
-              'first' => int 0
-              'create_time' => string '2017-07-07 01:32:09' (length=19)
-              'update_time' => string '2017-07-07 01:32:09' (length=19)
-              'delete_time' => null
-              'pivot' =>
-                array (size=3)
-                  'id' => int 2
-                  'user_id' => int 8
-                  'address_id' => int 9
-                 */
-        $att = $add->user;
+                //dump($user->address);
+               // $arr = $user->address;//获取所有对应地址信息
+               //  foreach ($arr as $value) {
+               //      dump($value->toArray());
+               //  }
+
+           $att = $add->user;
 
         foreach ($att as $value) {
             dump($value->toArray());

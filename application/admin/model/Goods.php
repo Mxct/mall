@@ -15,4 +15,9 @@ class Goods extends Model
 				];
 		return $arr[$status];
 	}
+	// 建立和attr表多对多
+	public function attr()
+	{
+		return $this->belongsToMany('Attr','goodtoattr');
+	}
 }
