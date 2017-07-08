@@ -7,7 +7,6 @@ use think\Request;
 use app\admin\model\Goods as GoodsModel;
 use app\admin\model\Attr;
 use app\admin\model\Goodtoattr;
-
 class Goods extends Controller
 {
 	// 商品管理
@@ -29,11 +28,42 @@ class Goods extends Controller
             $id = input('get.id');
             $single = GoodsModel::get($id);
             $this->assign('single',$single);
+            // 属性详细列表
             
-
+            $GNum = Goodtoattr::where('goods_id',$id)->select();
+            $set=[];
+            $set1=[];
+            foreach ($GNum as $value) {
+                $arr1 = $value->toArray();
+                array_push($set, $arr1);
+                if($arr1['imie'] !== null){
+                    array_push($set1, $arr1['imie']);
+                }
+            }
+            $arr2 = array_column($set, 'attr_id');
+            // dump($arr2);
+            // 每部手机的三个属性组成的2维数组[[1,2,3],[3,5,6]]
+            $arr3 = array_chunk($arr2,3);
+            // var_dump($arr3);
+            // 重新组合数组，每台手机一条数据
+            $result=[];
+            foreach ($arr3 as $key=>$value) {
+                foreach ($set1 as $key1=>$rel) {
+                    if($key == $key1){
+                        array_push($value,$rel);
+                        array_push($result,$value);
+                    }
+                }
+            }
+            $this->assign('result',$result);
+            // 所有属性
+            $attrList = Db::name('attr')->select();
+            $this->assign('attrList',$attrList);
+            
             return $this->fetch();
         }
     }
+
     // 添加商品属性
     public function addattr()
     {
@@ -59,8 +89,12 @@ class Goods extends Controller
             $goods->attr()->attach($memoryid);
             $id = Goodtoattr::max('id');
             Goodtoattr::get($id)->save(['mid'=>'3','money'=>input('post.money3')]);
+            // 添加库存
+            $goods->num = $goods->num+1;
+            $goods->save(['num'=>$goods->num]);
             // 生成唯一imie订单号
             $imie = mt_rand(1,9) . addzeor($gid) . addzeor($netid) . addzeor($colorid) . addzeor($memoryid) . addzeor($id);
+            // 添加唯一imie
             $result = Goodtoattr::get($id)->save(['imie'=>$imie]);
             if($result){
                 $this->success('添加成功');
@@ -109,6 +143,7 @@ class Goods extends Controller
             return $this->fetch();
         }
     }
+
 // 测试多对多
     public function tomany()
     {

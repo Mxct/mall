@@ -12,7 +12,48 @@
         </div>
         <div class="panel-body">
                 <div class="col-sm-12" id="spec">
+                <form action="" method="post">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th width="80">编号</th>
+                            <th>网络类型</th>
+                            <th>颜色</th>
+                            <th>内存</th>
+                            <th width="200">操作</th>
+                        </tr>
 
+                        </thead>
+                        <tbody>
+                        <!-- foreach -->
+                         {volist name="result" id="info"}
+                        <tr>
+                            <td>{$info.3}</td>
+                            {volist name="attrList" id="attr"}
+                                {if $attr.id == $info.0}
+                                    <td>{$attr.attrs}</td>
+                                {/if}
+                                {if $attr.id == $info.1}
+                                    <td>{$attr.attrs}</td>
+                                {/if}
+                                {if $attr.id == $info.2}
+                                    <td>{$attr.attrs}</td>
+                                {/if}
+                            {/volist}
+                            <td>
+                                <div class="btn-group">
+                                    <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="javascript:;" onclick="del()">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {/volist}
+                        <!-- foreach -->
+                        </tbody>
+                    </table>
+                </form>
                 </div>
             </div>
         </div>

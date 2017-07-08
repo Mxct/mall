@@ -98,6 +98,31 @@ function addzeor($a)
 		return $a;
 	}
 }
+
+//二维数组去掉重复值
+function array_unique_dbl($array2D)
+{
+	foreach ($array2D as $v){
+		$v=join(',',$v); //降维,也可以用implode,将一维数组转换为用逗号连接的字符串
+		$temp[]=$v;
+	}
+	$temp=array_unique($temp); //去掉重复的字符串,也就是重复的一维数组
+	foreach ($temp as $k => $v){
+		$temp[$k]=explode(',',$v); //再将拆开的数组重新组装
+	}
+	return $temp;
+}
+
+// 商品属性分类
+function attrClass($a)
+{
+	$arr = [
+			'1' =>'网络类型',
+			'2' =>'颜色',
+			'3' =>'内存',
+			];
+	return $arr[$a];
+}
 // 生成随机密码
 function randMix()
 {

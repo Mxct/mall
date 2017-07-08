@@ -53,56 +53,29 @@
                     </dl>
                 </div>
                 <div class="property-set">
-                    <!-- foreach -->
+                    <!-- 遍历mid，属性类型 -->
+                    {volist name="attrsN" id="valL"}
                     <dl class="property-set-sale">
-                        <dt class="vm-metatit">网络类型</dt>
+                        <dt class="vm-metatit">{php}echo attrClass($valL);{/php}</dt>    
                         <dd class="clearfix net">
-                            <!-- foreach -->
+                            <!-- 遍历属性 -->
+                            {volist name="attrsV" id="valS"}
+                            <!-- 判断属性是否和类型相等 -->
+                            {if $valS['0'] == $valL}
                             <a href="javascript:;" gtid="" class="">
-                                <span>全网通</span>
+                                <!-- 遍历所有属性 -->
+                                {volist name="attrList" id="attr"}
+                                    <!-- 判断并替换属性中文 -->
+                                    {if $attr['id'] == $valS['1']}
+                                        <span>{$attr['attrs']}</span>
+                                    {/if}
+                                {/volist}
                             </a>
-                            <a href="javascript:;" gtid="" class="">
-                                <span>移动4G</span>
-                            </a>
-                            <a href="javascript:;" gtid="" class="">
-                                <span>联通4G</span>
-                            </a>
-                            <!-- /foreach -->
+                            {/if}
+                            {/volist}
                         </dd>
                     </dl>
-                    <dl class="property-set-sale">
-                        <dt class="vm-metatit">颜色</dt>
-                        <dd class="clearfix net">
-                            <!-- foreach -->
-                            <a href="javascript:;" gtid="" class="">
-                                <span>香槟金</span>
-                            </a>
-                            <a href="javascript:;" gtid="" class="">
-                                <span>深空灰</span>
-                            </a>
-                            <a href="javascript:;" gtid="" class="">
-                                <span>月光银</span>
-                            </a>
-                            <!-- /foreach -->
-                        </dd>
-                    </dl>
-                    <dl class="property-set-sale">
-                        <dt class="vm-metatit">内存</dt>
-                        <dd class="clearfix net">
-                            <!-- foreach -->
-                            <a href="javascript:;" gtid="" class="">
-                                <span>16G</span>
-                            </a>
-                            <a href="javascript:;" gtid="" class="">
-                                <span>32G</span>
-                            </a>
-                            <a href="javascript:;" gtid="" class="">
-                                <span>64G</span>
-                            </a>
-                            <!-- /foreach -->
-                        </dd>
-                    </dl>
-                    <!-- /foreach -->
+                    {/volist}
                     <script>
                         $(function () {
                             $('.net a').click(function () {
@@ -207,13 +180,13 @@
                 </div>
                 <!-- 立即购买 / 立即购买 -->
                 <div>
-	                <a href="javascript:;" id="J_btnBuy" class="btn btn-danger btn-lg">
+	                <a href="javascript:;" id="J_btnBuy" class="btn danger btn-lg">
 	                    <i></i>
 	                    立即购买
 	                </a>
 	                <a href="javascript:;" id="J_btnBuy" class="btn btn-primary btn-lg">
 	                    <i></i>
-	                    立即购买
+	                    加入购物车
 	                </a>	
 	                <!-- <a href="javascript:;" id="J_favorite" class="vm-favorite">
 	                    <i class="icon icon-star icon-large"></i>

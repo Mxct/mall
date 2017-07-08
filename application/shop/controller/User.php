@@ -9,6 +9,10 @@ class User extends Controller
 	// 用户个人中心
 	public function index()
 	{
+		// 获取cookie中的uid为用户id
+		$id = cookie('uid');
+		$list = UserModel::get($id);
+		$this->assign('list',$list);
 		return $this->fetch();
 	}
 	// 用户忘记密码找回
@@ -41,5 +45,45 @@ class User extends Controller
 			$this->assign('mima',$secret);
 			return $this->fetch();
 		}
+	}
+	// 用户信息修改
+	public function info()
+	{
+		// 处理修改用户数据,cookie中的uid为用户id
+		$id = cookie('uid');
+        $user = UserModel::get($id);
+        // 用户名修改
+        $user->save(['username'=>input('param.username')]);
+        // 密码修改
+        if(input('param.password')) {
+        	$user->save(['password'=>md5(trim(input('param.password')))]);
+        }
+        // email\phone修改处理
+        $user->save(['email'=>input('param.email')]);
+        $user->save(['phone'=>input('param.phone')]);
+
+		// 处理上传图片
+		$file = request()->file('photo');
+        // 判断上传是否成功
+        if(isset($file)){
+            $info = $file->move(ROOT_PATH . 'public/uploads/icons');
+            if($info){
+                $a = $info->getSaveName();
+                $imgp= str_replace("\\","/",$a);
+                $imgpath = '/uploads/icons/'.$imgp;
+            } else {
+                echo $file->getError();
+            }
+        	if(!empty($result)){
+            	$this->success('修改成功');
+        	}else{
+            	$this->error('修改失败');
+        	}
+        	// 保存路径到数据库
+        	if(!empty($imgpath)) {
+        		$result = $user->save(['photo'=>$imgpath]);
+        	}
+        	$this->success('个人信息修改成功');
+        }
 	}
 }
