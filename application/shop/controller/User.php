@@ -167,4 +167,20 @@ class User extends Controller
         	$this->success('个人信息修改成功');
         }
 	}
+	// 用户订单展示
+	public function order()
+	{
+		// 获取cookie中的uid为用户id
+		$id = cookie('uid');
+		$list = UserModel::get($id);
+		// 查询用户收货地址
+
+		// 地址个数
+
+
+
+		$this->assign('list',$list);
+		$this->assign('usertype',cookie('usertype'));
+		return $this->fetch();
+	}
 }
