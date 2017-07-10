@@ -19,7 +19,32 @@ class Detail extends Controller
     		$this->assign('Ginfo',$Ginfo);
             // 属性详细列表
             $good = Goods::get($id);
-            $goodattrs = $good->attr;//获取所有对应属性
+            $goodattrs = $good->attr;//获取所有对应属性,需要去除已经出库的
+            // 总库存
+            $count = count($goodattrs)/3;
+
+            // 所有单品数组([1,4,9])
+            $mark=[1,4,9];
+            $mark1 = [];
+             foreach ($goodattrs as $value) {
+                $goodattr=$value->toArray();
+                // 将mid和attr_id压入mark1数组中
+                array_push($mark1, $goodattr['pivot']['attr_id']);
+            }
+            // dump($mark1);
+            $mark2 = array_chunk($mark1,3);
+            // dump($mark2);
+            // 匹配库存数量
+            $a=0;
+            foreach ($mark2 as $value) {
+                if($mark == $value) {
+                    $a++;
+                }
+            }
+            var_dump($a);//库存数量
+
+
+            // attrs--mid
             $set1=[];
             $set2=[];
             foreach ($goodattrs as $value) {
@@ -80,6 +105,7 @@ class Detail extends Controller
                 }
                 echo '<br />';
             }*/
+            $this->assign('count',$count);//gid
             $this->assign('gid',$id);//gid
             $this->assign('attrsN',$new2);//mid
             $this->assign('attrsV',$goodattr1);//attr_id
@@ -99,7 +125,32 @@ class Detail extends Controller
     // 返回判断库存数量
     public function storeAj()
     {
-        // var_dump($_GET);
-        echo '1111';
+        $id = $_GET['gid'];
+        // 属性详细列表
+        $good = Goods::get($id);
+        $goodattrs = $good->attr;//获取所有对应属性
+
+        unset($_GET['gid']);
+        $mark=$_GET;
+            $mark1 = [];
+             foreach ($goodattrs as $value) {
+                $goodattr=$value->toArray();
+                // 将mid和attr_id压入mark1数组中
+                array_push($mark1, $goodattr['pivot']['attr_id']);
+            }
+            $mark2 = array_chunk($mark1,3);
+            // 匹配库存数量
+            $a=0;
+            foreach ($mark2 as $value) {
+                if($mark == $value) {
+                    $a++;
+                }
+            }
+            echo $a;//库存数量
+    }
+    // 判断提交订单数据拿到数据组合
+    public function buy()
+    {
+        var_dump($_GET);
     }
 }

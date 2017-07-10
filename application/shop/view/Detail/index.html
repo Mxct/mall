@@ -252,7 +252,8 @@
                                         {volist name="mon" id="money"}
                                             {if $money['0'] == $valS['1']}
                                                 <a href="javascript:;" gtid="" class="" attr="{$attr['id']}" money="{$money[1]}">
-                                                    <span attr="{$attr['id']}" money="{$money[1]}">{$attr['attrs']}</span>
+                                                    {$attr['attrs']}
+                                                    <!-- <span attr="{$attr['id']}" money="{$money[1]}"></span> -->
                                                 </a>
                                             {/if}
                                         {/volist}
@@ -268,18 +269,19 @@
                 </div>
                 <!-- /3x3区域 -->
                 <!-- 显示库存 -->
-                </div>库存:<div id="goodstore1"></div>&nbsp&nbsp&nbsp件
+                </div>总库存:{$count}&nbsp&nbsp
+                具体型号库存量:<div id="goodstore1"></div>&nbsp&nbsp&nbsp件
                 <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
                 <script type="text/javascript">
-                    $('#goodstore').mouseenter(function () {
+                    $('#goodstore').mouseover(function () {
                         // 发送数据组合(attr x 3)查询库存并返回
                         var gid = $('#J_price').attr('gid')
                         var attr1 = $('.selected').eq(0).attr('attr');
                         var attr2 = $('.selected').eq(1).attr('attr');
                         var attr3 = $('.selected').eq(2).attr('attr');
                         // 发送Ajax请求
-                           $.get("{:url('/shop/Detail/storeAj')}",{gid:gid,attr1:attr1,attr2:attr2,attr3:attr3},store,'text');
-                        // callback函数/*attr2:attr2,attr3:attr3*/
+                           $.get("{:url('/shop/Detail/storeAj')}",{gid:gid,'0':attr1,'1':attr2,'2':attr3},store,'text');
+                        // callback函数
                             function store(data)
                             {
                                 $('#goodstore1').text(data);
@@ -332,10 +334,11 @@
                         <dd class="clearfix">
                             <div class="mod-control">
                                 <a id="jian" href="javascript:;" class="vm-minus disabled">-</a>
-                                <input type="text" name="" id="J_quantity" value="1" />
+                                <input type="text" name="" id="J_quantity" value="0" />
                                 <a id="jia" href="javascript:;" class="vm-plus disabled">+</a>
                             </div>
                         </dd>
+                        信息汇总:<dd id="message"></dd>
                     </dl>
                 </div>
                 <!-- 立即购买 / 立即购买 -->
@@ -358,6 +361,25 @@
 						<em id="J_favoriteTipsClose">╳</em>
 					</span> -->
 	            </div>
+                <!-- 获取商品信息 -->
+                <script type="text/javascript">
+                    $(function () {
+                        $('#J_btnBuy').click(function () {
+                            // 发送数据组合(attr x 3)查询库存并返回
+                            var src = $('img:first').attr('src')
+                            var text1 = $('.selected').eq(0).text();
+                            var text2 = $('.selected').eq(1).text();
+                            var text3 = $('.selected').eq(2).text();
+                            // 发送Ajax请求
+                               $.get("{:url('/shop/Detail/buy')}",{src:src,'0':text1,'1':text2,'2':text3},showmsg,'text');
+                            // callback函数
+                                function showmsg(data)
+                                {
+                                    $('#message').text(data);
+                                }
+                            });
+                    });
+                </script>
 	            <!-- <script>
 	                $(function () {
 	                    $('#J_favorite').click(function () {
@@ -595,17 +617,18 @@
     $(function () {
         $('#jia').click(function () {
             var oldValue = $('#J_quantity').val();
+            var store = parseInt($('#goodstore1').text());
             oldValue++;
-            if (oldValue > 99){
-                oldValue = 99;
+            if (oldValue >= store){
+                oldValue = store;
             }
             $('#J_quantity').val(oldValue);
         })
         $('#jian').click(function () {
             var oldValue = $('#J_quantity').val();
             oldValue--;
-            if (oldValue <= 1){
-                oldValue = 1;
+            if (oldValue <= 0){
+                oldValue = 0;
             }
             $('#J_quantity').val(oldValue);
         })
