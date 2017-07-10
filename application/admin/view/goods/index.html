@@ -52,6 +52,8 @@
                                 <button data-toggle="dropdown" class="btn btn-primary btn-xs dropdown-toggle">操作 <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                 	<li><a href="{:url('list'),'?id=' . $val.id}">货品管理</a></li>
+                                    <li><a href="{:url('detail'),'?id=' . $val.id}">商品详情</a></li>
+                                    <li><a href="{:url('adddetail'),'?id=' . $val.id}">添加详情</a></li>
                                     <li><a href="{:url('addattr'),'?id=' . $val.id}">添加属性</a></li>
                                     <li class="divider"></li>
                                     <li><a href="{:url('edit'),'?id=' . $val.id}">编辑</a></li>

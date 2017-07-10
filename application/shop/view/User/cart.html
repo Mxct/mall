@@ -11,7 +11,7 @@
 		  <div class="col-md-12">
 			  	<ol class="breadcrumb">
 				  <li><a href="{:url('shop/user/index')}">用户设置中心</a></li>
-				  <li class="active">收货地址</li>
+				  <li class="active">购物车</li>
 				</ol>
 			</div>
 		<div class="row">
@@ -64,200 +64,133 @@
 				  		<ul class="nav nav-pills ">
 						  <li role="presentation" >
 						  	<span class="glyphicon glyphicon-user btn" aria-hidden="true">&nbsp登陆用户名：{$list.username}</span>
-						  	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  	&nbsp&nbsp&nbsp&nbsp
 						  </li>
 						  <li role="presentation" >
 						  	<span class="glyphicon glyphicon-piggy-bank btn" aria-hidden="true">&nbsp用户总积分：{$list.score}</span>
-						  	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  	&nbsp&nbsp&nbsp&nbsp
 						  </li>
 						  <li role="presentation" >
 						  	<span class="glyphicon glyphicon-phone btn" aria-hidden="true">&nbsp绑定手机号：{$list.phone}</span>
-						  	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  	&nbsp&nbsp&nbsp&nbsp
 						  </li>
 						  <li role="presentation" >
 						  	<span class="glyphicon glyphicon-envelope btn" aria-hidden="true">&nbsp&nbsp邮箱地址：{$list.email}</span>
-						  	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  	&nbsp&nbsp&nbsp&nbsp
 						  </li>
 						</ul>
 				  	<!-- /信息展示 -->
 		  		</div>
 		  	</div>
-		<!-- 行块2 -->
-			<div class="row-md" style="border-radius: 10px;border:1px solid #dddddd;overflow: hidden;background-color:#FAFAFC;margin-top: 10px;">
-				<div class="col-md-12">
-					<!-- 收货地址 -->
-					<div class="panel panel-default" style="margin-top: 20px;">
-					  <!-- Default panel contents -->
-					  <div class="row">
-					  	<div class="col-md-10">
-					  		<div class="panel-heading">
-					  			<div class=""></div>
-					  			 <span class="glyphicon glyphicon-map-marker" aria-hidden="true">&nbsp收货地址</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span class="badge">{$countAdd}&nbsp条</span>
-					  		</div>
-					  	</div>
-					  	<div class="col-md-2 panel-heading" >
-					  			<span class="glyphicon glyphicon-plus" aria-hidden="true" data-toggle="modal" data-target="#myModal" style="cursor:pointer;">&nbsp添加地址</span>
-					  		<!-- 编辑框 -->
-					  			<form class="form-horizontal" id="form" action="{:url('shop/user/addlocation','','php')}" method="post">
-		                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		                                  <div class="modal-dialog" role="document">
-		                                    <div class="modal-content">
-		                                      <div class="modal-header">
-		                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		                                        <h4 class="modal-title" id="myModalLabel">地址信息编辑</h4>
-		                                      </div>
-		                                      <div class="modal-body">
-		                                       <!-- 编辑表单内容 -->
-		                                            <table class="table table-striped table-hover">
-		                                                <tbody>
-		                                                <tr>
-		                                                    <td>收货人姓名</td>
-		                                                    <td>
-		                                                        <input type="text" name="person" value="" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-		                                                    </td>
-		                                                </tr>
-		                                                <tr>
-		                                                    <td>电话号码</td>
-		                                                    <td>
-		                                                        <input type="text" name="phone" value="" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-		                                                    </td>
-		                                                </tr>
-		                                                <tr>
-		                                                    <td>收货地址</td>
-		                                                    <td>
-		                                                        <input type="text" name="location" value="" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-		                                                    </td>
-		                                                </tr>
-		                                                <tr>
-		                                                    <td>默认状态</td>
-		                                                    <td>
-			                                                   <input type="radio" name="first" value="1">默认
-			                                                   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			                                                   <input type="radio" name="first" value="0">常用
-		                                                    </td>
-		                                                </tr>
-		                                                </tbody>
-		                                            </table>
-		                                       <!-- /编辑表单内容 -->
-		                                      </div>
-		                                      <div class="modal-footer">
-		                                      <button type="submit" class="btn btn-primary">提交</button>
-		                                      </div>
-		                                    </div>
-		                                  </div>
-		                                </div>
-		                            </form>
-					  		<!-- /编辑框 -->
-					  	</div>
-					  </div>
-					  <!-- List group -->
-						 <table class="table table-hover table-striped">
-						  	<tr>
-						  		<th>列表</th>
-						  		<th>收货人</th>
-						  		<th>电话号码</th>
-						  		<th>地址详情</th>
-						  		<th>
-						  			默认<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						  		</th>
-						  		<th>添加时间</th>
-						  		<!-- <td>删除</td> -->
-						  		<th>编辑</th>
-						  	</tr>
-						  <!-- 遍历 -->
-						{volist name="addResult" id="val"}
-					  		<tr>
-					  			<td>
-					  				<span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp</span>
-					  			</td>
-					  			<td>{$val.person}</td>
-					  			<td>{$val.phone}</td>
-					  			<td>{$val.location}</td>
-					  			<td>
-					  				<!-- phpecho addressStuval'first');/php -->
-									<!-- 默认标志 -->
-									{if $val['first']==1}
-										<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-									{else}
-										<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-									{/if}
-					  			</td>
-					  			<td>{$val.create_time}</td>
-					  			<td>
-					  				<span class="glyphicon glyphicon-pencil" aria-hidden="true" data-toggle="modal" data-target="#myModal{$val.id}" style="cursor:pointer;"></span>
-					  			</td>
-					  			<!--||||-->
-					  			<td>
-		                        <!-- 模态框 修改地址-->
-		                            <form class="form-horizontal" id="form{$val.id}" action="{:url('shop/user/addressMdy','','php')}" method="post">
-		                                <div class="modal fade" id="myModal{$val.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		                                  <div class="modal-dialog" role="document">
-		                                    <div class="modal-content">
-		                                      <div class="modal-header">
-		                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		                                        <h4 class="modal-title" id="myModalLabel">地址信息编辑</h4>
-		                                      </div>
-		                                      <div class="modal-body">
-		                                       <!-- 编辑表单内容 -->
-		                                            <table class="table table-striped table-hover">
-		                                                <tbody>
-		                                                <tr>
-		                                                    <td>用户名</td>
-		                                                    <td>
-		                                                        <input type="text" name="person" value="{$val.person}" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-		                                                    </td>
-		                                                </tr>
-		                                                <tr>
-		                                                    <td>电话号码</td>
-		                                                    <td>
-		                                                        <input type="text" name="phone" value="{$val.phone}" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-		                                                    </td>
-		                                                </tr>
-		                                                <tr>
-		                                                    <td>收货地址</td>
-		                                                    <td>
-		                                                        <input type="text" name="location" value="{$val.location}" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
-		                                                    </td>
-		                                                </tr>
-		                                                <tr>
-		                                                    <td>默认状态</td>
-		                                                    <td>
-		                                                        <input type="text" name="first" value="{$val.first}" required class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status" placeholder="请填写状态类型：1:默认;0:常用">
-		                                                    </td>
-		                                                    <td>
-		                                                        <input type="hidden" name="id" value="{$val.id}">
-		                                                    </td>
-		                                                </tr>
-		                                                </tbody>
-		                                            </table>
-		                                       <!-- /编辑表单内容 -->
-		                                      </div>
-		                                      <div class="modal-footer">
-		                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-		                                        <span style="color:red;"><a href="{:url('shop/user/addressDel','id='.$val.id,'php')}" class="del_user">删除</a></span>
-		                                        <button type="submit" class="btn btn-primary">提交</button>
-		                                      </div>
-		                                    </div>
-		                                  </div>
-		                                </div>
-		                            </form>
-		                        <!-- /模态框 -->
-		                        </td>
-					  			<!-- |||| -->
-					  		</tr>
-						{/volist}
-						<!-- /遍历 -->
-					</table>
-					</div>
+		<!-- 行块2-订单选项卡 -->
+			<div class="row">
+				<div class="col-md-12" style="margin-top: 30px;">
+					<!-- 选项卡主体 -->
+						<div>
+						  <!-- Nav tabs -->
+						  <ul class="nav nav-tabs" role="tablist">
+						    <li role="presentation" class="active">
+						    	<a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+						    		<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">&nbsp
+						    		购物车
+						    		</span>
+						    	</a>
+						    </li>
+						   <!--  <li role="presentation">
+						    	<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+						    		<span class="glyphicon glyphicon-credit-card" aria-hidden="true">&nbsp
+						    		待付款
+						    		</span>
+						    	</a>
+						    </li>
+						    <li role="presentation">
+						    	<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+						    		<span class="glyphicon glyphicon-pushpin" aria-hidden="true">&nbsp
+						    		待发货
+						    		</span>
+						    	</a>
+						    </li>
+						    <li role="presentation">
+						    	<a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+						    		<span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp
+						    		已发货
+						    		</span>
+						    	</a>
+						    </li> -->
+						  </ul>
+
+						  <!-- Tab panes -->
+						  <div class="tab-content">
+						  	<!-- 全部订单 -->
+						    <div role="tabpanel" class="tab-pane active" id="home">
+								<div class="row-md" style="border-radius: 10px;border:1px solid #dddddd;overflow: hidden;background-color:#FAFAFC;margin-top: 10px;">
+									<div class="col-md-12">
+									<!-- 收货地址 -->
+									<div class="panel panel-default" style="margin-top: 20px;">
+									  <!-- Default panel contents -->
+									  <div class="row">
+									  	<div class="col-md-10">
+									  		<div class="panel-heading">
+									  			<div class=""></div>
+									  			 <span class="glyphicon glyphicon-tag" aria-hidden="true">&nbsp订单数量</span>&nbsp&nbsp
+									  			 &nbsp&nbsp&nbsp&nbsp<span class="badge">&nbsp条</span>
+									  		</div>
+									  	</div>
+									  	<div class="col-md-2 panel-heading" >
+									  			<!-- <span class="glyphicon glyphicon-plus" aria-hidden="true" data-toggle="modal" data-target="#myModal" style="cursor:pointer;">&nbsp添加地址</span> -->
+									  	</div>
+									  </div>
+									  <!-- List group -->
+										 <table class="table table-hover table-striped">
+										  	<tr>
+										  		<th>列表</th>
+										  		<th>订单明细</th>
+										  		<th>售后</th>
+										  		<th>金额</th>
+										  		<th>
+										  			状态<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+										  		</th>
+										  		<th>操作</th>
+										  	</tr>
+										  <!-- 遍历 -->
+									  		<tr>
+									  			<td>
+									  				<span class="glyphicon glyphicon-paperclip" aria-hidden="true">&nbsp</span>
+									  			</td>
+									  			<td>val.person}</td>
+									  			<td>val.phone}</td>
+									  			<td>val.location}</td>
+									  			<td>
+									  				<!-- phpecho addressStuval'first');/php -->
+													<!-- 默认标志 -->
+
+														<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+
+														<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+
+									  			</td>
+									  			<td>
+									  				<span class="glyphicon glyphicon-pencil" aria-hidden="true" style="cursor:pointer;"></span>
+									  			</td>
+									  		</tr>
+										<!-- /遍历 -->
+										</table>
+									</div>
+								</div>
+							</div>
+						    </div>
+						    <!-- 全部订单 -->
+						    <!-- <div role="tabpanel" class="tab-pane" id="profile">profile</div>
+						    <div role="tabpanel" class="tab-pane" id="messages">messages</div>
+						    <div role="tabpanel" class="tab-pane" id="settings">settings</div> -->
+						  </div>
+						</div>
+					<!-- /选项卡主体 -->
 				</div>
 			</div>
 		</div>
-		<!-- 行块3 -->
-		   	<!-- <div class="row-md" style="border-radius: 10px;border:1px solid #dddddd;overflow: hidden;background-color:#FAFAFC;margin-top: 30px;">
-		  		<div class="col-md-11"> -->
 		  		</div>
 		  	</div>
-		  	<!-- 行块3结束 -->
 		  </div>
 		</div>
 	</div>

@@ -1,6 +1,144 @@
-{include file="herder/index"}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>魅族商城</title>
+    <link rel="stylesheet" type="text/css" href="/static/shop/detail/css/common.css"/>
+    <link rel="stylesheet" href="/static/shop/detail/css/product.css" />
+    <link rel="stylesheet" href="/static/shop/detail/css/font-awesome.min.css">
+    <script src="/static/shop/detail/js/jquery.min.js"></script>
+    <script src="/static/shop/detail/js/index.js"></script>
+    <script src="/static/shop/detail/js/product.js"></script>
+<script charset="utf-8" src="js/site-lib.js"></script>
+<script type="text/javascript" src="js/site-base.js"></script>
+<script type="text/javascript" src="js/pkg-detail-f23a56f.js"></script>
+<link rel="stylesheet" href="css/site-base.css" />
+<link rel="stylesheet" href="css/main-4fc753f.css">
+<script src="/static/bootstrap/jQuery1.11.3.min.css"></script>
+ <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
+</head>
+<body>
+<header>
+    <div class="top">
+        <div class="head">
+            <div class="top-left">
+                <!-- <a href="{:url('/index/index/index')}">魅族官网</a> -->
+                <a href="{:url('/shop/index/index')}">魅族商城</a>
+                <a href="">Flyme</a>
+                <a href="">专卖店</a>
+                <a href="">服务</a>
+                <a href="">社区</a>
+            </div>
+            <div class="top-right">
+                <ul class="top-info">
+                    <li>
+                        <a ><!-- 我的收藏 -->
 
-<!-- <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+                            <div class="top-new">
+                                Order
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{:url('/shop/user/orders')}">我的订单</a>
+                    </li>
+
+                    <li>
+                    <!-- 判断cookie用户是否登陆 -->
+                        {if !empty(cookie('username'))}
+                            <a href="{:url('/shop/user/index')}">{php}echo cookie('username');{/php}</a>
+                            Level:<a >{php}echo grade(cookie('score'));{/php}</a>
+                            <a href="{:url('/shop/index/logout')}">退出</a>
+                        {else}
+                            <a href="{:url('/shop/index/login')}">登录</a>
+                        {/if}
+                    </li>
+                    <li>
+                        <a href="{:url('/shop/index/reg')}">注册</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="nav-mid">
+            <div class="logo">
+                <a href="{:url('shop/index/index')}">
+                    <img src="/static/shop/resource/images/entry/logo-header.png" alt="">
+                </a>
+            </div>
+            <div class="head-nav">
+                <ul>
+                    <li><a class="top-item" href="">PRO手机</a></li>
+                    <li><a class="top-item" href="">魅蓝手机</a></li>
+                    <li><a class="top-item" href="">MX手机</a></li>
+                    <li><a class="top-item" href="">精选配件</a></li>
+                    <li><a class="top-item" href="">智能硬件</a></li>
+                </ul>
+                <div class="top-hide">
+                    <div class="container">
+                        <ul class="menu-list">
+                            <li class="">
+                                <a href="">
+                                    <div class="figure">
+                                        <img src="/static/shop/resource/images/entry/1.png" alt="">
+                                    </div>
+                                    <div class="pro-name">魅族PRO6</div>
+                                    <div class="price">￥2499</div>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu-list">
+                            <li class="">
+                                <a href="">
+                                    <div class="figure">
+                                        <img src="/static/shop/resource/images/entry/1.png" alt="">
+                                    </div>
+                                    <div class="pro-name">魅族PRO6</div>
+                                    <div class="price">￥2488</div>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu-list">
+                            <li class="">
+                                <a href="">
+                                    <div class="figure">
+                                        <img src="/static/shop/resource/images/entry/1.png" alt="">
+                                    </div>
+                                    <p class="pro-name">魅族PRO645</p>
+                                    <div class="price">￥2477</div>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu-list">
+                            <li class="">
+                                <a href="">
+                                    <div class="figure">
+                                        <img src="/static/shop/resource/images/entry/1.png" alt="">
+                                    </div>
+                                    <div class="pro-name">魅族PRO6</div>
+                                    <div class="price">￥2466</div>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu-list">
+                            <li class="">
+                                <a href="">
+                                    <div class="figure">
+                                        <img src="/static/shop/resource/images/entry/1.png" alt="">
+                                    </div>
+                                    <div class="pro-name">魅族PRO6</div>
+                                    <div class="price">￥2455</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
 <section>
     <div class="container">
         <div class="crumbs clearfix">
@@ -10,26 +148,65 @@
         <div class="row">
             <div class="preview" id="preview">
                 <div class="preview-booth">
-                    <!-- foreach -->
+                    {if $imgslist.img1}
                     <a href="javascript:;" id="J_imgBooth" class="hide">
+                        <img src="{$imgslist.img1}" height="375" width="375"/>
+                    </a>
+                    {/if}
+                    {if $imgslist.img2}
+                    <a href="javascript:;" id="J_imgBooth" class="hide">
+                        <img src="{$imgslist.img2}" height="375" width="375"/>
+                    </a>
+                    {/if}
+                    {if $imgslist.img3}
+                    <a href="javascript:;" id="J_imgBooth" class="hide">
+                        <img src="{$imgslist.img3}" height="375" width="375"/>
+                    </a>
+                    {/if}
+                    {if $imgslist.img4}
+                    <a href="javascript:;" id="J_imgBooth" class="hide">
+                        <img src="{$imgslist.img4}" height="375" width="375"/>
+                    </a>
+                    {/if}
+                    <!-- foreach -->
+                   <!--  <a href="javascript:;" id="J_imgBooth" class="hide">
                         <img src="{$Ginfo.pic}" height="375" width="375"/>
                     </a>
+                    <a href="javascript:;" id="J_imgBooth" class="hide">
+                        <img src="/static/shop/resource/images/entry/l4.jpg" height="375" width="375"/>
+                    </a> -->
                     <!-- /foreach -->
                 </div>
                 <ul class="preview-thumb clearfix" id="J_previewThumb">
-                    <!-- foreach -->
-                    <li>
-                        <a href="javascript:;">
-                            <img src="{$Ginfo.pic}" height="75" width="75"/>
-                        </a>
-                        <a href="javascript:;">
-                            <img src="{$Ginfo.pic}" height="75" width="75"/>
-                        </a>
-                        <a href="javascript:;">
-                            <img src="/static/shop/resource/images/entry/l4.jpg" height="75" width="75"/>
+                    {if $imgslist.img1}
+                    <li><a href="javascript:;">
+                            <img src="{$imgslist.img1}" height="75" width="75"/>
                         </a>
                     </li>
+                    {/if}
+                    {if $imgslist.img2}
+                    <li><a href="javascript:;">
+                            <img src="{$imgslist.img2}" height="75" width="75"/>
+                        </a>
+                    </li>
+                    {/if}
+                    {if $imgslist.img3}
+                    <li><a href="javascript:;">
+                            <img src="{$imgslist.img3}" height="75" width="75"/>
+                        </a>
+                    </li>
+                    {/if}
+                    {if $imgslist.img4}
+                    <li><a href="javascript:;">
+                            <img src="{$imgslist.img4}" height="75" width="75"/>
+                        </a>
+                    </li>
+                    {/if}
                     <!-- /foreach -->
+                    <!-- <li><a href="javascript:;">
+                            <img src="/static/shop/resource/images/entry/l4.jpg" height="75" width="75"/>
+                        </a>
+                    </li> -->
                 </ul>
             </div>
             <div class="property" id="property">
@@ -45,88 +222,70 @@
                         <dd>
                             <div class="mod-price">
                                 <small>¥</small>
-                                <span id="J_price" class="vm-money">
+                                <span id="J_price" class="vm-money" gid="{$gid}">
 									{$Ginfo.price}
 								</span>
                             </div>
                         </dd>
                     </dl>
                 </div>
+                <!-- 隐藏基准价价格 -->
+                <div id="saveprice" style="display:none;">{$Ginfo.price}</div>
+               <div id="goodstore">
+                <!-- 3x3区域 -->
                 <div class="property-set">
                     <!-- 遍历mid，属性类型 -->
-                    {volist name="attrsN" id="valL"}
+                    {volist name="attrsN" id="valL"}<!-- 第一层 -->
+                    <!-- 一行属性mid -->
                     <dl class="property-set-sale">
-                        <dt class="vm-metatit">{php}echo attrClass($valL);{/php}</dt>    
+                        <dt class="vm-metatit">{php}echo attrClass($valL);{/php}</dt>
                         <dd class="clearfix net">
-                            <!-- 遍历属性 -->
+                            <!-- 遍历属性  第二层-->
                             {volist name="attrsV" id="valS"}
                             <!-- 判断属性是否和类型相等 -->
                             {if $valS['0'] == $valL}
-                            <a href="javascript:;" gtid="" class="">
                                 <!-- 遍历所有属性 -->
                                 {volist name="attrList" id="attr"}
                                     <!-- 判断并替换属性中文 -->
                                     {if $attr['id'] == $valS['1']}
-                                        <span>{$attr['attrs']}</span>
+                                        <!-- 遍历money属性 第三层-->
+                                        {volist name="mon" id="money"}
+                                            {if $money['0'] == $valS['1']}
+                                                <a href="javascript:;" gtid="" class="" attr="{$attr['id']}" money="{$money[1]}">
+                                                    <span attr="{$attr['id']}" money="{$money[1]}">{$attr['attrs']}</span>
+                                                </a>
+                                            {/if}
+                                        {/volist}
                                     {/if}
                                 {/volist}
-                            </a>
+                           
                             {/if}
                             {/volist}
                         </dd>
                     </dl>
+                    <!-- /一行mid -->
                     {/volist}
-                    <script>
-                        $(function () {
-                            $('.net a').click(function () {
-                                if($('.selected').length != ){
-                                    return false;
-                                }
-                                var combine = '';
-                                $.each($('.selected'),function () {
-                                    combine += $(this).attr('gtid') + ',';
-                                })
-//                                alert(combine);
-                                var gid = ;
-                                $.post("",{gid:gid,combine:combine},function (res) {
-                                    if(res.valid){
-                                        $('#J_btnBuy').addClass('btn-primary').removeClass('huise');
-                                    }else{
-                                        $('#J_btnBuy').addClass('huise').removeClass('btn-primary');
-                                    }
-                                },'json')
-                            })
-                        })
-                    </script>
-                    <script>
-                        $(function () {
-                            if(!$('.net a').hasClass('selected')) {
-                                $('#J_btnBuy').addClass('huise').removeClass('btn-primary');
-                            }
-                            $('#J_btnBuy').click(function () {
-                                if($(this).is('.huise')){
-                                    alert('商品缺货');
-                                    return
-                                }
-                                var data = {
-                                    'gid':,
-                                'num':$('#J_quantity').val(),
-                                    'options':{},
-                            }
-                                $.each($('.selected'),function () {
-                                    data.options[$(this).attr('taname')] = $(this).children('span').text();
-                                })
-                                $.post("",data,function(res){
-                                    if (res.val){
-                                        location="";
-                                    }else{
-                                        location="";
-                                    }
-                                },'json');
-                            })
-                        })
-                    </script>
                 </div>
+                <!-- /3x3区域 -->
+                <!-- 显示库存 -->
+                </div>库存:<div id="goodstore1"></div>&nbsp&nbsp&nbsp件
+                <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
+                <script type="text/javascript">
+                    $('#goodstore').mouseenter(function () {
+                        // 发送数据组合(attr x 3)查询库存并返回
+                        var gid = $('#J_price').attr('gid')
+                        var attr1 = $('.selected').eq(0).attr('attr');
+                        var attr2 = $('.selected').eq(1).attr('attr');
+                        var attr3 = $('.selected').eq(2).attr('attr');
+                        // 发送Ajax请求
+                           $.get("{:url('/shop/Detail/storeAj')}",{gid:gid,attr1:attr1,attr2:attr2,attr3:attr3},store,'text');
+                        // callback函数/*attr2:attr2,attr3:attr3*/
+                            function store(data)
+                            {
+                                $('#goodstore1').text(data);
+                            }
+                    });
+                </script>
                 <!-- 支持 / 服务 -->
                 <div class="property-service">
                     <!-- 支持 -->
@@ -135,21 +294,22 @@
                             支<span class="s-space"></span>持 :
                         </dt>
                         <dd class="clearfix">
-                            花呗分期    顺丰包邮    7天无理由退货
+                            <i class="icon icon-service"></i>花呗分期
+                            <i class="icon icon-service"></i>顺丰包邮
+                            <i class="icon icon-service"></i>7天无理由退货
                         </dd>
                     </dl>
                 	<!-- 配送 -->
-                    <dl class="property-service-suda clearfix">
+                    <dl class="property-service-suda clearfix" id="J_delivery">
                         <dt class="vm-metatit">
                             配<span class="s-space"></span>送 :
                         </dt>
-                        <dd class="mod-site clearfix" >
-                            <div class="site-selector">
-                                <div class="text">
-                                    福建 泉州 【请选择】
-                                </div>
-
+                        <dd class="mod-site clearfix">
+                            <div id="site-selector" class="site-selector">
+                                <div class="text"></div>
+                                <div class="content"></div>
                             </div>
+                            <span class="site-status" id="J_siteStatus"></span>
                         </dd>
                     </dl>
                     <!-- 服务 -->
@@ -179,12 +339,12 @@
                     </dl>
                 </div>
                 <!-- 立即购买 / 立即购买 -->
-                <div>
-	                <a href="javascript:;" id="J_btnBuy" class="btn danger btn-lg">
+                <div class="btnBUY">
+	                <a href="javascript:;" id="J_btnBuy" class="anniu hong">
 	                    <i></i>
 	                    立即购买
 	                </a>
-	                <a href="javascript:;" id="J_btnBuy" class="btn btn-primary btn-lg">
+	                <a href="{:url('shop/cart/step1')}" id="J_btnBuy" class="anniu lan">
 	                    <i></i>
 	                    加入购物车
 	                </a>	
@@ -254,7 +414,7 @@
         </div>
         <div class="detail-content tab-show container">
             <div class="introduce current" id="introduce" style="display: block;">
-                qew
+                {$imgslist.intro}
             </div>
         </div>
         <div class="standard tab-show" id="standard" style="display: none;">
@@ -263,12 +423,27 @@
                 <tr class="standard-table-group">
                     <th colspan="2">基础信息</th>
                 </tr>
-                <!-- foreach -->
+                <!-- 遍历mid，属性类型 -->
+                {volist name="attrsN" id="valL"}
                 <tr>
-                    <th>网络</th>
-                    <td>全网通</td>
+                    <th>{php}echo attrClass($valL);{/php}</th>
+                    <td>
+                        <!-- 遍历属性 -->
+                        {volist name="attrsV" id="valS"}
+                        <!-- 判断属性是否和类型相等 -->
+                        {if $valS['0'] == $valL}
+                            <!-- 遍历所有属性 -->
+                            {volist name="attrList" id="attr"}
+                                <!-- 判断并替换属性中文 -->
+                                {if $attr['id'] == $valS['1']}
+                                    {$attr['attrs']}
+                                {/if}
+                            {/volist}
+                        {/if}
+                        {/volist}
+                    </td>
                 </tr>
-                <!-- /foreach -->
+                {/volist}
                 </tbody>
             </table>
         </div>
@@ -277,6 +452,7 @@
 
 <footer>
     <div class="container">
+ 
         <div class="footer-servive">
             <ul>
                 <li class="item">
@@ -399,8 +575,6 @@
             <p>
                 Powered by <?=SET_ZD ;?>©2016 <?=SET_URL ;?>| 邮箱：249005779@qq.com | <?=SET_ICP ;?>
 
-            </p>
-        </div>
     </div>
 </footer>
 <div class="model">
@@ -416,6 +590,7 @@
 </div>
 </body>
 </html>
+<!-- 数量加减 -->
 <script>
     $(function () {
         $('#jia').click(function () {
@@ -429,7 +604,6 @@
         $('#jian').click(function () {
             var oldValue = $('#J_quantity').val();
             oldValue--;
-//            alert(1);
             if (oldValue <= 1){
                 oldValue = 1;
             }
@@ -437,3 +611,4 @@
         })
     })
 </script>
+

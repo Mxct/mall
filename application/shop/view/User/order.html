@@ -11,7 +11,7 @@
 		  <div class="col-md-12">
 			  	<ol class="breadcrumb">
 				  <li><a href="{:url('shop/user/index')}">用户设置中心</a></li>
-				  <li class="active">收货地址</li>
+				  <li class="active">订单详情</li>
 				</ol>
 			</div>
 		<div class="row">
@@ -64,19 +64,20 @@
 				  		<ul class="nav nav-pills ">
 						  <li role="presentation" >
 						  	<span class="glyphicon glyphicon-user btn" aria-hidden="true">&nbsp登陆用户名：{$list.username}</span>
-						  	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  	&nbsp&nbsp&nbsp&nbsp
 						  </li>
 						  <li role="presentation" >
-						  	<span class="glyphicon glyphicon-piggy-bank btn" aria-hidden="true">&nbsp用户总积分：{$list.score}</span>
-						  	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  	<span class="glyphicon glyphicon-piggy-bank btn" aria-hidden="true">
+						  	&nbsp用户总积分：{$list.score}</span>
+						  	&nbsp&nbsp&nbsp&nbsp
 						  </li>
 						  <li role="presentation" >
 						  	<span class="glyphicon glyphicon-phone btn" aria-hidden="true">&nbsp绑定手机号：{$list.phone}</span>
-						  	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  	&nbsp&nbsp&nbsp&nbsp
 						  </li>
 						  <li role="presentation" >
 						  	<span class="glyphicon glyphicon-envelope btn" aria-hidden="true">&nbsp&nbsp邮箱地址：{$list.email}</span>
-						  	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						  	&nbsp&nbsp&nbsp&nbsp
 						  </li>
 						</ul>
 				  	<!-- /信息展示 -->
@@ -106,13 +107,14 @@
 						    <li role="presentation">
 						    	<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
 						    		<span class="glyphicon glyphicon-pushpin" aria-hidden="true">&nbsp
-						    		待发后
+						    		待发货
 						    		</span>
 						    	</a>
 						    </li>
 						    <li role="presentation">
 						    	<a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
-						    		<span class="glyphicon glyphicon-send" aria-hidden="true">&nbsp
+						    		<span class="glyphicon glyphicon-send" aria-hidden="true">
+						    		&nbsp
 						    		已发货
 						    		</span>
 						    	</a>

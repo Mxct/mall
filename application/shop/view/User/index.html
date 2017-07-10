@@ -23,7 +23,7 @@
 				  <a class="list-group-item  list-group-item-info">
 				    <span class="glyphicon glyphicon-tag" aria-hidden="true">&nbsp我的订单</span>
 				  </a>
-				  <a href="#" class="list-group-item">订单详情</a>
+				  <a href="{:url('shop/user/order')}" class="list-group-item">订单详情</a>
 				  <!-- <a href="#" class="list-group-item">我的意外保</a> -->
 				</div>
 				<!-- 框2 -->
@@ -83,6 +83,11 @@
 		  			<div class="row" style="margin-top:10px;display:block;">
 		  				<div class="col-md-12 col-md-offset-1" >
 		  					<span class="glyphicon glyphicon-piggy-bank" aria-hidden="true">&nbsp用户总积分：{$list.score}</span>
+		  				</div>
+		  			</div>
+		  			<div class="row" style="margin-top:10px;display:block;">
+		  				<div class="col-md-12 col-md-offset-1 ">
+		  					<span class="glyphicon glyphicon-education" aria-hidden="true">&nbsp用户等级：{php}grade($list['score']);{/php}</span>
 		  				</div>
 		  			</div>
 		  			<div class="row" style="margin-top:10px;display:block;">
@@ -196,17 +201,23 @@
 							  <!-- List group -->
 							  <ul class="list-group">
 							    <li class="list-group-item">
-							    	<a href="{:url('shop/user/address')}"><span class="glyphicon glyphicon-map-marker" aria-hidden="true">&nbsp收货地址</span></a>
+							    	<a href="{:url('shop/user/address')}">
+							    		<span class="glyphicon glyphicon-map-marker" aria-hidden="true">&nbsp收货地址</span>
+							    	</a>
 							    	<!-- 徽章 -->
 							    	<span class="badge">{$countAdd}</span>
 							    </li>
 							    <li class="list-group-item">
-							    	<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">&nbsp购物车</span>
-							    	<span class="badge">2</span>
+							    	<a href="{:url('shop/user/cart')}">
+							    		<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">&nbsp购物车</span>
+							    	</a>
+							    		<span class="badge">2</span>
 							    </li>
 							    <li class="list-group-item">
-							    	<span class="glyphicon glyphicon-list-alt" aria-hidden="true">&nbsp订单</span>
-							    	<span class="badge">3</span>
+							    	<a href="{:url('shop/user/order')}">
+							    		<span class="glyphicon glyphicon-list-alt" aria-hidden="true">&nbsp订单</span>
+							    	</a>
+							    		<span class="badge">3</span>
 							    </li>
 							  </ul>
 							</div>

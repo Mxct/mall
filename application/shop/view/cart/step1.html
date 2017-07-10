@@ -1,0 +1,124 @@
+{include file="herder/index"}
+
+<link rel="stylesheet" href="/static/shop/cart/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/shop/cart/css/header.css">
+<link rel="stylesheet" href="/static/shop/cart/css/footer.css">
+<link rel="stylesheet" href="/static/shop/cart/css/type.css">
+<link rel="stylesheet" href="/static/shop/cart/css/main.css">
+<link rel="stylesheet" href="/static/shop/cart/css/detail.css">
+<link rel="stylesheet" href="/static/shop/cart/css/store.css">
+<link rel="stylesheet" href="/static/shop/cart/css/order.css">
+<link rel="stylesheet" href="/static/shop/cart/css/shop3.css">
+<link rel="stylesheet" href="/static/shop/cart/css/pj.css">
+<link rel="stylesheet" href="/static/shop/cart/css/question.css">
+<link rel="stylesheet" href="/static/shop/cart/css/qreply.css">
+<link rel="stylesheet" href="/static/shop/cart/css/meiball.css">
+<script src='/static/shop/cart/js/jquery-1.11.3.min.js'></script>
+<script src='/static/shop/cart/js/bootstrap.min.js'></script>
+<script src='/static/shop/cart/js/jQuery.md5.js'></script>
+<script src='/static/shop/cart/js/header.js'></script>
+<script src='/static/shop/cart/js/index.js'></script>
+<script src='/static/shop/cart/js/detail.js'></script>
+<script src='/static/shop/cart/js/shop.js'></script>
+<script src='/static/shop/cart/js/shop2.js'></script>
+<script src='/static/shop/cart/js/shop3.js'></script>
+<script src='/static/shop/cart/js/order.js'></script>
+<!--购物车top-->
+<div class="store_top">
+	<img src="/static/shop/cart/images/liu.gif" alt="">
+</div>
+
+<!---购物车center1-->
+
+<div class="store_center1">
+	<table class="table">
+			<tr>
+				<th>
+					<input type="checkbox" name="all" id="all" value="">
+				</th>
+				<th width="500px">商品</th>
+				<th>单价</th>
+				<th>购买数量</th>
+				<th>小计</th>
+				<th>操作</th>
+			</tr>
+		{volist name="data" id="val"}
+			<tr class='shangpin'>
+					<th><input data="" type="checkbox" name="" class="every" value=""></th>
+					<td>
+						<div class="goods">
+							<div class="pic"><img src="" alt=""></div>
+							<div class="texts">
+								<div class="text">商品</div>
+								<div class="text">
+									<span>{$val['net']}</span>
+									<span>{$val['color']}</span>
+									<span>{$val['memoey']}</span>
+								</div>
+							</div>
+						</div>
+					</td>
+					<td class="jiage">
+						<div class="td1"><span>￥</span><span class='pri'>单价</span></div>
+					</td>
+					<td class="shu">
+						<div class="nu">
+							<a href="javascript:;"><span class='n jian'>-</span></a>
+							<span class="td1 n b">{$val['num']}</span>
+							<a href="javascript:;"><span class='n jia'>+</span></a>
+						</div> 
+					</td>
+
+					<td class="p">
+						<div class="td1">
+							<span>￥</span>
+							<span class='price' id="price">12345</span>
+						</div>
+					</td>
+					<td class="delete"><div class="td1"><a href="javascript:;" class="del">删除</a></div></td>
+			</tr>
+		{/volist}
+	</table>
+	<div height='140px' width="" id='empty'>
+		<div>
+			<img src="/static/shop/cart/images/002.gif" alt="">
+			<span>购物车还没有商品，快选购吧</span>
+		</div>
+	</div>
+</div>
+
+<!---购物车center2-->
+<div class="store_center2">
+	<div class="shang">
+		<div style="height:50px;margin-top:20px">
+			<div style="float:left;width:100px;">商品总额</div>
+			<div style="float:right;width:100px;"><span>￥</span><span id='total'>0.00</span></div>
+		</div>
+		
+		<div style="height:50px">
+			<div style="float:left;width:100px;">套餐优惠</div>
+			<div style="float:right;width:100px;"><span class='a'>￥</span><span id='tao' class='tao'>0.00</span></div>
+		</div>
+		<div style="height:50px">
+			<div style="float:left;width:100px;">折扣</div>
+			<div style="float:right;width:100px;"><span class='a'>￥</span><span id='sale' class='sale'>0.00</span></div>
+		</div>
+	</div>
+	<div class="xia">
+		<div style="height:50px;margin-top:20px">
+			<div style="float:left;width:100px;margin-left:870px">应付</div>
+			<div style="float:right;width:100px;"><span class='c'>￥</span><span id='copy2' class='copy'>0.00</span></div>
+		</div>
+		<div style="height:50px;">
+			<div style="float:left;width:120px;margin-left:800px"><a href="#" style="color:#31A5E7;font-size:20px;text-decoration:none">继续购物 &nbsp; > </a> </div>
+			<!-- <a href="javascript:;"> -->
+			<a href="{:url('step2')}">
+				<div style="float:right;width:150px;background:#31A5E7;height:50px;line-height:50px;text-align:center;color:#fff;font-size:20px" id='jisuan'>去结算</div>
+			</a>
+		</div>
+	</div>
+</div>
+<!-- 内容结束 -->
+{include file="footer"}
+
+

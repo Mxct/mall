@@ -15,7 +15,7 @@ class Index extends Controller
     {
         // 商品分类
         $Lresult = Db::name('type')->where('pid','0')->limit('7')->select();
-        $Sresult = Db::name('Goods')->where('pid','<>','0')->where('num','<>','0')->select();
+        $Sresult = Db::name('Goods')->where('pid','<>','0')->where('num','<>','0')->where('status','1')->select();
         $this->assign('Lresult',$Lresult);
         $this->assign('Sresult',$Sresult);
         // 热卖推荐

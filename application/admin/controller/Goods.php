@@ -7,9 +7,10 @@ use think\Request;
 use app\admin\model\Goods as GoodsModel;
 use app\admin\model\Attr;
 use app\admin\model\Goodtoattr;
+use app\admin\model\Detail;
 class Goods extends Controller
 {
-	// 商品管理
+// 商品管理首页
     public function index()
     {
         // $as = GoodsModel::get(1);
@@ -20,8 +21,57 @@ class Goods extends Controller
         $this->assign('list',$list);
         return $this->fetch();
     }
-
-    // 单商品属性列表
+#———————————————————— 华丽分割线 —————————————————————#
+// 商品详情
+    public function detail()
+    {
+        return $this->fetch();
+    }
+// 添加图册介绍
+    public function adddetail()
+    {
+        $id = input('get.id');
+        $single = GoodsModel::get($id);
+        $this->assign('single',$single);
+        return $this->fetch();
+    }
+// 添加图册介绍处理判断
+    public function adddetailcheck()
+    {
+        for ($i=1; $i <= 4; $i++) {
+            $file = request()->file('img' . $i);
+            // var_dump($file);
+            if(isset($file)){
+                $info = request()->file('img' . $i)->move(ROOT_PATH . 'public/uploads/goods');  
+                if($info){  
+                    $a = $info->getSaveName();
+                    $imgp= str_replace("\\","/",$a);  
+                    $imgpath = '/uploads/goods/'.$imgp;  
+                    $data['img' . $i]= $imgpath; 
+                }else{  
+                    echo request()->file('img' . $i)->getError();  
+                }
+            }
+        }
+        $data['goods_id'] = input('post.goods_id');
+        $num1 = GoodsModel::get($data['goods_id']);
+        // dump($num1);
+        $num2 = $num1->detail()->save($data);
+        // dump($num1[img1]);
+        // $detail = new Detail;
+        // $detail->img1 = '123456';
+        // $detail->img2 = '123456';
+        // // $num1->detail()->save(['img1'=>'12345']);
+        // echo $num1->detail->img1;die;
+        // dump($num1->detail);die;
+        if($num2){  
+            $this->success('添加成功');  
+        }else{
+            $this->error('添加失败');
+        }
+    }
+#———————————————————— 华丽分割线 —————————————————————#
+// 单商品属性列表
     public function list()
     {
         if(input('get.id')){
@@ -63,8 +113,7 @@ class Goods extends Controller
             return $this->fetch();
         }
     }
-
-    // 添加商品属性
+// 添加商品属性
     public function addattr()
     {
         if(input('post.')){
@@ -143,21 +192,8 @@ class Goods extends Controller
             return $this->fetch();
         }
     }
-
-// 测试多对多
-    public function tomany()
-    {
-     $a = GoodsModel::get(1);
-     $arr = $a->attr;//获取所有对应地址信息
-     echo $count=count($arr);
-            foreach ($arr as $value) {
-                $b=$value->toArray();
-                echo $b['attrs'].'<br />';
-                echo $b['mid'].'<br />';
-            }   
-    }
-
-//添加商品
+#———————————————————— 华丽分割线 —————————————————————#
+// 添加商品
     public function store()
     {
         $Lresult = Db::name('type')->where('pid','0')->select();
@@ -190,11 +226,12 @@ class Goods extends Controller
             $this->error('添加失败');
         }
     }
-
+#———————————————————— 华丽分割线 —————————————————————#
 // 删除商品
     public function del()
     {
         $delres = db('goods')->delete(input('get.id'));
+        
         if($delres){
             $this->success('删除成功');
         }else{
@@ -202,7 +239,7 @@ class Goods extends Controller
         }
         return $this->fetch();
     }
-
+#———————————————————— 华丽分割线 —————————————————————#
 // 编辑商品
     public function edit()
     {
@@ -219,7 +256,7 @@ class Goods extends Controller
         $this->assign('attr',$dres);
         return $this->fetch();
     }
-// 编辑商品
+// 编辑商品判断处理
     public function update()
     {
         $file = request()->file('pic');  
@@ -244,9 +281,23 @@ class Goods extends Controller
         }
         $num = GoodsModel::update($data);  
         if($num){  
-            $this->success('更新成功');  
+            $this->success('更新成功','index');  
         }else{
             $this->error('更新失败');
         }
+    }
+
+#———————————————————— 华丽分割线 —————————————————————#
+// 测试多对多
+    public function tomany()
+    {
+     $a = GoodsModel::get(1);
+     $arr = $a->attr;//获取所有对应地址信息
+     echo $count=count($arr);
+            foreach ($arr as $value) {
+                $b=$value->toArray();
+                echo $b['attrs'].'<br />';
+                echo $b['mid'].'<br />';
+            }   
     }
 }

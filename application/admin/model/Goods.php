@@ -20,4 +20,9 @@ class Goods extends Model
 	{
 		return $this->belongsToMany('Attr','goodtoattr');
 	}
+	// 建立和detail表一对一
+	public function detail()
+	{
+		return $this->hasOne('Detail');
+	}
 }

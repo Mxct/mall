@@ -35,7 +35,6 @@ class User extends Controller
 		// 地址个数
 		$countAdd = count($addResult);
 
-		// dump($addResult);
 		$this->assign('countAdd',$countAdd);
 		$this->assign('addResult',$addResult);
 		$this->assign('list',$list);
@@ -169,6 +168,22 @@ class User extends Controller
 	}
 	// 用户订单展示
 	public function order()
+	{
+		// 获取cookie中的uid为用户id
+		$id = cookie('uid');
+		$list = UserModel::get($id);
+		// 查询用户收货地址
+
+		// 地址个数
+
+
+
+		$this->assign('list',$list);
+		$this->assign('usertype',cookie('usertype'));
+		return $this->fetch();
+	}
+	// 用户购物车展示
+	public function cart()
 	{
 		// 获取cookie中的uid为用户id
 		$id = cookie('uid');

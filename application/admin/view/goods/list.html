@@ -22,13 +22,11 @@
                             <th>内存</th>
                             <th width="200">操作</th>
                         </tr>
-
                         </thead>
                         <tbody>
-                        <!-- foreach -->
                          {volist name="result" id="info"}
                         <tr>
-                            <td>{$info.3}</td>
+                            <td>{php}echo substr_replace($info['3'],'****',5,13){/php}</td>
                             {volist name="attrList" id="attr"}
                                 {if $attr.id == $info.0}
                                     <td>{$attr.attrs}</td>
@@ -50,7 +48,6 @@
                             </td>
                         </tr>
                         {/volist}
-                        <!-- foreach -->
                         </tbody>
                     </table>
                 </form>
