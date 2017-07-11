@@ -1,0 +1,37 @@
+{extend name='admin'/}
+{block name="content"}
+<ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+    <li>
+        <a href="javascript:;"><i class="fa fa-cogs"></i> 订单管理</a>
+    </li>
+    <li class="active">
+        <a href="javascript:;">订单详情</a>
+    </li>
+</ol>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="javascript:;">订单详情</a></li>
+</ul>
+
+<div class="row-md" style="border-radius: 10px;border:1px solid #dddddd;overflow: hidden;background-color:#FAFAFC;margin-top: 20px;">
+	<div class="col-md-12">
+		<div class="row" >
+			<div class="col-md-12">
+				<div class="panel panel-default" style="margin-top: 20px;margin-left: 5px;">
+				  	<!-- Default panel contents -->
+				  	<div class="panel-heading">
+				  		 <span class="glyphicon glyphicon-list-alt" aria-hidden="true">&nbsp订单面板</span>
+				  	</div>
+				  	<!-- List group -->
+				  	<ul class="list-group">
+					    <li class="list-group-item">
+					    	<span class="glyphicon glyphicon-tag" aria-hidden="true">&nbsp订单</span>
+					    	<span class="badge">1</span>
+					    </li>
+				  	</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{/block}
