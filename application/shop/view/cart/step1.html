@@ -20,8 +20,8 @@
 <script src='/static/shop/cart/js/index.js'></script>
 <script src='/static/shop/cart/js/detail.js'></script>
 <script src='/static/shop/cart/js/shop.js'></script>
-<script src='/static/shop/cart/js/shop2.js'></script>
-<script src='/static/shop/cart/js/shop3.js'></script>
+<!-- <script src='/static/shop/cart/js/shop2.js'></script> -->
+<!-- <script src='/static/shop/cart/js/shop3.js'></script> -->
 <script src='/static/shop/cart/js/order.js'></script>
 <!--购物车top-->
 <div class="store_top">
@@ -47,35 +47,76 @@
 					<th><input data="" type="checkbox" name="" class="every" value=""></th>
 					<td>
 						<div class="goods">
-							<div class="pic"><img src="" alt=""></div>
+							<div class="pic"><img src="{$val.img}" alt=""></div>
 							<div class="texts">
-								<div class="text">商品</div>
+								<div class="text">{$val.gname}</div>
 								<div class="text">
-									<span>{$val['net']}</span>
-									<span>{$val['color']}</span>
-									<span>{$val['memoey']}</span>
+									<span>{$val.net}</span>
+									<span>{$val.color}</span>
+									<span>{$val.memoey}</span>
 								</div>
 							</div>
 						</div>
 					</td>
 					<td class="jiage">
-						<div class="td1"><span>￥</span><span class='pri'>单价</span></div>
+						<div class="td1"><span>￥</span><span class='pri' id="pri{$val.id}">{$val.price}</span></div>
 					</td>
 					<td class="shu">
 						<div class="nu">
-							<a href="javascript:;"><span class='n jian'>-</span></a>
-							<span class="td1 n b">{$val['num']}</span>
-							<a href="javascript:;"><span class='n jia'>+</span></a>
+							<a href="javascript:;"><span class='n' id="sjian{$val.id}">-</span></a>
+							<span class="td1 n b" id="J_quantity{$val.id}">{$val.num}</span>
+							<a href="javascript:;"><span class='n' id="sjia{$val.id}">+</span></a>
 						</div> 
 					</td>
+<script type="text/javascript">
+$(function(){
+	//数量+1
+	$('#sjia{$val.id}').click(function(){
+		var jia=$(this).parent().prev();
+		var add=Number(jia.text());
+		var danjia = $('#pri{$val.id}').text();
+		add++;
+		// alert(add);
+		var count = parseInt(danjia)*parseInt(add);
+		$('#J_quantity{$val.id}').text(add);
+		$('#price{$val.id}').text(count);
+		var total=0;
+		$('.every:checked').each(function(){
+			total+=Number($(this).parent().siblings('.p').find('.price').text());
+			// console.log(total);
+		})
+		$('#total').text(total);
+		$('#copy2').text(total);
+	});
 
+	//数量-1
+	$('#sjian{$val.id}').click(function(){
+		var jian=$(this).parent().next();
+		var low=Number(jian.text());
+		var danjia = $('#pri{$val.id}').text();
+		low--;
+		// alert(low);
+		//最少1件
+		var count = parseInt(danjia)*parseInt(low);
+		$('#J_quantity{$val.id}').text(low);
+		$('#price{$val.id}').text(count);
+		var total=0;
+		$('.every:checked').each(function(){
+			total+=Number($(this).parent().siblings('.p').find('.price').text());
+			// console.log(total);
+		})
+		$('#total').text(total);
+		$('#copy2').text(total);
+	});
+});
+</script>
 					<td class="p">
 						<div class="td1">
 							<span>￥</span>
-							<span class='price' id="price">12345</span>
+							<span class='price' id="price{$val.id}">{$val.price * $val.num}</span>
 						</div>
 					</td>
-					<td class="delete"><div class="td1"><a href="javascript:;" class="del">删除</a></div></td>
+					<td class="delete"><div class="td1"><a href="{:url('del'),'?id=' . $val.id}" class="del">删除</a></div></td>
 			</tr>
 		{/volist}
 	</table>
@@ -92,28 +133,28 @@
 	<div class="shang">
 		<div style="height:50px;margin-top:20px">
 			<div style="float:left;width:100px;">商品总额</div>
-			<div style="float:right;width:100px;"><span>￥</span><span id='total'>0.00</span></div>
-		</div>
-		
-		<div style="height:50px">
-			<div style="float:left;width:100px;">套餐优惠</div>
-			<div style="float:right;width:100px;"><span class='a'>￥</span><span id='tao' class='tao'>0.00</span></div>
-		</div>
-		<div style="height:50px">
-			<div style="float:left;width:100px;">折扣</div>
-			<div style="float:right;width:100px;"><span class='a'>￥</span><span id='sale' class='sale'>0.00</span></div>
+			<div style="float:right;width:100px;">
+				<span>￥</span>
+				<span id='total'>0.00</span>
+			</div>
 		</div>
 	</div>
 	<div class="xia">
 		<div style="height:50px;margin-top:20px">
 			<div style="float:left;width:100px;margin-left:870px">应付</div>
-			<div style="float:right;width:100px;"><span class='c'>￥</span><span id='copy2' class='copy'>0.00</span></div>
+			<div style="float:right;width:100px;">
+				<span class='c'>￥</span>
+				<span id='copy2' class='copy'>0.00</span>
+			</div>
 		</div>
 		<div style="height:50px;">
-			<div style="float:left;width:120px;margin-left:800px"><a href="#" style="color:#31A5E7;font-size:20px;text-decoration:none">继续购物 &nbsp; > </a> </div>
-			<!-- <a href="javascript:;"> -->
+			<div style="float:left;width:120px;margin-left:800px">
+				<a href="{:url('shop/index/index')}" style="color:#31A5E7;font-size:20px;text-decoration:none">继续购物 &nbsp; >
+				</a> 
+			</div>
 			<a href="{:url('step2')}">
-				<div style="float:right;width:150px;background:#31A5E7;height:50px;line-height:50px;text-align:center;color:#fff;font-size:20px" id='jisuan'>去结算</div>
+				<div style="float:right;width:150px;background:#31A5E7;height:50px;line-height:50px;text-align:center;color:#fff;font-size:20px" id='jisuan'>去结算
+				</div>
 			</a>
 		</div>
 	</div>

@@ -27,15 +27,16 @@
 			<div class="top-right">
 				<ul class="top-info">
 					<li>
-						<a ><!-- 我的收藏 -->
-
-							<div class="top-new">
-								Order
-							</div>
+						<a href=""><!-- 我的收藏 -->
+						<span class="glyphicon glyphicon-cart" aria-hidden="true">&nbsp购物车</span>
 						</a>
 					</li>
 					<li>
-						<a href="{:url('/shop/user/orders')}">我的订单</a>
+						{if !empty(cookie('username'))}
+							<a href="{:url('/shop/user/order')}">
+								<span class="glyphicon glyphicon-tag" aria-hidden="true">&nbsp我的订单</span>
+							</a>
+						{/if}
 					</li>
 
 					<li>
@@ -64,13 +65,13 @@
 				</a>
 			</div>
 			<div class="head-nav">
-				<ul>
+				<!-- <ul>
 					<li><a class="top-item" href="">PRO手机</a></li>
 					<li><a class="top-item" href="">魅蓝手机</a></li>
 					<li><a class="top-item" href="">MX手机</a></li>
 					<li><a class="top-item" href="">精选配件</a></li>
 					<li><a class="top-item" href="">智能硬件</a></li>
-				</ul>
+				</ul> -->
 				<div class="top-hide">
 					<div class="container">
 						<ul class="menu-list">

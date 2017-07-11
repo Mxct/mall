@@ -54,6 +54,7 @@ class Goods extends Controller
             }
         }
         $data['goods_id'] = input('post.goods_id');
+        $data['intro'] = input('post.intro');
         $num1 = GoodsModel::get($data['goods_id']);
         // dump($num1);
         $num2 = $num1->detail()->save($data);
@@ -65,7 +66,7 @@ class Goods extends Controller
         // echo $num1->detail->img1;die;
         // dump($num1->detail);die;
         if($num2){  
-            $this->success('添加成功');  
+            $this->success('添加成功','index');  
         }else{
             $this->error('添加失败');
         }

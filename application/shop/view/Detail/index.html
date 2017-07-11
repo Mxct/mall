@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/main-4fc753f.css">
 <script src="/static/bootstrap/jQuery1.11.3.min.css"></script>
  <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
+
 </head>
 <body>
 <header>
@@ -40,7 +41,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{:url('/shop/user/orders')}">我的订单</a>
+                        <a href="{:url('/shop/user/order')}">我的订单</a>
                     </li>
 
                     <li>
@@ -69,13 +70,13 @@
                 </a>
             </div>
             <div class="head-nav">
-                <ul>
+               <!--  <ul>
                     <li><a class="top-item" href="">PRO手机</a></li>
                     <li><a class="top-item" href="">魅蓝手机</a></li>
                     <li><a class="top-item" href="">MX手机</a></li>
                     <li><a class="top-item" href="">精选配件</a></li>
                     <li><a class="top-item" href="">智能硬件</a></li>
-                </ul>
+                </ul> -->
                 <div class="top-hide">
                     <div class="container">
                         <ul class="menu-list">
@@ -168,14 +169,6 @@
                         <img src="{$imgslist.img4}" height="375" width="375"/>
                     </a>
                     {/if}
-                    <!-- foreach -->
-                   <!--  <a href="javascript:;" id="J_imgBooth" class="hide">
-                        <img src="{$Ginfo.pic}" height="375" width="375"/>
-                    </a>
-                    <a href="javascript:;" id="J_imgBooth" class="hide">
-                        <img src="/static/shop/resource/images/entry/l4.jpg" height="375" width="375"/>
-                    </a> -->
-                    <!-- /foreach -->
                 </div>
                 <ul class="preview-thumb clearfix" id="J_previewThumb">
                     {if $imgslist.img1}
@@ -202,11 +195,6 @@
                         </a>
                     </li>
                     {/if}
-                    <!-- /foreach -->
-                    <!-- <li><a href="javascript:;">
-                            <img src="/static/shop/resource/images/entry/l4.jpg" height="75" width="75"/>
-                        </a>
-                    </li> -->
                 </ul>
             </div>
             <div class="property" id="property">
@@ -223,8 +211,8 @@
                             <div class="mod-price">
                                 <small>¥</small>
                                 <span id="J_price" class="vm-money" gid="{$gid}">
-									{$Ginfo.price}
-								</span>
+                                    {$Ginfo.price}
+                                </span>
                             </div>
                         </dd>
                     </dl>
@@ -301,7 +289,7 @@
                             <i class="icon icon-service"></i>7天无理由退货
                         </dd>
                     </dl>
-                	<!-- 配送 -->
+                    <!-- 配送 -->
                     <dl class="property-service-suda clearfix" id="J_delivery">
                         <dt class="vm-metatit">
                             配<span class="s-space"></span>送 :
@@ -343,24 +331,24 @@
                 </div>
                 <!-- 立即购买 / 立即购买 -->
                 <div class="btnBUY">
-	                <a href="javascript:;" id="J_btnBuy" class="anniu hong">
-	                    <i></i>
-	                    立即购买
-	                </a>
-	                <a href="{:url('shop/cart/step1')}" id="J_btnBuy" class="anniu lan">
-	                    <i></i>
-	                    加入购物车
-	                </a>	
-	                <!-- <a href="javascript:;" id="J_favorite" class="vm-favorite">
-	                    <i class="icon icon-star icon-large"></i>
-	                    收藏
-	                </a>
-	                <span class="vm-tips" id="J_favoriteTips">
-						<i class="s-triangle"></i>
-						提前收藏，抢购快人一步！
-						<em id="J_favoriteTipsClose">╳</em>
-					</span> -->
-	            </div>
+                    <a href="javascript:;" id="J_btnBuy" class="anniu hong">
+                        <i></i>
+                        立即购买
+                    </a>
+                    <a href="{:url('shop/cart/step1')}" id="J_btnBuy" class="anniu lan">
+                        <i></i>
+                        加入购物车
+                    </a>
+                    <!-- <a href="javascript:;" id="J_favorite" class="vm-favorite">
+                        <i class="icon icon-star icon-large"></i>
+                        收藏
+                    </a>
+                    <span class="vm-tips" id="J_favoriteTips">
+                        <i class="s-triangle"></i>
+                        提前收藏，抢购快人一步！
+                        <em id="J_favoriteTipsClose">╳</em>
+                    </span> -->
+                </div>
                 <!-- 获取商品信息 -->
                 <script type="text/javascript">
                     $(function () {
@@ -380,20 +368,20 @@
                             });
                     });
                 </script>
-	            <!-- <script>
-	                $(function () {
-	                    $('#J_favorite').click(function () {
-	                        var gid = ;
-	                        $.post("",{gid:gid},function (res) {
-	                            if (res.val){
-	                                $('.model').show();
-	                            }else if(res.val==0){
-	                                location="";
-	                            }
-	                        },'json')
-	                    })
-	                })
-	            </script> -->
+                <!-- <script>
+                    $(function () {
+                        $('#J_favorite').click(function () {
+                            var gid = ;
+                            $.post("",{gid:gid},function (res) {
+                                if (res.val){
+                                    $('.model').show();
+                                }else if(res.val==0){
+                                    location="";
+                                }
+                            },'json')
+                        })
+                    })
+                </script> -->
                 <!-- 推荐，您还可以看 -->
                 <!-- <div class="property-related">
                     <dl class="property-related-item">
@@ -429,6 +417,9 @@
                         </li>
                         <li>
                             <a href="javascript:;">规格参数</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">商品评论</a>
                         </li>
                     </ul>
                 </div>
@@ -468,6 +459,13 @@
                 {/volist}
                 </tbody>
             </table>
+        </div>
+        <!-- 商品评论 -->
+        <div class="standard tab-show" id="" style="display: none;">
+           <div class="row">
+               <div class="col=md-4">头像</div>
+               <div class="col=md-8">评论内容</div>
+           </div>
         </div>
     </div>
 </section>
@@ -583,19 +581,19 @@
             </div>
 
             <div class="nav-custom">
-                <h4>2小时后盾服务热线</h4>
+                <h4>服务热线</h4>
                 <a class="" href="">
-                    <h3>18610684369</h3>
+                    <h3>88888888</h3>
                 </a>
                 <a class="nav-btn" href="">
                     <img width="20" height="21" src="" alt="">
-                    2小时不在线客服
+                    在线客服
                 </a>
             </div>
         </div>
         <div class="footer-end">
             <p>
-                Powered by <?=SET_ZD ;?>©2016 <?=SET_URL ;?>| 邮箱：249005779@qq.com | <?=SET_ICP ;?>
+                Powered by <?=SET_ZD ;?>©2016 <?=SET_URL ;?>| 邮箱：@qq.com | <?=SET_ICP ;?>
 
     </div>
 </footer>

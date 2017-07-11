@@ -56,7 +56,8 @@ $(function(){
 	}
 
 	//数量+1
-	$('.jia').click(function(){
+	$('#sjia').click(function(){
+		alert(1234);
 		var jia=$(this).parent().prev();
 		var add=Number(jia.text());
 		add++;
@@ -67,7 +68,7 @@ $(function(){
 	})
 
 	//数量-1
-	$('.jian').click(function(){
+	$('#sjian').click(function(){
 		var jian=$(this).parent().next();
 		var low=Number(jian.text());
 		low--;
@@ -76,6 +77,8 @@ $(function(){
 		if(low<1) return false;
 		getNum(jian,low);
 	})
+
+
 
 	//删除商品
 	$('.del').click(function(){
