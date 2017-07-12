@@ -181,7 +181,7 @@ class Detail extends Controller
         $rel = $imie->where('goods_id','1')->where('imie','<>','')->select();//
         dump($rel[0]->imie);
     }
-    // 测试删除库存
+    // 删除库存
     public function reduce()
     {
     	$sale=[1,4,9];//客户购买的属性组合
