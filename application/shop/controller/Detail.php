@@ -7,7 +7,9 @@ use think\Cookie;      //Cookie类
 use app\shop\model\Goods;//Goods
 use app\shop\model\Goodtoattr;//Goodtoattr
 use app\shop\model\Attr;//Attr
-use app\shop\model\Detail;//Attr
+use app\shop\model\Detail;//Detail
+use app\shop\model\Cart;//Cart
+use app\shop\model\Order;//Order
 class Detail extends Controller
 {
 	// 商品详情
@@ -91,7 +93,8 @@ class Detail extends Controller
             // 1:...
             // 2:...
             // 3:...
-            foreach ($new2 as $value) {
+
+            /*foreach ($new2 as $value) {
                 echo $value.":";//输出mid
                 foreach ($goodattr1 as $rel) {
                    if($value == $rel[0]){
@@ -104,7 +107,7 @@ class Detail extends Controller
                    }
                 }
                 echo '<br />';
-            }
+            }*/
 
             $this->assign('count',$count);//gid
             $this->assign('gid',$id);//gid
@@ -150,10 +153,33 @@ class Detail extends Controller
             }
             echo $a;//库存数量
     }
-    // 判断提交订单数据拿到数据组合
+
+    // 立即购买  // 判断提交订单数据拿到数据组合
     public function buy()
     {
-        var_dump($_GET);
+        $_GET['uid'] = cookie('uid');
+        // 获取订单号，以第一条imie为准（购买多部手机）
+        $imie = new Goodtoattr;
+        $rel = $imie->where('goods_id','1')->where('imie','<>','')->select();//
+        $_GET['orderid'] = randMix().($rel[0]->imie);
+        // 保存数据
+        $order = new Order;
+        $order->save($_GET);
+    }
+    // 加入购物车  // 判断提交订单数据拿到数据组合
+    public function addcart()
+    {
+        $_GET['uid'] = cookie('uid');
+        $cart = new Cart;
+        $rel = $cart->save($_GET);
+    }
+
+    // 查询第一条库存
+    public function imie()
+    {
+        $imie = new Goodtoattr;
+        $rel = $imie->where('goods_id','1')->where('imie','<>','')->select();//
+        dump($rel[0]->imie);
     }
     // 测试删除库存
     public function reduce()

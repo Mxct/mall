@@ -32,26 +32,19 @@
 </div>
 	<!-- 收获地址 -->
 	<a name='modify'></a>
-	<div class="adress" status='0'>
-		{volist name="data" id="vala"}
+	{volist name="data" id="vala"}
+		<div class="adress" status='{$vala.id}'>
 			<div class="adress_1">
-				<div class="adress_2" data="{$vala.person}">
+				<div class="adress_2" datai="{$vala.id}">
 					<div class="name">
 						<span class='name_1'>{$vala.person}</span>
 						<span class='name_2'>{$vala.phone}</span>
 					</div>
 					<p class='text2'>{$vala.location}</p>
 				</div>
-				<div class="adress_3">
-					<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-				</div>
-				<!-- <div class="adress_3">
-					<a href="javascript:;" data='' class="edit">修改</a>
-					<a href="javascript:;" data='' class="dels">删除</a>
-				</div> -->
 			</div>
-		{/volist}
-	</div>
+		</div>
+	{/volist}
 	
 	<!--收货人信息-->
 	<div style="border-bottom:1px solid #DFE0E0;width:1080px;margin:0 auto;height:50px;margin-bottom:10px;line-height:50px;clear:both">
@@ -64,12 +57,15 @@
 	
 	<div class="store_center1">
 		<div class="order">订单信息</div>
+		<!-- 标志位 -->
+		<span id="mark"  style="" attr="{$ids}"></span>
 		<table class="table">
 				<tr>
 					<th width="500px">商品</th>
 					<th>单价</th>
 					<th>购买数量</th>
 					<th>小计</th>
+					<th>操作</th>
 				</tr>
 <!-- 		</table>
 		<table class="table"> -->
@@ -97,13 +93,13 @@
 					<td class="p">
 						<div class="td1">
 							<span>￥</span>
-							<span class='price'>{$val.price}</span>
+							<span class='price' id="priceCount{$val.id}">{$val.price*$val.num}</span>
 						</div>
 					</td>
+					<td><div class="td1"><a href="{:url('orderdel'),'?id='.$val.id}">删除</a></div></td>
 				</tr>
 			{/volist}
 		</table>
-		
 	</div>
 
 	<!---购物车center2-->
@@ -113,7 +109,7 @@
 				<div style="float:left;width:100px;">商品总额</div>
 				<div style="float:right;width:100px;">
 					<span>￥</span>
-					<span id='total2'></span>
+					<span id='total3'>{$totalPrice}</span>
 				</div>
 			</div>
 		</div>
@@ -122,14 +118,56 @@
 				<div style="float:left;width:100px;margin-left:870px">应付</div>
 				<div style="float:right;width:100px;">
 					<span class='c'>￥</span>
-					<span id='copy' class='copy'>0.00</span>
+					<span id='copy3' class='copy'>{$totalPrice}</span>
 				</div>
+			</div>
+			<div id="goodstore2">
+
 			</div>
 			<div style="height:50px;">
 				<div style="float:left;width:120px;margin-left:800px"><a href="{:url('shop/index/index')}" style="color:#31A5E7;font-size:20px;text-decoration:none">继续购物 &nbsp; > </a> </div>
-				<a href="{:url('step3')}">
+				<!-- <a href="javascript:;"> -->
+				<a href="{:url('shop/cart/step3',$idarr)}">
 					<div style="float:right;width:150px;background:#31A5E7;height:50px;line-height:50px;text-align:center;color:#fff;font-size:20px" id='jisuan2'>去结算</div>
 				</a>
+
+<script>
+//去结算
+	$('#jisuan2').click(function(){
+		//是否选择地址
+		var addid=$('.adress').attr('status');
+		//alert(addid);
+		var cop=parseInt($('#copy3').text());
+		// alert(status);
+		var ids = $.trim($('#mark').attr('attr'));
+
+		if(addid=='0'){
+			alert('请选择收货地址');
+		}else{
+			$.get("{:url('/shop/cart/addstatus')}",{addid:addid,id:ids,price:cop},store,'text');
+			function store(data)
+            {
+                $('#goodstore2').text(data);
+            }
+		}
+	})
+</script>
+<script>
+	//地址
+	$('.adress_2').each(function(){
+		$(this).click(function(){
+			$('.adress_2').css('background','');
+			$('.adress_2').css('border','3px solid #f0f0f0');
+			$(this).css('border','3px solid #00c3f5');
+			// 添加class-selected
+			$(this).addClass('selected');
+			$('.selected').removeClass('selected');
+			//提交收货地址
+			$sid=$(this).attr('datai');
+			$('.adress').attr('status',$sid);
+		})
+	})
+</script>
 			</div>
 		</div>
 	</div>

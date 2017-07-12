@@ -5,18 +5,23 @@
     <title>魅族商城</title>
     <link rel="stylesheet" type="text/css" href="/static/shop/detail/css/common.css"/>
     <link rel="stylesheet" href="/static/shop/detail/css/product.css" />
+    <link rel="stylesheet" href="/static/shop/detail/css/comment.css" />
     <link rel="stylesheet" href="/static/shop/detail/css/font-awesome.min.css">
     <script src="/static/shop/detail/js/jquery.min.js"></script>
     <script src="/static/shop/detail/js/index.js"></script>
     <script src="/static/shop/detail/js/product.js"></script>
-<script charset="utf-8" src="js/site-lib.js"></script>
-<script type="text/javascript" src="js/site-base.js"></script>
-<script type="text/javascript" src="js/pkg-detail-f23a56f.js"></script>
-<link rel="stylesheet" href="css/site-base.css" />
-<link rel="stylesheet" href="css/main-4fc753f.css">
-<script src="/static/bootstrap/jQuery1.11.3.min.css"></script>
- <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
-
+    <script charset="utf-8" src="js/site-lib.js"></script>
+    <script type="text/javascript" src="js/site-base.js"></script>
+    <script type="text/javascript" src="js/pkg-detail-f23a56f.js"></script>
+    <link rel="stylesheet" href="css/site-base.css" />
+    <link rel="stylesheet" href="css/main-4fc753f.css">
+    <script src="/static/bootstrap/jQuery1.11.3.min.css"></script>
+     <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
+     <!-- 文本编辑器 -->
+    <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="/static/ueditor/editor_config.js"></script>
+    <script type="text/javascript" src="/static/ueditor/editor_all.js"></script> -->
+     <!-- /文本编辑器 -->
 </head>
 <body>
 <header>
@@ -199,7 +204,7 @@
             </div>
             <div class="property" id="property">
                 <div class="property-hd">
-                    <h1>{$Ginfo.gname}</h1>
+                    <h1 id="goodname">{$Ginfo.gname}</h1>
                     <p class="mod-info">{$Ginfo.describe}</p>
                 </div>
                 <div class="property-sell">
@@ -257,8 +262,8 @@
                 </div>
                 <!-- /3x3区域 -->
                 <!-- 显示库存 -->
-                </div>总库存:{$count}&nbsp&nbsp
-                具体型号库存量:<div id="goodstore1"></div>&nbsp&nbsp&nbsp件
+                </div>总库存:{$count}&nbsp件&nbsp
+                当前型号库存量:&nbsp<span id="goodstore1" style="color:red;font-weight: border;"></span>&nbsp&nbsp件
                 <script src="/static/bootstrap/jQuery-1.11.3.min.js"></script>
                 <script type="text/javascript">
                     $('#goodstore').mouseover(function () {
@@ -290,7 +295,7 @@
                         </dd>
                     </dl>
                     <!-- 配送 -->
-                    <dl class="property-service-suda clearfix" id="J_delivery">
+                   <!--  <dl class="property-service-suda clearfix" id="J_delivery">
                         <dt class="vm-metatit">
                             配<span class="s-space"></span>送 :
                         </dt>
@@ -301,7 +306,7 @@
                             </div>
                             <span class="site-status" id="J_siteStatus"></span>
                         </dd>
-                    </dl>
+                    </dl> -->
                     <!-- 服务 -->
                     <dl class="property-service-provider clearfix">
                         <dt class="vm-metatit">
@@ -326,16 +331,18 @@
                                 <a id="jia" href="javascript:;" class="vm-plus disabled">+</a>
                             </div>
                         </dd>
-                        信息汇总:<dd id="message"></dd>
+                        <!-- 信息汇总:<dd id="message"></dd> -->
                     </dl>
                 </div>
                 <!-- 立即购买 / 立即购买 -->
                 <div class="btnBUY">
+                    <!-- <a href="{:url('shop/cart/step2')}" id="J_btnBuy" class="anniu hong"> -->
                     <a href="javascript:;" id="J_btnBuy" class="anniu hong">
                         <i></i>
                         立即购买
                     </a>
-                    <a href="{:url('shop/cart/step1')}" id="J_btnBuy" class="anniu lan">
+                    <!-- <a href="{:url('shop/cart/step1')}" id="J_btnBuy1"  class="anniu lan"> -->
+                    <a href="javascript:;" id="J_btnBuy1"  class="anniu lan">
                         <i></i>
                         加入购物车
                     </a>
@@ -350,60 +357,61 @@
                     </span> -->
                 </div>
                 <!-- 获取商品信息 -->
+                <!-- 立即购买 -->
                 <script type="text/javascript">
                     $(function () {
                         $('#J_btnBuy').click(function () {
                             // 发送数据组合(attr x 3)查询库存并返回
-                            var src = $('img:first').attr('src')
-                            var text1 = $('.selected').eq(0).text();
-                            var text2 = $('.selected').eq(1).text();
-                            var text3 = $('.selected').eq(2).text();
+                            var goodname = $.trim($('#goodname').text());
+                            var attr1 = parseInt($('.selected').eq(0).attr('attr'));
+                            var attr2 = parseInt($('.selected').eq(1).attr('attr'));
+                            var attr3 = parseInt($('.selected').eq(2).attr('attr'));
+                            var gid = $('#J_price').attr('gid');
+                            var price = parseInt($('#J_price').text());
+                            var num = $('#J_quantity').val();
+                            var src = $('img:first').attr('src');
+                            var text1 = $.trim($('.selected').eq(0).text());
+                            var text2 = $.trim($('.selected').eq(1).text());
+                            var text3 = $.trim($('.selected').eq(2).text());
                             // 发送Ajax请求
-                               $.get("{:url('/shop/Detail/buy')}",{src:src,'0':text1,'1':text2,'2':text3},showmsg,'text');
+                               $.get("{:url('/shop/Detail/buy')}",{'img':src,'net':text1,'color':text2,'memoey':text3,'gname':goodname,'gid':gid,'num':num,'price':price,'attr1':attr1,'attr2':attr2,'attr3':attr3},showmsg,'text');
                             // callback函数
                                 function showmsg(data)
                                 {
-                                    $('#message').text(data);
+                                     $('#message').text(data);
+                                    //window.location.href="{:url('/shop/cart/step2')}";
                                 }
                             });
                     });
                 </script>
-                <!-- <script>
+                <!-- 加入购物车 -->
+                <script type="text/javascript">
                     $(function () {
-                        $('#J_favorite').click(function () {
-                            var gid = ;
-                            $.post("",{gid:gid},function (res) {
-                                if (res.val){
-                                    $('.model').show();
-                                }else if(res.val==0){
-                                    location="";
+                        $('#J_btnBuy1').click(function () {
+                            // 发送数据组合(attr x 3)查询库存并返回
+                            var goodname = $('#goodname').text();
+                            var attr1 = parseInt($('.selected').eq(0).attr('attr'));
+                            var attr2 = parseInt($('.selected').eq(1).attr('attr'));
+                            var attr3 = parseInt($('.selected').eq(2).attr('attr'));
+                            var gid = $('#J_price').attr('gid');
+                            var price = parseInt($('#J_price').text());
+                            var num = $('#J_quantity').val();
+                            var src = $('img:first').attr('src');
+                            var text1 = $.trim($('.selected').eq(0).text());
+                            var text2 = $.trim($('.selected').eq(1).text());
+                            var text3 = $.trim($('.selected').eq(2).text());
+                            // 发送Ajax请求
+                               $.get("{:url('/shop/Detail/addcart')}",{'img':src,'net':text1,'color':text2,'memoey':text3,'gname':goodname,'gid':gid,'num':num,'price':price,'attr1':attr1,'attr2':attr2,'attr3':attr3},showmsg,'text');
+                            // callback函数
+                                function showmsg(data)
+                                {
+                                    //$('#message').text(data);
+                                    window.location.href="{:url('/shop/cart/step1')}";
                                 }
-                            },'json')
-                        })
-                    })
-                </script> -->
-                <!-- 推荐，您还可以看 -->
-                <!-- <div class="property-related">
-                    <dl class="property-related-item">
-                        <dt class="vm-metatit">还可以看：</dt>
-                        <dd class="clearfix">
-                            <ul>
-                                <li>
-                                    <a href="">
-                                        <img src="" width="32" height="32"/>
-                                        魅蓝note3 799元起
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <img src="" width="32" height="32"/>
-                                        魅蓝note3 799元起
-                                    </a>
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </div> -->
+                            });
+                    });
+                </script>
+                
             </div>
         </div>
     </div>
@@ -462,17 +470,49 @@
         </div>
         <!-- 商品评论 -->
         <div class="standard tab-show" id="" style="display: none;">
-           <div class="row">
-               <div class="col=md-4">头像</div>
-               <div class="col=md-8">评论内容</div>
+           <!-- 回复展示 -->
+           <div class="comment">
+               <div class="msg">
+                    <div class="username">xiaoming</div>
+                    <div class="userimg">
+                        <span>
+                            <img src="/uploads/icons/20170708/4de3b77f2285bf74033f48523ee06376.jpg" width="90" height="90">
+                        </span>
+                    </div>
+                    <div class="level">用户等级</div>
+               </div>
+               <div class="content">
+                    <div class="custom">评论内容</div>
+                    <div class="reply">掌柜回复</div>
+                    <button class="replybtn">&nbsp回&nbsp复&nbsp</button>
+               </div>
            </div>
+           <!-- 回复展示结束 -->
+           <!-- 发表回复-->
+           <div class="comment">
+               <div class="msg">
+                    <div class="username">xiaoming</div>
+                    <div class="userimg">
+                        <span>
+                            <img src="/uploads/icons/20170708/4de3b77f2285bf74033f48523ee06376.jpg" width="90" height="90">
+                        </span>
+                    </div>
+                    <div class="level">用户等级</div>
+               </div>
+               <div class="content">
+                    <div class="sendmsg">
+                        <textarea>回复内容</textarea>
+                    </div>
+                    <button class="replybtn">&nbsp发&nbsp表&nbsp</button>
+               </div>
+           </div>
+           <!-- 发表回复 -->
         </div>
     </div>
 </section>
 
 <footer>
     <div class="container">
- 
         <div class="footer-servive">
             <ul>
                 <li class="item">
@@ -632,4 +672,9 @@
         })
     })
 </script>
-
+<!-- <script type="text/javascript">
+    var editor = new UE.ui.Editor();
+    editor.render("myEditor");
+    //1.2.4以后可以使用一下代码实例化编辑器
+    UE.getEditor('myEditor')
+</script> -->

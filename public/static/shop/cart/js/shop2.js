@@ -11,34 +11,34 @@ $(function(){
 	}
 	getTotal2();
 
-	//地址
-	$('.adress_2').each(function(index){
-		$(this).mousemove(function(){
-			$(this).css('border','3px solid #00c3f5');
-			$('.adress_3').eq(index).css({'display':'block'});
-		}).mouseout(function(){
-			$(this).css('border','3px solid #f0f0f0');
-			$('.adress_3').eq(index).css({'display':'none'});
-		}).click(function(){
-			$('.adress_2').css('background','');
-			$('.adress_2').css('border','3px solid #f0f0f0');
-			$(this).css('border','3px solid #00c3f5');
-			var sr=src+"/Home/images/adress.png";
-			$(this).css({'background':"url("+sr+")",'border':''});
-			//提交收货地址
-			$sid=$(this).attr('data');
-			$('.adress').attr('status',$sid);
-		})
-	})
-
-	$('.adress_3').each(function(index){
-		$(this).mouseover(function(){
-			$(this).css({'display':'block'});
-			$('.adress_2').eq(index).css('border','3px solid #00c3f5');
-		}).mouseout(function(){
-			$(this).css('display','none');
-		})
-	})
+	// //地址
+	// $('.adress_2').each(function(index){
+	// 	$(this).mousemove(function(){
+	// 		$(this).css('border','3px solid #00c3f5');
+	// 		$('.adress_3').eq(index).css({'display':'block'});
+	// 	}).mouseout(function(){
+	// 		$(this).css('border','3px solid #f0f0f0');
+	// 		$('.adress_3').eq(index).css({'display':'none'});
+	// 	}).click(function(){
+	// 		$('.adress_2').css('background','');
+	// 		$('.adress_2').css('border','3px solid #f0f0f0');
+	// 		$(this).css('border','3px solid #00c3f5');
+	// 		var sr=src+"/public/static/shop/cart/img/adress.png";
+	// 		$(this).css({'background':"url("+sr+")",'border':''});
+	// 		//提交收货地址
+	// 		$sid=$(this).attr('data');
+	// 		$('.adress').attr('status',$sid);
+	// 	})
+	// })
+	// 
+	// $('.adress_3').each(function(index){
+	// 	$(this).mouseover(function(){
+	// 		$(this).css({'display':'block'});
+	// 		$('.adress_2').eq(index).css('border','3px solid #00c3f5');
+	// 	}).mouseout(function(){
+	// 		$(this).css('display','none');
+	// 	})
+	// })
 
 	//城市联动
 	// 1、首先获取省份的值

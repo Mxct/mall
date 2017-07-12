@@ -34,6 +34,7 @@
 	<table class="table">
 			<tr>
 				<th>
+				<!-- 总的多选框 -->
 					<input type="checkbox" name="all" id="all" value="">
 				</th>
 				<th width="500px">商品</th>
@@ -43,8 +44,12 @@
 				<th>操作</th>
 			</tr>
 		{volist name="data" id="val"}
+		<!-- 商品 -->
 			<tr class='shangpin'>
-					<th><input data="" type="checkbox" name="" class="every" value=""></th>
+				<!-- 分多选框 -->
+					<td>
+						<input data="{$val.id}" type="checkbox" name="" class="every" value="">
+					</td>
 					<td>
 						<div class="goods">
 							<div class="pic"><img src="{$val.img}" alt=""></div>
@@ -64,9 +69,9 @@
 					<td class="shu">
 						<div class="nu">
 							<a href="javascript:;"><span class='n' id="sjian{$val.id}">-</span></a>
-							<span class="td1 n b" id="J_quantity{$val.id}">{$val.num}</span>
+							<span class="td1 n b selected" id="J_quantity{$val.id}" value="{$val.num}">{$val.num}</span>
 							<a href="javascript:;"><span class='n' id="sjia{$val.id}">+</span></a>
-						</div> 
+						</div>
 					</td>
 <script type="text/javascript">
 $(function(){
@@ -77,6 +82,7 @@ $(function(){
 		var danjia = $('#pri{$val.id}').text();
 		add++;
 		// alert(add);
+		if(add>99) return false;
 		var count = parseInt(danjia)*parseInt(add);
 		$('#J_quantity{$val.id}').text(add);
 		$('#price{$val.id}').text(count);
@@ -97,6 +103,7 @@ $(function(){
 		low--;
 		// alert(low);
 		//最少1件
+		if(low<1) return false;
 		var count = parseInt(danjia)*parseInt(low);
 		$('#J_quantity{$val.id}').text(low);
 		$('#price{$val.id}').text(count);
@@ -152,13 +159,50 @@ $(function(){
 				<a href="{:url('shop/index/index')}" style="color:#31A5E7;font-size:20px;text-decoration:none">继续购物 &nbsp; >
 				</a> 
 			</div>
-			<a href="{:url('step2')}">
-				<div style="float:right;width:150px;background:#31A5E7;height:50px;line-height:50px;text-align:center;color:#fff;font-size:20px" id='jisuan'>去结算
+			<a href="{:url('jump')}"> 
+			<!-- <a href="javascript:;"> -->
+				<div style="float:right;width:150px;background:#31A5E7;height:50px;line-height:50px;text-align:center;color:#fff;font-size:20px" id='jiesuan'>去结算
 				</div>
+				<span id="showmsg"></span>
 			</a>
 		</div>
 	</div>
 </div>
+<script>
+// 结算（没有商品不能提交去结算）
+	// 根据总价格去判断，如果总价为0，说明没有物品，不能去结算
+	
+	$('#jiesuan').click(function(){
+		var zongjia=Number($('#total').text());
+		if(zongjia==0){
+			alert('请先选择商品');
+			return false;
+		}
+
+		//定义一个空数组
+		var ids=[];
+		$('.every:checked').each(function(){
+			var id=$(this).attr('data');
+			ids.push(id);
+		})
+		// num数组
+		var nums=[];
+		$('.every:checked ').parent().siblings().find('.selected').each(function(){
+			var num =parseInt($(this).text());
+			nums.push(num);
+		})
+		//alert(nums);
+		$.post("{:url('/shop/cart/demo')}",{'id[]':ids,'nums[]':nums},showmsg,'text');
+		function showmsg(data){
+			//$('#showmsg').text(data);
+			// if(msg=='yes'){
+			// 	window.location.href={:url('/shop/cart/step2')};
+			// }else{
+			// 	alert('提交失败');
+			// }
+		}
+	})
+</script>
 <!-- 内容结束 -->
 {include file="footer"}
 

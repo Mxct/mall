@@ -98,30 +98,31 @@ $(function(){
 		})
 	})
 
-	//结算（没有商品不能提交去结算）
-	//根据总价格去判断，如果总价为0，说明没有物品，不能去结算
+	// 结算（没有商品不能提交去结算）
+	// 根据总价格去判断，如果总价为0，说明没有物品，不能去结算
 	
-	$('#jisuan').click(function(){
-		var zongjia=Number($('#total').text());
-		if(zongjia==0){
-			return false;
-		}
+	// $('#jisuan').click(function(){
+	// 	var zongjia=Number($('#total').text());
+	// 	if(zongjia==0){
+	// 		return false;
+	// 	}
 
-		//定义一个空数组
-		var ids=[];
-		$('.every:checked').each(function(){
-			var id=$(this).attr('data');
-			ids.push(id);
-		})
-		$.get(url+'/Shop/demo',{'id[]':ids},function(msg){
-			console.log(msg);
-			if(msg=='yes'){
-				window.location.href=url+'/Shop/clearbuy';
-			}else{
-				alert('提交失败');
-			}
-		})
-	})
+	// 	//定义一个空数组
+	// 	var ids=[];
+	// 	$('.every:checked').each(function(){
+	// 		var id=$(this).attr('data');
+	// 		ids.push(id);
+	// 	})
+	// 	alert(ids);
+	// 	$.get(url+'/Shop/demo',{'id[]':ids},function(msg){
+	// 		console.log(msg);
+	// 		if(msg=='yes'){
+	// 			window.location.href=url+'/Shop/clearbuy';
+	// 		}else{
+	// 			alert('提交失败');
+	// 		}
+	// 	})
+	// })
 
 	var em=$('.every').attr('data');
 	// alert(em);

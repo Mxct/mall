@@ -1,0 +1,87 @@
+.comment {
+	background: f2f2f2;
+	border-radius: 10px;
+	border:1px solid;
+	margin-top: 10px;
+	overflow: hidden;
+}
+.msg {
+	width: 160px;
+	min-height: 160px;
+	float:left;
+	background-color:orange ;
+	margin: 5px;
+	border-radius:10px;
+	 border:1px solid;
+}
+.content {
+	min-height: 150px;
+	background-color: gray;
+	margin-top: 5px;
+	margin-right: 20px;
+	margin-bottom: 5px;
+	border-radius:10px;
+    width:82%;
+    padding-top: 10px;
+    border:1px solid;
+}
+.custom {
+	min-height: 80px;
+	background-color: f2f2f2;
+	border-radius:10px;
+    width:98%;
+}
+.reply {
+	min-height: 30px;
+	background-color: f2f2f2;
+	margin-top: 10px;
+	border-radius:10px;
+    width:98%;
+}
+.replybtn {
+	float:right;
+	cursor: pointer;
+	margin-right:20px;
+	margin-top:5px;
+	border-radius: 3px;
+	background-color: f2f2f2;
+	border:1px solid;
+}
+.username{
+	margin:5px;
+	border-radius: 5px;
+	background-color: f2f2f2;
+	border:1px solid;
+	text-align: center;
+}
+.userimg{
+	margin:5px;
+	text-align: center;
+	border-radius: 3px;
+}
+.userimg img {
+	border-radius: 5px;
+}
+.level {
+	margin:5px;
+	border-radius: 5px;
+	background-color: f2f2f2;
+	border:1px solid;
+	text-align: center;
+}
+.sendmsg {
+	height: 100px;
+	background-color: f2f2f2;
+	border-radius:10px;
+    width:98%;
+}
+.replybtn{
+	border:none;
+	cursor: pointer;
+}
+textarea {
+	width:100%;
+	min-height: 100px;
+	border-radius:10px;
+    padding-top: 10px;
+}

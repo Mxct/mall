@@ -4,6 +4,7 @@ use think\Controller;
 use think\Db;
 use app\shop\model\User as UserModel;
 use app\shop\model\Address;
+use app\shop\model\Order;
 
 class User extends Controller
 {
@@ -176,6 +177,22 @@ class User extends Controller
 
 		// 地址个数
 
+		// 全部订单
+        $order = Order::paginate('2');
+        dump($order);
+        $set=[];
+        foreach ($order as $value) {
+            $arr1 = $value->toArray();
+            // 获取用户名
+            $user= UserModel::get($arr1['uid']);
+            $username = $user->username;
+            array_push($arr1, $username);
+            array_push($set, $arr1);
+        }
+        // 分配变量
+        // 订单
+        $this->assign('orderlist',$set);
+        $this->assign('orderC',$order);
 
 
 		$this->assign('list',$list);

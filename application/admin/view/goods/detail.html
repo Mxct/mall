@@ -1,0 +1,140 @@
+<!-- 商品详情 -->
+{extend name='admin'/}
+{block name="content"}
+<ol class="breadcrumb" style="background-color: #f9f9f9;padding:8px 0;margin-bottom:10px;">
+    <li>
+        <a href="{:url('index')}"><i class="fa fa-cogs"></i> 商品管理</a>
+    </li>
+    <li class="active">
+        <a href="javascript:;">商品名称</a>
+    </li>
+</ol>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="javascript:;">商品详情</a></li>
+</ul>
+
+<div class="row-md" style="border-radius: 10px;border:1px solid #dddddd;overflow: hidden;background-color:#FAFAFC;">
+<!-- 块1 -->
+    <div class="col-md-12 center-block col-md-offset-1">
+        <div class="row center-block" style="border-radius: 10px;border:px solid red;margin-top: 12px;">
+            <div class="panel panel-default">
+              <!-- Default panel contents -->
+              <div class="panel-heading glyphicon col-md-12">
+                    <div class="col-md-4">
+                        <span class="glyphicon-picture" aria-hidden="true">&nbsp{$Ginfo.gname}</span>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4"></div>
+              </div>
+              <div class="panel-body">
+                    <div class="col-md-4 panel-heading glyphicon">
+                        <img width="200" height="200"  src="{$Ginfo.pic}" title="商品图像" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-6 col-md-offset-1 panel-heading" style="margin-top: 10px; font-size: 15px; border-radius: 10px;border:1px solid #dddddd;overflow: hidden;background-color:#FAFAFC; padding: 10px;">
+                        <div class="col-md-12"><b>品牌：</b>魅族</div>
+                        <div class="col-md-12"><b>商品名：</b>{$Ginfo.gname}</div>
+                            <!-- 遍历mid，属性类型 -->
+                        {volist name="attrsN" id="valL"}
+                        <div class="col-md-12">
+                            <b>{php}echo attrClass($valL);{/php}：</b>
+                                <!-- 遍历属性 -->
+                                {volist name="attrsV" id="valS"}
+                                <!-- 判断属性是否和类型相等 -->
+                                {if $valS['0'] == $valL}
+                                    <!-- 遍历所有属性 -->
+                                    {volist name="attrList" id="attr"}
+                                        <!-- 判断并替换属性中文 -->
+                                        {if $attr['id'] == $valS['1']}
+                                            {$attr['attrs']} / 
+                                        {/if}
+                                    {/volist}
+                                {/if}
+                                {/volist}
+                        </div>
+                        {/volist}
+                        <div class="col-md-12"><b>价格：</b>￥{$Ginfo.price}</div>
+                        <div class="col-md-12"><b>电池容量：</b>4000mAh</div>
+                        <div class="col-md-12"><b>重量：</b>175g</div>
+                        <div class="col-md-12"><b>运行内存(RAM)：</b>3GB / 4GB / 6GB</div>
+
+                    </div>
+              </div>
+            </div>
+        </div>
+    </div>
+<!--块2  -->
+        <div class="col-md-8 col-md-offset-1 marketing" style="border-radius: 10px;border:px solid red;margin-top:10px;margin-bottom:5px;background-color:;font-size: 30px;">
+                <div class="row" style="margin-top:10px;display:block;">
+                        <div class="col-md-12 col-md-offset-1" >
+                                <span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp登陆用户名：</span>
+                        </div>
+                </div>
+                <div class="row" style="margin-top:10px;display:block;">
+                         <!-- 管理员后台登录 -->
+                                <a href="{:url('admin/order/index')}"><div class="col-md-5 col-md-offset-1 btn btn-info">订单列表</div></a>
+                        <!-- Button trigger modal -->
+                        <div class="col-md-5 col-md-offset-1 btn btn-info" data-toggle="modal" data-target="#myModal">修改订单</div>
+                </div>
+ <!-- Modal --><!-- 模态框 -->
+     <form class="form-horizontal" id="form" action="{:url('admin/order/updeteorder')}" method="post" enctype="multipart/form-data">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">订单修改</h4>
+                  </div>
+                  <div class="modal-body">
+                   <!-- 表格内容 -->
+                        <table class="table table-hover">
+                                                        <tr>
+                                <td>商品名</td>
+                                <td colspan="2">
+                                    <input type="text" value="" readonly class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>网络类型</td>
+                                <td colspan="2">
+                                    <select class="form-control" name="net"> 
+                                            <option>132345678</option> 
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>颜色</td>
+                                <td colspan="2">
+                                    <select class="form-control" name="net"> 
+                                            <option>132345678</option> 
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>内存</td>
+                                <td colspan="2">
+                                    <select class="form-control" name="net"> 
+                                            <option>132345678</option> 
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>价格</td>
+                                <td colspan="2">
+                                    <input type="text" name="price" value="" class="form-control">
+                                </td>
+                            </tr>
+                        </table>
+                  </div>
+                  <div class="modal-footer">
+                        <input type="hidden" name="id" value="">
+                    <button type="submit" class="btn btn-primary">提交</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </form>
+        <!-- 模态框结束 -->
+        </div>
+</div>
+
+{/block}

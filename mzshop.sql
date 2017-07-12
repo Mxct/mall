@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-07-09 16:17:01
+-- Generation Time: 2017-07-11 13:41:36
 -- 服务器版本： 5.7.11
 -- PHP Version: 7.0.4
 
@@ -44,10 +44,13 @@ CREATE TABLE `mz_address` (
 INSERT INTO `mz_address` (`id`, `person`, `phone`, `location`, `first`, `create_time`, `update_time`, `delete_time`) VALUES
 (1, '小明', '13788888881', '福建省泉州市惠安县', 1, NULL, 1499433545, NULL),
 (2, '小李', '1378880188', '深圳珠海魅族', 0, NULL, NULL, NULL),
-(3, '小李', '1378880188', '深圳珠海魅族', 0, NULL, NULL, NULL),
+(3, '小李', '1378880188', '深圳珠海魅族', 1, NULL, 1499664657, NULL),
 (4, '小李', '1378880188', '深圳珠海魅族', 0, NULL, NULL, NULL),
 (5, '小明', '1378888888', '福建省泉州市惠安县', 1, NULL, NULL, NULL),
-(6, '小明', '1378888888', '福建省泉州市惠安县', 1, NULL, NULL, NULL);
+(6, '小明', '1378888888', '福建省泉州市惠安县', 0, NULL, 1499664558, NULL),
+(7, '1234567', '21345678', '2134567', 0, 1499664558, 1499664650, 1499664650),
+(8, '就萨丹哈客户', '尽快耗时间阿卡', '交换空间撒谎', 0, 1499664584, 1499664642, 1499664642),
+(9, '1233', '4321', '324', 1, 1499664608, 1499664637, 1499664637);
 
 -- --------------------------------------------------------
 
@@ -112,19 +115,22 @@ CREATE TABLE `mz_cart` (
   `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `gid` int(11) NOT NULL,
+  `img` varchar(255) COLLATE utf8_croatian_ci DEFAULT NULL,
+  `gname` varchar(32) COLLATE utf8_croatian_ci NOT NULL,
+  `price` int(11) NOT NULL,
   `num` int(11) NOT NULL DEFAULT '1',
-  `net` varchar(30) COLLATE utf8_croatian_ci NOT NULL,
-  `color` varchar(30) COLLATE utf8_croatian_ci NOT NULL,
-  `memoey` varchar(30) COLLATE utf8_croatian_ci NOT NULL
+  `net` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `color` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `memoey` varchar(255) COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
 --
 -- 转存表中的数据 `mz_cart`
 --
 
-INSERT INTO `mz_cart` (`id`, `uid`, `gid`, `num`, `net`, `color`, `memoey`) VALUES
-(1, 1, 1, 1, '全网通', '蓝色', '16G'),
-(2, 1, 2, 1, '全网通', '蓝色', '16G');
+INSERT INTO `mz_cart` (`id`, `uid`, `gid`, `img`, `gname`, `price`, `num`, `net`, `color`, `memoey`) VALUES
+(17, 1, 1, '/static/shop/resource/images/entry/logo-header.png', '魅族note5', 888, 1, '全网通4G', '香槟金', '16G'),
+(19, 1, 1, '/static/shop/resource/images/entry/logo-header.png', '魅族note5', 888, 0, '全网通4G', '香槟金', '16G');
 
 -- --------------------------------------------------------
 
@@ -134,22 +140,21 @@ INSERT INTO `mz_cart` (`id`, `uid`, `gid`, `num`, `net`, `color`, `memoey`) VALU
 
 CREATE TABLE `mz_detail` (
   `id` int(11) NOT NULL,
-  `goods_id` int(11) NOT NULL,
+  `goods_id` int(11) DEFAULT NULL,
   `img1` varchar(255) DEFAULT NULL,
   `img2` varchar(255) DEFAULT NULL,
   `img3` varchar(255) DEFAULT NULL,
   `img4` varchar(255) DEFAULT NULL,
   `intro` text
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `mz_detail`
 --
 
 INSERT INTO `mz_detail` (`id`, `goods_id`, `img1`, `img2`, `img3`, `img4`, `intro`) VALUES
-(1, 1, '/uploads/ceshi/20170709/86e5a9d6043221ba227e6a4ada91771d.jpg', '/uploads/ceshi/20170709/46d7bead72011a960bd24874368222f1.jpg', NULL, NULL, '1234567'),
-(2, 2, '/uploads/ceshi/20170709/39babb72817fe7b951c81ab71e3d7fe5.jpg', '/uploads/ceshi/20170709/f98bc842bcef3f199a9118783909e216.jpg', NULL, NULL, '12324'),
-(5, 2, NULL, NULL, NULL, NULL, NULL);
+(1, 1, '/uploads/goods/20170710/5c32439290201150955121ceb37371b6.jpg', '/uploads/goods/20170710/109d7ddd2600bf902d0992446138fda9.jpg', '/uploads/goods/20170710/3d9d9b1bd5f4d6fa09c04646e990e68d.jpg', '/uploads/goods/20170710/dfcec8c828096793eac5cf9a87d80ef6.jpg', '魅族note5'),
+(2, 2, '/uploads/goods/20170710/981ac8b15cbd2f043cd4e9a50c8f21f1.jpg', '/uploads/goods/20170710/8acba19be99fc7f4e1339fa2fb393c29.jpg', NULL, NULL, '魅族 MX6，介绍');
 
 -- --------------------------------------------------------
 
@@ -177,8 +182,8 @@ CREATE TABLE `mz_goods` (
 --
 
 INSERT INTO `mz_goods` (`id`, `pid`, `gname`, `price`, `num`, `describe`, `pic`, `status`, `hot`, `create_time`, `update_time`, `delete_time`) VALUES
-(1, 1, '魅族note5', 888, 3, '魅族note5', '/uploads/goods/20170708/55e5c45fe61933a2fe471f4e1862c817.jpg', 1, '1', 1499497293, 1499529620, NULL),
-(2, 1, '魅族 MX6', 1288, 1, '魅族MX6', '/uploads/goods/20170708/e0d56d0d92851bc1777d32f810513873.jpg', 1, '1', 1499497880, 1499529645, NULL);
+(1, 1, '魅族note5', 888, 6, '魅族note5', '/uploads/goods/20170708/55e5c45fe61933a2fe471f4e1862c817.jpg', 1, '0', 1499497293, 1499760612, NULL),
+(2, 1, '魅族 MX6', 1288, 1, '魅族MX6', '/uploads/goods/20170708/e0d56d0d92851bc1777d32f810513873.jpg', 1, '0', 1499497880, 1499750617, NULL);
 
 -- --------------------------------------------------------
 
@@ -206,13 +211,54 @@ INSERT INTO `mz_goodtoattr` (`id`, `goods_id`, `attr_id`, `mid`, `money`, `imie`
 (3, 1, 9, 3, 0, '300010001000400090003', 0),
 (4, 1, 1, 1, 0, NULL, 0),
 (5, 1, 4, 2, 0, NULL, 0),
-(6, 1, 10, 3, 100, '400010001000400100006', 0),
-(7, 1, 1, 1, 0, NULL, 0),
-(8, 1, 4, 2, 0, NULL, 0),
-(9, 1, 11, 3, 300, '400010001000400110009', 0),
+(6, 1, 9, 3, 0, '100010001000400090006', 0),
 (10, 2, 1, 1, 0, NULL, 0),
-(11, 2, 4, 2, 0, NULL, 0),
-(12, 2, 9, 3, 0, '200020001000400090012', 0);
+(11, 2, 7, 2, 0, NULL, 0),
+(12, 2, 9, 3, 0, '600020001000700090012', 0),
+(13, 1, 1, 1, 0, NULL, 0),
+(14, 1, 4, 2, 0, NULL, 0),
+(15, 1, 10, 3, 300, '200010001000400100015', 0),
+(16, 1, 2, 1, 0, NULL, 0),
+(17, 1, 4, 2, 0, NULL, 0),
+(18, 1, 9, 3, 0, '500010002000400090018', 0),
+(19, 1, 3, 1, 0, NULL, 0),
+(20, 1, 4, 2, 0, NULL, 0),
+(21, 1, 12, 3, 500, '400010003000400120021', 0),
+(22, 1, 1, 1, 0, NULL, 0),
+(23, 1, 5, 2, 50, NULL, 0),
+(24, 1, 9, 3, 0, '400010001000500090024', 0);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `mz_order`
+--
+
+CREATE TABLE `mz_order` (
+  `id` int(11) NOT NULL,
+  `orderid` varchar(32) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `gid` int(11) NOT NULL,
+  `gname` varchar(32) NOT NULL,
+  `num` int(11) NOT NULL DEFAULT '1',
+  `price` int(11) NOT NULL,
+  `net` varchar(32) NOT NULL,
+  `color` varchar(32) NOT NULL,
+  `memoey` varchar(32) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `addid` int(11) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `mz_order`
+--
+
+INSERT INTO `mz_order` (`id`, `orderid`, `uid`, `gid`, `gname`, `num`, `price`, `net`, `color`, `memoey`, `img`, `addid`, `status`) VALUES
+(3, '300010001000400090003', 1, 1, '魅族note5', 1, 888, '全网通4G', '香槟金', '16G', '/uploads/goods/20170708/55e5c45fe61933a2fe471f4e1862c817.jpg', NULL, 0),
+(5, '300010001000400090003', 1, 1, '魅族note5', 1, 888, '全网通4G', '香槟金', '16G', '/static/shop/resource/images/entry/logo-header.png', 1, 1),
+(6, '300010001000400090003', 2, 1, '魅族note5', 1, 888, '全网通4G', '香槟金', '16G', '/static/shop/resource/images/entry/logo-header.png', 1, 2),
+(7, '300010001000400090003', 1, 1, '魅族note5', 1, 888, '全网通4G', '香槟金', '16G', '/static/shop/resource/images/entry/logo-header.png', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -297,7 +343,10 @@ INSERT INTO `mz_usertoadd` (`id`, `user_id`, `address_id`) VALUES
 (6, 7, 5),
 (7, 7, 4),
 (8, 2, 6),
-(9, 2, 8);
+(9, 2, 8),
+(10, 1, 7),
+(11, 1, 8),
+(12, 1, 9);
 
 --
 -- Indexes for dumped tables
@@ -346,6 +395,12 @@ ALTER TABLE `mz_goodtoattr`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mz_order`
+--
+ALTER TABLE `mz_order`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mz_type`
 --
 ALTER TABLE `mz_type`
@@ -371,7 +426,7 @@ ALTER TABLE `mz_usertoadd`
 -- 使用表AUTO_INCREMENT `mz_address`
 --
 ALTER TABLE `mz_address`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- 使用表AUTO_INCREMENT `mz_attr`
 --
@@ -386,12 +441,12 @@ ALTER TABLE `mz_banner`
 -- 使用表AUTO_INCREMENT `mz_cart`
 --
 ALTER TABLE `mz_cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- 使用表AUTO_INCREMENT `mz_detail`
 --
 ALTER TABLE `mz_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `mz_goods`
 --
@@ -401,7 +456,12 @@ ALTER TABLE `mz_goods`
 -- 使用表AUTO_INCREMENT `mz_goodtoattr`
 --
 ALTER TABLE `mz_goodtoattr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+--
+-- 使用表AUTO_INCREMENT `mz_order`
+--
+ALTER TABLE `mz_order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- 使用表AUTO_INCREMENT `mz_type`
 --
@@ -416,7 +476,7 @@ ALTER TABLE `mz_user`
 -- 使用表AUTO_INCREMENT `mz_usertoadd`
 --
 ALTER TABLE `mz_usertoadd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
